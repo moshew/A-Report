@@ -1,0 +1,10 @@
+﻿<div class="date" style="margin-bottom:40px;">{{loginData.date_str}}</div>
+<div class="status">
+    <div class="status-delete">
+        <img ng-show="loginData.lock==0" src="assets/status_delete.png" ng-click="report(-1)"/>
+        <img ng-show="loginData.lock!=0" src="assets/status_none.png" />
+    </div>
+    <div><img id="status_icon" src="assets/report/{{status}}.png" /></div>
+    <div style="font-size:18px;">{{status_label}}</div>
+</div>
+<div ng-include="'pages/footer1.html'"></div>

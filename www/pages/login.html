@@ -1,0 +1,14 @@
+﻿<div class="login-header">
+    <div>{{message}}</div>
+    <span ng-show="loginSate=='code'"><div ng-class="{'login-circle':fills[0].value, 'login-circle border':!fills[0].value}"></div><div ng-class="{'login-circle':fills[1].value, 'login-circle border':!fills[1].value}"></div><div ng-class="{'login-circle':fills[2].value, 'login-circle border':!fills[2].value}"></div><div ng-class="{'login-circle':fills[3].value, 'login-circle border':!fills[3].value}"></div><div ng-class="{'login-circle':fills[4].value, 'login-circle border':!fills[4].value}"></div></span>
+    <div ng-show="loginSate=='phone'" class="login-phone">{{value}}</div>
+</div>
+<md-button class="md-fab md-mini md-primary" ng-click="press(1)">1</md-button><md-button class="md-fab md-mini md-primary" ng-click="press(2)">2</md-button><md-button class="md-fab md-mini md-primary" ng-click="press(3)">3</md-button><br />
+<md-button class="md-fab md-mini md-primary" ng-click="press(4)">4</md-button><md-button class="md-fab md-mini md-primary" ng-click="press(5)">5</md-button><md-button class="md-fab md-mini md-primary" ng-click="press(6)">6</md-button><br />
+<md-button class="md-fab md-mini md-primary" ng-click="press(7)">7</md-button><md-button class="md-fab md-mini md-primary" ng-click="press(8)">8</md-button><md-button class="md-fab md-mini md-primary" ng-click="press(9)">9</md-button><br />
+<md-button class="md-fab md-mini md-primary" ng-click="sendCode()"><img src="assets/login_{{loginSate}}.png" /></md-button><md-button class="md-fab md-mini md-primary" ng-click="press(0)">0</md-button><md-button class="md-fab md-mini md-primary" ng-click="press('r')" ><img src="assets/login_delete.png" /></md-button><br />
+<div ng-show="sendCodeScreen" class="popupScreen">
+    <div ng-show="loginLoading"><div class="home-spinner"></div></div>
+    <div ng-show="!loginLoading"><img src="assets/login_{{loginCodeResponse}}.png" /></div>
+    <div ng-show="!loginLoading"><md-button class="md-raised md-warn login-back" ng-click="sendCode();sendCodeScreen=false">חזור</md-button></div>
+</div>
