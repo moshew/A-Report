@@ -1,4 +1,4 @@
-﻿<div ng-show="false">
+﻿<div ng-show="true">
    <div class="settings-header">דיווחים והתראות</div><br />
    <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_changes}" ng-click="changeSettings(0)" >&nbsp;</label></div><div class="settings-label">קבל התראה מיידית על שינוי דיווח</div><br />
    <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_report}" ng-click="changeSettings(1)" >&nbsp;</label></div><div class="settings-label">קבל הודעה סיכומית יומית</div><br />
@@ -6,7 +6,7 @@
    <div class="settings-header">פרטים אישיים</div><br />
    <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.keep_info}" ng-click="changeSettings(3)" >&nbsp;</label></div><div class="settings-label">אפשר לשמור פרטים על המכשיר</div><br />
 </div>
-<div ng-show="true">
+<div ng-show="false">
   <div class="settings-header">רשימת מעקב משתמשים</div><br />
 
   <div class="settings-users" ng-repeat="user in ['משה', 'נועם']">{{ user }}<span style="margin-left:10px;" /><img width="30" src="assets/status_delete.png" /></div>
