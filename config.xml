@@ -1,5 +1,5 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="co.il.a-report" version="1.0.0">
-  <name>hello</name>
+  <name>A-Report</name>
   <description>A-REport by click</description>
   <author href="http://a-report.co.il" email="support@a-report.co.il">A-Report Team</author>
   <content src="index.html"/>
