@@ -62,7 +62,7 @@ app.config(function ($mdThemingProvider) {
 });
 
 app.factory('dataShare', function ($http, $location, $timeout) {
-    var service = {}
+    var service = {};
     var pagePromise = null;
     service.data = false;
     service.settings = false;
@@ -70,13 +70,13 @@ app.factory('dataShare', function ($http, $location, $timeout) {
     service.set = function (data) {
         this.data = data;
         if (this.data.hasOwnProperty("settings")) this.settings = this.data.settings;
-    }
+    };
     service.get = function () {
         return this.data;
-    }
+    };
     service.getSettings = function () {
         return this.settings;
-    }
+    };
 
     service.changePage = function (data, path) {
         this.mainPage = false;
@@ -97,8 +97,11 @@ app.factory('dataShare', function ($http, $location, $timeout) {
         }
         $location.path(path);
         $timeout.cancel(pagePromise);
-        pagePromise = $timeout(function () { this.mainPage = false; $location.path(''); }, 5 * 60 * 1000);
-    }
+        pagePromise = $timeout(function () {
+            this.mainPage = false;
+            $location.path('');
+        }, 5 * 60 * 1000);
+    };
 
     service.action = function (oper) {
         page = (oper == 'futureReport') ? 'future_report' : 'login';
@@ -108,7 +111,7 @@ app.factory('dataShare', function ($http, $location, $timeout) {
             if (oper == 'main') service.changePage(data);
             else service.changePage(data, oper);
         });
-    }
+    };
 
     return service;
 });
@@ -117,7 +120,7 @@ app.controller('mainController', function ($scope, $http, $location, dataShare) 
     $scope.dataShare = dataShare;
     $scope.loading = false;
     //$scope.zoom_factor = 50;
-    //$scope.zoom_factor = window.innerHeight / 6.67;
+    $scope.zoom_factor = window.innerHeight / 6.67;
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
     $scope.enter = function () {
@@ -203,7 +206,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     
     $scope.status_labels = ['נוכח', 'חופש', 'מחלה', 'חו"ל', '\'מחוץ ליח', 'קורס', 'מיוחדת', 'הצהרה', '\'יום ד', 'מחלת ילד', 'לידה', 'אחר'];
     $scope.status_label = $scope.status_labels[s];
-    $scope.myStyle = [null,null,null,null,null,null,null,null,null,null,null,null]
+    $scope.myStyle = [null,null,null,null,null,null,null,null,null,null,null,null];
 
     var reportSent = false;
     $scope.report = function (status) {
@@ -229,10 +232,10 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     $scope.datepickerChanged = function () {
         if ($scope.report_dates.end_day < $scope.report_dates.start_day)
             $scope.report_dates.end_day = $scope.report_dates.start_day;
-    }
+    };
 
     var future_status = 1;
-    $scope.report2BtnStyle = [null, { 'background-color': '#80be40' }, null, null, null, null, null, null, null, null, null, null]
+    $scope.report2BtnStyle = [null, { 'background-color': '#80be40' }, null, null, null, null, null, null, null, null, null, null];
     $scope.changeFutureStatus = function (status) {
         $scope.report2BtnStyle[future_status] = { 'background-color': '#234a7d' };
         $scope.report2BtnStyle[status] = { 'background-color': '#80be40' };
@@ -270,7 +273,7 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
         $scope.loginData.settings[key] = !($scope.loginData.settings[key]);
         url = 'http://isra-net.co.il/~moridimt/settings.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&key=' + key + '&value=' + $scope.loginData.settings[key];
         $http.jsonp(url)
-        .success(function (data) {
+        .success(function () {
             setTimeout(function () {
                 changeSetting = false;
             }, 500);
