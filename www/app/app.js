@@ -122,7 +122,7 @@ app.controller('mainController', function ($scope, $http, $location, dataShare) 
     $scope.dataShare = dataShare;
     $scope.loading = false;
     //$scope.zoom_factor = 50;
-    //$scope.zoom_factor = window.innerHeight / 6.67;
+    $scope.zoom_factor = window.innerHeight / 6.67;
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
     $scope.enter = function () {
