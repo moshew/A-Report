@@ -1,29 +1,31 @@
-﻿<div ng-show="false">
-   <div class="settings-header">דיווחים והתראות</div><br />
-   <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_changes}" ng-click="changeSettings(0)" >&nbsp;</label></div><div class="settings-label">קבל התראה מיידית על שינוי דיווח</div><br />
-   <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_report}" ng-click="changeSettings(1)" >&nbsp;</label></div><div class="settings-label">קבל הודעה סיכומית יומית</div><br />
-   <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_approval}" ng-click="changeSettings(2)" >&nbsp;</label></div><div class="settings-label">"קבל אישור על "הדיווחים שלי</div><br /><br />
-   <div class="settings-header">פרטים אישיים</div><br />
-   <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.keep_info}" ng-click="changeSettings(3)" >&nbsp;</label></div><div class="settings-label">אפשר לשמור פרטים על המכשיר</div><br />
-</div>
-<div ng-show="true">
-  <div class="settings-header">מעקב דיווחי משתמשים</div><br />
-    <div class="settings-users" ng-repeat="user in reportedUsers.users">{{ user.name }}<span style="margin-left:10px;" /><img width="30" src="assets/status_delete.png" /></div>
-    <div class="settings-new">
-        <div class="settings-button" ng-show="selectedUser!=null" ng-click="addUser()">הוסף</div>
-        <angucomplete-alt dir="rtl"
-                          id="settings-AddUser"
-                          placeholder="שם חדש"
-                          pause="100"
-                          selected-object="selectedUser"
-                          local-data="reportedUsers.users"
-                          search-fields="name"
-                          title-field="name"
-                          minlength="1"
-                          input-class="settings-add"
-                          match-class="settings-highlight"
-                          auto-match="true">
-        </angucomplete-alt>
+﻿<div>
+    <div ng-show="settingsPage=='main'">
+        <div class="settings-header">דיווחים והתראות</div><br />
+        <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_changes}" ng-click="changeSettings(0)" >&nbsp;</label></div><div class="settings-label">קבל התראה מיידית על שינוי דיווח</div><br />
+        <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_report}" ng-click="changeSettings(1)" >&nbsp;</label></div><div class="settings-label">קבל הודעה סיכומית יומית</div><br />
+        <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_approval}" ng-click="changeSettings(2)" >&nbsp;</label></div><div class="settings-label">"קבל אישור על "הדיווחים שלי</div><br />
+        <div class="settings-label2"><div class="settings-next"><img width="25" src="assets/next.png" ng-click="settingsPage='users'" /></div>הגדרת משתמשים למעקב דיווח</div><br />
+        <div class="settings-header">פרטים אישיים</div><br />
+        <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.keep_info}" ng-click="changeSettings(3)" >&nbsp;</label></div><div class="settings-label">אפשר לשמור פרטים על המכשיר</div><br />
+    </div>
+    <div ng-show="settingsPage=='users'">
+        <div class="settings-header">הגדרת משתמשים למעקב דיווח <img width="25" src="assets/prev.png" ng-click="settingsPage='main'" /></div><br />
+        <div class="settings-users" ng-repeat="user in reportedUsers.users">{{ user.name }}<span style="margin-left:10px;" /><img width="30" src="assets/status_delete.png" /></div>
+        <div class="settings-new">
+            <div ng-class="{'settings-button':true, 'disabled':selectedUser==null}" ng-click="addUser()">הוסף</div>
+            <angucomplete-alt dir="rtl"
+                              id="settings-AddUser"
+                              pause="100"
+                              selected-object="selectedUser"
+                              local-data="reportedUsers.users"
+                              search-fields="name"
+                              title-field="name"
+                              minlength="1"
+                              input-class="settings-add"
+                              match-class="settings-highlight"
+                              auto-match="true">
+            </angucomplete-alt>
+        </div>
     </div>
 </div>
 <div ng-include="'pages/footer1.html'" />

@@ -202,6 +202,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     $scope.settingsData = dataShare.getSettings();
     $scope.mainPage = dataShare.mainPage;
     $scope.reportedUsers = [];
+    $scope.reportPage='main';
 
     var s = $scope.loginData.status;
     $scope.status = (s < 10) ? ("0" + s) : s;
@@ -261,6 +262,7 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
     $scope.loginData = dataShare.get();
     $scope.settingsData = dataShare.getSettings();
     $scope.mainPage = dataShare.mainPage;
+    $scope.settingsPage='main';
 
     $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id)
     .success(function (data) {

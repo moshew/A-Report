@@ -148,6 +148,7 @@ to {transform: rotate(359deg);}
 .date {
     /*font-family: Miriam;*/
     font-size: 137.5%;
+    margin-bottom: 25px;
 }
 
 .report-btn {
@@ -213,6 +214,10 @@ to {transform: rotate(359deg);}
     display: inline-block;
 }
 
+.settings-option
+{
+    display: inline-block;
+}
 .settings-label {
     text-align:right;
     margin-right: 4%;
@@ -223,6 +228,21 @@ to {transform: rotate(359deg);}
 .settings-switch {
     text-align: left;
     margin-left: 4%;
+}
+
+.settings-label2 {
+    text-align:right;
+    margin-right: 4%;
+    font-size:125%;
+    padding-bottom:2px;
+}
+
+
+.settings-next {
+    text-align: left;
+    margin-left: 4%;
+    width: 125px;
+    display: inline-block;
 }
 
 .footer {
@@ -373,7 +393,7 @@ to {transform: rotate(359deg);}
 }
 
 .settings-new {
-    margin-top: 15px;
+    margin-top: 25px;
     margin-right: 20px;
     text-align: right;
     color: white;
@@ -383,8 +403,9 @@ to {transform: rotate(359deg);}
     height: 35px;
     border-radius: 5px;
     border-width: 1px;
+    border-color: #2a6496;
     padding-right: 10px;
-    width: 150px;
+    width: 200px;
     color: white;
     font-size: 150%;
     background: #4b688e;
@@ -404,7 +425,13 @@ to {transform: rotate(359deg);}
     display: inline-block;
     font-size: 100%;
 }
+.settings-button.disabled {
+    background: #aaaaaa;
+    border-color: #aaaaaa;
+    color: #666666;
 
+
+}
 .settings-highlight {
     color: #ff0000;
 }
