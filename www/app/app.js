@@ -2,7 +2,7 @@
 
 // create the module and name it app
 // also include ngRoute for all our routing needs
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'ngMdIcons', 'angucomplete']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'ngMdIcons', 'angucomplete-alt']);
 var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 //var domain = 'http://isra-net.co.il/~moridimt/';
 
@@ -264,8 +264,9 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
 
     $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id)
     .success(function (data) {
-        $scope.reportedUsers = data;
+        //$scope.reportedUsers = data;
     });
+    $scope.reportedUsers = {users: [{name:"עומר"}, {name:"איתי"}, {name:"מאיה"}]};
 
     var changeSetting = false;
     $scope.changeSettings = function (setting) {
@@ -281,6 +282,17 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
             }, 500);
         });
     }
+
+
+    $scope.addUser = function () {
+        $scope.test1 = 'sss';
+        if ($scope.selectedUser!=null) $scope.test1 = $scope.selectedUser.originalObject.name;
+    }
+
+
+
+
+
 });
 
 angular.module('app').config(function ($mdDateLocaleProvider) {
