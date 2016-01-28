@@ -2,7 +2,9 @@
 
 // create the module and name it app
 // also include ngRoute for all our routing needs
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'ngMdIcons']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'ngMdIcons', 'angucomplete']);
+var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
+//var domain = 'http://isra-net.co.il/~moridimt/';
 
 // configure our routes
 app.config(function ($routeProvider) {
@@ -105,7 +107,7 @@ app.factory('dataShare', function ($http, $location, $timeout) {
 
     service.action = function (oper) {
         page = (oper == 'futureReport') ? 'future_report' : 'login';
-        url = 'http://isra-net.co.il/~moridimt/' + page + '.php?callback=JSON_CALLBACK&id=' + this.get().id;
+        url = domain + page + '.php?callback=JSON_CALLBACK&id=' + this.get().id;
         $http.jsonp(url)
         .success(function (data) {
             if (oper == 'main') service.changePage(data);
@@ -120,12 +122,12 @@ app.controller('mainController', function ($scope, $http, $location, dataShare) 
     $scope.dataShare = dataShare;
     $scope.loading = false;
     //$scope.zoom_factor = 50;
-    $scope.zoom_factor = window.innerHeight / 6.67;
+    //$scope.zoom_factor = window.innerHeight / 6.67;
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
     $scope.enter = function () {
         $scope.loading = true;
-        $http.jsonp('http://isra-net.co.il/~moridimt/login.php?callback=JSON_CALLBACK')
+        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
             .success(function (data) {
                 $scope.loading = false;
                 if (data.ver == 1.0) {
@@ -164,7 +166,7 @@ app.controller('loginController', function ($scope, $http, $location, $mdDialog,
         if (val != 'r') $scope.index++;
 
         if ($scope.loginSate == 'code' && $scope.index == 5) {
-            $http.jsonp('http://isra-net.co.il/~moridimt/login.php?callback=JSON_CALLBACK&id=' + $scope.value)
+            $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&id=' + $scope.value)
             .success(function (data) {
                 refresh();
                 if (data.id != -1) dataShare.changePage(data);
@@ -173,7 +175,7 @@ app.controller('loginController', function ($scope, $http, $location, $mdDialog,
         } else if ($scope.loginSate == 'phone' && $scope.index == 10) {
             $scope.sendCodeScreen = true;
             $scope.loginLoading = true;
-            $http.jsonp('http://isra-net.co.il/~moridimt/send_code.php?callback=JSON_CALLBACK&p_id=' + $scope.value)
+            $http.jsonp(domain+'send_code.php?callback=JSON_CALLBACK&p_id=' + $scope.value)
             .success(function (data) {
                 $scope.loginLoading = false;
                 $scope.loginCodeResponse = (data.status) ? 'found' : 'not-found';
@@ -217,9 +219,9 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         if (status>0) {
             $scope.myStyle[status] = { 'background-color': '#80be40' };
         }
-        $http.jsonp('http://isra-net.co.il/~moridimt/report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&day=' + $scope.loginData.day + '&oper=' + status)
+        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&day=' + $scope.loginData.day + '&oper=' + status)
         .success(function (data) {
-            $http.put('http://isra-net.co.il/~moridimt/report_notification.php');
+            $http.put(domain+'report_notification.php');
             dataShare.changePage(data);
         });
     };
@@ -246,9 +248,9 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         if (cancel) future_status = -1;
         var $start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
         var $end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
-        $http.jsonp('http://isra-net.co.il/~moridimt/future_report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&start_day=' + $start_day + '&end_day=' + $end_day + '&oper=' + future_status)
+        $http.jsonp(domian+'future_report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&start_day=' + $start_day + '&end_day=' + $end_day + '&oper=' + future_status)
         .success(function (data) {
-            $http.put('http://isra-net.co.il/~moridimt/report_notification.php');
+            $http.put(domain+'report_notification.php');
             dataShare.changePage(data);
         });
     };
@@ -260,7 +262,7 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
     $scope.settingsData = dataShare.getSettings();
     $scope.mainPage = dataShare.mainPage;
 
-    $http.jsonp('http://isra-net.co.il/~moridimt/notifications.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id)
+    $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id)
     .success(function (data) {
         $scope.reportedUsers = data;
     });
@@ -271,7 +273,7 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
         changeSetting = true;
         key = Object.keys($scope.loginData.settings)[setting];
         $scope.loginData.settings[key] = !($scope.loginData.settings[key]);
-        url = 'http://isra-net.co.il/~moridimt/settings.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&key=' + key + '&value=' + $scope.loginData.settings[key];
+        url = domain+'settings.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&key=' + key + '&value=' + $scope.loginData.settings[key];
         $http.jsonp(url)
         .success(function () {
             setTimeout(function () {

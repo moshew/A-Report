@@ -6,34 +6,19 @@
    <div class="settings-header">פרטים אישיים</div><br />
    <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.keep_info}" ng-click="changeSettings(3)" >&nbsp;</label></div><div class="settings-label">אפשר לשמור פרטים על המכשיר</div><br />
 </div>
-<div ng-show="false">
+<div ng-show="true">
   <div class="settings-header">רשימת מעקב משתמשים</div><br />
+    <div class="settings-users" ng-repeat="user in ['משה', 'נועם']">{{ user }}<span style="margin-left:10px;" /><img width="30" src="assets/status_delete.png" /></div>
 
-  <div class="settings-users" ng-repeat="user in ['משה', 'נועם']">{{ user }}<span style="margin-left:10px;" /><img width="30" src="assets/status_delete.png" /></div>
-  <div dir="rtl" custom-select="f for f in ['משה', 'נועם'] | filter: $searchTerm" ng-model="fruit">
-</div>
-
-<!--  <div dir="rtl"><autocomplete dir="rtl" ng-model="yourchoice" data="['משה', 'נועם']"></autocomplete></div>-->
-
-     <!--<md-autocomplete
-          ng-disabled="ctrl.isDisabled"
-          md-no-cache="ctrl.noCache"
-          md-selected-item="ctrl.selectedItem"
-          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-          md-search-text="ctrl.searchText"
-          md-selected-item-change="ctrl.selectedItemChange(item)"
-          md-items="item in reportedUsers.reported"
-          md-item-text="item.display"
-          md-min-length="0"
-          placeholder="What is your favorite US state?">
-        <md-item-template>
-          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
-        </md-item-template>
-        <md-not-found>
-          No states matching "{{ctrl.searchText}}" were found.
-          <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
-        </md-not-found>
-      </md-autocomplete>-->
+    <angucomplete class="settings-add"
+                  placeholder="Search countries"
+                  pause="100"
+                  selectedobject="selectedCountry"
+                  localdata="countries"
+                  searchfields="name"
+                  titlefield="name"
+                  minlength="1"
+                  />
 
 </div>
 <div ng-include="'pages/footer1.html'"></div>
