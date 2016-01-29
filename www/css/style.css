@@ -7,6 +7,10 @@
     display:none !important;
 }
 
+.clearfix {
+    clear: both;
+}
+
 .page {
     /*zoom: 100%;*/
     /*font-size:50%;*/
@@ -284,9 +288,8 @@ to {transform: rotate(359deg);}
 }
 
 .settings-next {
-    text-align: left;
-    margin-left: 4%;
     float: left;
+    margin-left: 4%;
 }
 
 .switch1 {
@@ -338,28 +341,41 @@ to {transform: rotate(359deg);}
     display: inline-block;
 }
 
+input[type=date] {
+    height: 25px;
+    margin-left: 12px;
+    padding-left: 7px;
+    width: 160px;
+    font-size: 100%;
+    /*font-weight: bold;*/
+    text-transform: uppercase;
+    /*background-color: #4b688e;*/
+    outline: none;
+    border-radius: 3px;
+    color: #4b688e;
+}
+    input::-webkit-inner-spin-button,
+    input::-webkit-clear-button {
+        display: none;
+    }
+
+    input::-webkit-calendar-picker-indicator:hover {
+        background-color: #4b688e;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
 .report2-calander {
-    text-align: left;
-    margin-left:10px;
-    display: inline-block;
-
-}
-
-.report2-datepicker {
-    background:#234a7d;
-}
-.md-datepicker-button{
-    display: none;
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 5px;
 }
 
 .report2-label {
-    text-align:right;
-    margin-right:10px;
+    float: right;
+    text-align: right;
+    margin-right:20px;
     font-size:125%;
-    /*width:200px;*/
-    width:180px;
-    display: inline-block;
-
 }
 
 .report2-btn {
