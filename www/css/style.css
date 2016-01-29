@@ -1,9 +1,10 @@
-﻿[ng-cloak],
-[data-ng-cloak],
-[x-ng-cloak],
-.ng-cloak,
-.x-ng-cloak {
+﻿.ng-cloak {
     display: none !important;
+}
+
+.smoothHide.ng-hide-remove,
+.smoothHide.ng-hide-add {
+    display:none !important;
 }
 
 .page {
@@ -235,7 +236,7 @@ to {transform: rotate(359deg);}
 }
 
 .settings-label2 {
-    text-align:right;
+    float:right;
     margin-right: 4%;
     font-size:125%;
     padding-bottom:2px;
@@ -245,8 +246,7 @@ to {transform: rotate(359deg);}
 .settings-next {
     text-align: left;
     margin-left: 4%;
-    width: 125px;
-    display: inline-block;
+    float: left;
 }
 
 .footer {
