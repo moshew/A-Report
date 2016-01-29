@@ -1,4 +1,5 @@
 ﻿<div>
+    <div class="settings-back smoothHide" ng-show="settingsPage=='users'" ng-click="settingsPage='main'">חזור <img width="15" src="assets/prev.png" /></div>
     <div class="smoothHide" ng-show="settingsPage=='main'">
         <div class="settings-header">דיווחים והתראות</div><br />
         <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_changes}" ng-click="changeSettings(0)" >&nbsp;</label></div><div class="settings-label">קבל התראה מיידית על שינוי דיווח</div><br />
@@ -9,7 +10,7 @@
         <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.keep_info}" ng-click="changeSettings(3)" >&nbsp;</label></div><div class="settings-label">אפשר לשמור פרטים על המכשיר</div><br />
     </div>
     <div class="smoothHide" ng-show="settingsPage=='users'">
-        <div class="settings-header">הגדרת משתמשים למעקב דיווח <img width="25" src="assets/prev.png" ng-click="settingsPage='main'" /></div><br />
+        <div class="settings-header">הגדרת משתמשים למעקב דיווח</div><br />
         <div class="settings-users" ng-repeat="user in reportedUsers.users">{{ user.name }}<span style="margin-left:10px;" /><img width="30" src="assets/status_delete.png" /></div>
         <div class="settings-new">
             <div ng-class="{'settings-button':true, 'disabled':selectedUser==null}" ng-click="addUser()">הוסף</div>

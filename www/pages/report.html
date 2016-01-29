@@ -1,12 +1,10 @@
 ﻿<div>
-   <div style="position:absolute;height: 70px;top:20px;right: 20px;text-align: right;">
-      <div class="smoothHide" ng-show="reportPage=='options'" ng-click="reportPage='main'">חזור <img width="15" src="assets/prev.png" /></div>
-   </div>
-   <div class="date">{{loginData.date_str}}</div>
+   <div class="report-back smoothHide" ng-show="reportPage=='options'" ng-click="reportPage='main'">חזור <img width="15" src="assets/prev.png" /></div>
+   <div class="report-date">{{loginData.date_str}}</div>
    </div>
    <div class="smoothHide" ng-show="reportPage=='main'">
-      <div ng-if="loginData.lock" class="report_locked"><img src="assets/report_locked.png" /></div>
-      <div ng-if="!loginData.lock">
+      <div ng-show="loginData.lock" class="report_locked"><img src="assets/report_locked.png" /></div>
+      <div ng-show="!loginData.lock">
          <div class="report"><img src="assets/report_here.png" ng-click="report(0)" /></div>
          <div class="report_not-here" ng-click="reportPage='options'"><img src="assets/arrow.png" />דיווח העדרות</div>
       </div>
