@@ -1,5 +1,5 @@
-﻿<div class="smoothHide ng-cloak">
-    <div class="pageMain" ng-show="settingsPage=='main'" ng-cloak>
+﻿<div ng-cloak>
+    <div class="pageMain" ng-show="settingsPage=='main'">
         <div class="settings-header">דיווחים והתראות</div><br />
         <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_changes}" ng-click="changeSettings(0)" >&nbsp;</label></div><div class="settings-label">קבל התראה מיידית על שינוי דיווח</div><br />
         <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.get_report}" ng-click="changeSettings(1)" >&nbsp;</label></div><div class="settings-label">קבל הודעה סיכומית יומית</div><br />
@@ -8,7 +8,7 @@
         <div class="settings-header">פרטים אישיים</div><br />
         <div class="settings-switch"><label ng-class="{'switch1': true, 'on1': settingsData.keep_info}" ng-click="changeSettings(3)" >&nbsp;</label></div><div class="settings-label">אפשר לשמור פרטים על המכשיר</div><br />
     </div>
-    <div class="pageSecondary" ng-show="settingsPage=='users'" ng-cloak>
+    <div class="pageSecondary" ng-show="settingsPage=='users'">
         <div class="settings-back" ng-click="settingsPage='main'">חזור <img width="15" src="assets/prev.png" /></div>
         <div class="settings-header">הגדרת משתמשים למעקב דיווח</div><br />
         <div class="settings-users" ng-repeat="user in reportedUsers.users">{{ user.name }}<span style="margin-left:10px;" /><img width="30" src="assets/status_delete.png" /></div>
