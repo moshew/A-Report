@@ -227,6 +227,17 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         });
     };
 
+    $scope.futureReport = function (cancel) {
+        if (cancel) future_status = -1;
+        var start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
+        var end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
+        $http.jsonp(domain+'future_report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + future_status)
+            .success(function (data) {
+                $http.put(domain+'report_notification.php');
+                dataShare.changePage(data);
+            });
+    };
+
     $scope.today = new Date($scope.loginData.day);
     var tomorrow = new Date();
     tomorrow.setDate($scope.today.getDate() + 1);
@@ -245,16 +256,6 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         future_status = status;
     };
 
-    $scope.futureReport = function (cancel) {
-        if (cancel) future_status = -1;
-        var $start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
-        var $end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
-        $http.jsonp(domian+'future_report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&start_day=' + $start_day + '&end_day=' + $end_day + '&oper=' + future_status)
-        .success(function (data) {
-            $http.put(domain+'report_notification.php');
-            dataShare.changePage(data);
-        });
-    };
 });
 
 app.controller('settingsController', function ($scope, $http, $location, dataShare) {
