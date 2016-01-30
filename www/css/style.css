@@ -1,4 +1,4 @@
-﻿div:focus, div:active, button:focus, button:active, a:focus, a:active {
+﻿div:focus, div:active {
     outline: none;
 }
 

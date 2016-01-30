@@ -3,7 +3,7 @@
    <div class="pageMain" ng-show="reportPage=='main'">
       <div ng-show="loginData.lock" class="report_locked"><img src="assets/report_locked.png" /></div>
       <div ng-show="!loginData.lock">
-         <div class="report"><img src="assets/report_here.png" ng-click="report(0)" /></div>
+         <div class="report" ng-click="report(0)"><img src="assets/report_here.png" /></div>
          <div class="report_not-here" ng-click="reportPage='options'"><img src="assets/arrow.png" />דיווח העדרות</div>
       </div>
    </div>
