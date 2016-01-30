@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/futureStatus.html" afterPath="$PROJECT_DIR$/www/pages/futureStatus.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/home.html" afterPath="$PROJECT_DIR$/www/pages/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/report.html" afterPath="$PROJECT_DIR$/www/pages/report.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/settings.html" afterPath="$PROJECT_DIR$/www/pages/settings.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/status.html" afterPath="$PROJECT_DIR$/www/pages/status.html" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -563,7 +557,13 @@
       <option name="project" value="LOCAL" />
       <updated>1454160699003</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="update">
+      <created>1454161147492</created>
+      <option name="number" value="00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1454161147492</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
