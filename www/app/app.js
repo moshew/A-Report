@@ -106,11 +106,11 @@ app.factory('dataShare', function ($http, $location, $timeout) {
     };
 
     service.action = function (oper) {
-        page = (oper == 'futureReport') ? 'future_report' : 'login';
+        page = (oper == 'future') ? 'future_report' : 'login';
         url = domain + page + '.php?callback=JSON_CALLBACK&id=' + this.get().id;
         $http.jsonp(url)
         .success(function (data) {
-            if (oper == 'main') service.changePage(data);
+            if (oper=='main' || oper=='future') service.changePage(data);
             else service.changePage(data, oper);
         });
     };
@@ -247,8 +247,8 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
     $scope.futureReport = function (cancel) {
         if (cancel) future_status = -1;
-        //var $start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
-        //var $end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
+        var $start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
+        var $end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
         $http.jsonp(domian+'future_report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&start_day=' + $start_day + '&end_day=' + $end_day + '&oper=' + future_status)
         .success(function (data) {
             $http.put(domain+'report_notification.php');
