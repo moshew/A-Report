@@ -2,6 +2,28 @@
     display: none !important;
 }
 
+.pageMain {
+    position: absolute;
+    width:100%;
+    -webkit-transition: linear 0.3s;
+    transition: linear 0.3s;
+}
+
+.pageMain.ng-hide {
+    margin-left: -100%;
+}
+
+.pageSecondary {
+    position: absolute;
+    width:100%;
+    -webkit-transition: linear 0.3s;
+    transition: linear 0.3s;
+}
+
+.pageSecondary.ng-hide {
+    margin-left: 100%;
+}
+
 .smoothHide.ng-hide-remove,
 .smoothHide.ng-hide-add {
     display:none !important;
@@ -10,6 +32,7 @@
 .clearfix {
     clear: both;
 }
+
 
 .page {
     /*zoom: 100%;*/
@@ -184,10 +207,8 @@ to {transform: rotate(359deg);}
 
 .report-back {
     position:absolute;
-    height: 70px;
-    top:25px;
-    right: 20px;
-    text-align: right;
+    top:-70px;
+    right: 12px;
 }
 
 .report-date {
@@ -216,11 +237,9 @@ to {transform: rotate(359deg);}
 }
 
 .report_not-here {
-    width:100%;
-	height:170px;
-	position:absolute;
-	bottom:0;
-	left:-70px;
+    margin-top: 75px;
+    margin-left: 25px;
+    text-align: left;
     font-size:200%;
     color:#199eec;
     font-family:FrankRuehl;
@@ -240,12 +259,6 @@ to {transform: rotate(359deg);}
 #status_icon {
     width:75px;
     display: inline-block;
-}
-
-.settings-back {
-    position:absolute;
-    top:20px;
-    right: 15px;
 }
 
 .settings-header {
@@ -332,7 +345,7 @@ to {transform: rotate(359deg);}
     }
 
 .report2-header {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     width:98%;
     text-align:right;
     font-size:187.5%;
@@ -343,7 +356,7 @@ to {transform: rotate(359deg);}
 
 input[type=date] {
     height: 25px;
-    margin-left: 12px;
+    margin-left: 10px;
     padding-left: 7px;
     width: 160px;
     font-size: 100%;
@@ -456,4 +469,10 @@ input[type=date] {
 }
 .settings-highlight {
     color: #ff0000;
+}
+
+.settings-back {
+    position:absolute;
+    top:-30px;
+    right: 15px;
 }
