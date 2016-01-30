@@ -1,4 +1,8 @@
-﻿.pageMain {
+﻿div:focus, div:active, button:focus, button:active, a:focus, a:active {
+    outline: none;
+}
+
+.pageMain {
     position: absolute;
     width:100%;
     -webkit-transition: linear 0.3s;
@@ -30,7 +34,7 @@
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none;
+    display: none !important;
 }
 
 div{
@@ -79,12 +83,7 @@ div{
     opacity:0;
 }
 
-.try {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
 .home-logo {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     margin-top:50px;
     margin-bottom:25px;
 }
