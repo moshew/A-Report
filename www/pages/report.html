@@ -1,16 +1,18 @@
-﻿<div class="report-date">{{loginData.date_str}}</div>
-<div class="pageMain" ng-show="reportPage=='main'">
-   <div ng-show="loginData.lock" class="report_locked"><img src="assets/report_locked.png" /></div>
-   <div ng-show="!loginData.lock">
-      <div class="report"><img src="assets/report_here.png" ng-click="report(0)" /></div>
-      <div class="report_not-here" ng-click="reportPage='options'"><img src="assets/arrow.png" />דיווח העדרות</div>
+﻿<div class="smoothHide" ng-cloak>
+   <div class="report-date">{{loginData.date_str}}</div>
+   <div class="pageMain" ng-show="reportPage=='main'">
+      <div ng-show="loginData.lock" class="report_locked"><img src="assets/report_locked.png" /></div>
+      <div ng-show="!loginData.lock">
+         <div class="report"><img src="assets/report_here.png" ng-click="report(0)" /></div>
+         <div class="report_not-here" ng-click="reportPage='options'"><img src="assets/arrow.png" />דיווח העדרות</div>
+      </div>
    </div>
+   <div class="pageSecondary" ng-show="reportPage=='options'">
+      <div class="report-back" ng-click="reportPage='main'">חזור <img width="15" src="assets/prev.png" /></div>
+      <div class="report-btn" ng-click="report(3)" ng-style="myStyle[3]"><img src="assets/report/03.png" /><div>{{status_labels[3]}}</div></div><div class="report-btn" ng-click="report(2)" ng-style="myStyle[2]"><img src="assets/report/02.png" /><div>{{status_labels[2]}}</div></div><div class="report-btn" ng-click="report(1)" ng-style="myStyle[1]"><img src="assets/report/01.png" /><div>{{status_labels[1]}}</div></div><br />
+      <div class="report-btn" ng-click="report(6)" ng-style="myStyle[6]"><img src="assets/report/06.png" /><div>{{status_labels[6]}}</div></div><div class="report-btn" ng-click="report(5)" ng-style="myStyle[5]"><img src="assets/report/05.png" /><div>{{status_labels[5]}}</div></div><div class="report-btn" ng-click="report(4)" ng-style="myStyle[4]"><img src="assets/report/04.png" /><div>{{status_labels[4]}}</div></div><br />
+      <div class="report-btn" ng-click="report(9)" ng-style="myStyle[9]"><img src="assets/report/09.png" /><div>{{status_labels[9]}}</div></div><div class="report-btn" ng-click="report(8)" ng-style="myStyle[8]"><img src="assets/report/08.png" /><div>{{status_labels[8]}}</div></div><div class="report-btn" ng-click="report(7)" ng-style="myStyle[7]"><img src="assets/report/07.png" /><div>{{status_labels[7]}}</div></div><br />
+      <div class="report-btn" style="color:#707070;border-color: #707070;"><img src="assets/report/12.png" /><div >לא בשימוש</div></div><div class="report-btn" ng-click="report(11)" ng-style="myStyle[11]"><img src="assets/report/11.png" /><div>{{status_labels[11]}}</div></div><div class="report-btn" ng-click="report(10)" ng-style="myStyle[10]"><img src="assets/report/10.png" /><div>{{status_labels[10]}}</div></div><br />
+   </div>
+   <div ng-include="'pages/footer1.html'"></div>
 </div>
-<div class="pageSecondary" ng-show="reportPage=='options'">
-   <div class="report-back" ng-click="reportPage='main'">חזור <img width="15" src="assets/prev.png" /></div>
-   <div class="report-btn" ng-click="report(3)" ng-style="myStyle[3]"><img src="assets/report/03.png" /><div>{{status_labels[3]}}</div></div><div class="report-btn" ng-click="report(2)" ng-style="myStyle[2]"><img src="assets/report/02.png" /><div>{{status_labels[2]}}</div></div><div class="report-btn" ng-click="report(1)" ng-style="myStyle[1]"><img src="assets/report/01.png" /><div>{{status_labels[1]}}</div></div><br />
-   <div class="report-btn" ng-click="report(6)" ng-style="myStyle[6]"><img src="assets/report/06.png" /><div>{{status_labels[6]}}</div></div><div class="report-btn" ng-click="report(5)" ng-style="myStyle[5]"><img src="assets/report/05.png" /><div>{{status_labels[5]}}</div></div><div class="report-btn" ng-click="report(4)" ng-style="myStyle[4]"><img src="assets/report/04.png" /><div>{{status_labels[4]}}</div></div><br />
-   <div class="report-btn" ng-click="report(9)" ng-style="myStyle[9]"><img src="assets/report/09.png" /><div>{{status_labels[9]}}</div></div><div class="report-btn" ng-click="report(8)" ng-style="myStyle[8]"><img src="assets/report/08.png" /><div>{{status_labels[8]}}</div></div><div class="report-btn" ng-click="report(7)" ng-style="myStyle[7]"><img src="assets/report/07.png" /><div>{{status_labels[7]}}</div></div><br />
-   <div class="report-btn" style="color:#707070;border-color: #707070;"><img src="assets/report/12.png" /><div >לא בשימוש</div></div><div class="report-btn" ng-click="report(11)" ng-style="myStyle[11]"><img src="assets/report/11.png" /><div>{{status_labels[11]}}</div></div><div class="report-btn" ng-click="report(10)" ng-style="myStyle[10]"><img src="assets/report/10.png" /><div>{{status_labels[10]}}</div></div><br />
-</div>
-<div ng-include="'pages/footer1.html'"></div>

@@ -1,8 +1,4 @@
-﻿[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
-}
-
-.pageMain {
+﻿.pageMain {
     position: absolute;
     width:100%;
     -webkit-transition: linear 0.3s;
@@ -33,6 +29,9 @@
     clear: both;
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none;
+}
 
 .page {
     /*zoom: 100%;*/
