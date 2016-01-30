@@ -33,6 +33,10 @@
     display: none;
 }
 
+div{
+    -webkit-appearance:none;
+}
+
 .page {
     /*zoom: 100%;*/
     /*font-size:50%;*/
@@ -75,7 +79,12 @@
     opacity:0;
 }
 
+.try {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 .home-logo {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     margin-top:50px;
     margin-bottom:25px;
 }
