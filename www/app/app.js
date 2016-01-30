@@ -232,7 +232,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     tomorrow.setDate($scope.today.getDate() + 1);
     $scope.report_dates = { start_day: tomorrow, end_day: tomorrow };
 
-    $scope.datepickerChanged = function () {
+    $scope.dateChanged = function () {
         if ($scope.report_dates.end_day < $scope.report_dates.start_day)
             $scope.report_dates.end_day = $scope.report_dates.start_day;
     };
@@ -247,8 +247,8 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
     $scope.futureReport = function (cancel) {
         if (cancel) future_status = -1;
-        var $start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
-        var $end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
+        //var $start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
+        //var $end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
         $http.jsonp(domian+'future_report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&start_day=' + $start_day + '&end_day=' + $end_day + '&oper=' + future_status)
         .success(function (data) {
             $http.put(domain+'report_notification.php');
@@ -258,11 +258,11 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 });
 
 app.controller('settingsController', function ($scope, $http, $location, dataShare) {
+    $scope.settingsPage='main';
     $scope.dataShare = dataShare;
     $scope.loginData = dataShare.get();
     $scope.settingsData = dataShare.getSettings();
     $scope.mainPage = dataShare.mainPage;
-    $scope.settingsPage='main';
 
     $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id)
     .success(function (data) {
