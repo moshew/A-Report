@@ -362,6 +362,14 @@ to {transform: rotate(359deg);}
     display: inline-block;
 }
 
+.report2-datepicker {
+    background:#234a7d;
+    width: 200px;
+}
+.md-datepicker-button{
+    display: none;
+}
+
 input[type=date] {
     height: 25px;
     margin-left: 10px;
@@ -390,6 +398,18 @@ input[type=date] {
     float: left;
     margin-left: 20px;
     margin-bottom: 5px;
+}
+
+.report2-datepicker {
+    background:#234a7d;
+}
+
+.md-datepicker-input {
+    width: 150px;
+}
+
+.md-datepicker-button{
+    display: none;
 }
 
 .report2-label {

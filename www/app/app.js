@@ -3,9 +3,9 @@
 // create the module and name it app
 // also include ngRoute for all our routing needs
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'ngMdIcons', 'angucomplete-alt']);
-//var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
+var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 //var domain = 'http://isra-net.co.il/~moridimt/';
-var domain = 'http://a-report.co.il/';
+//var domain = 'http://a-report.co.il/';
 
 // configure our routes
 app.config(function ($routeProvider) {
@@ -256,7 +256,6 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         $scope.report2BtnStyle[status] = { 'background-color': '#80be40' };
         future_status = status;
     };
-
 });
 
 app.controller('settingsController', function ($scope, $http, $location, dataShare) {
