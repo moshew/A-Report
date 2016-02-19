@@ -267,9 +267,8 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
 
     $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id)
     .success(function (data) {
-        //$scope.reportedUsers = data;
+        $scope.reportedUsers = data;
     });
-    $scope.reportedUsers = {users: [{name:"עומר"}, {name:"איתי"}, {name:"מאיה"}]};
 
     var changeSetting = false;
     $scope.changeSettings = function (setting) {
@@ -286,10 +285,21 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
         });
     }
 
+    $scope.removeUser = function (user) {
+        $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + $scope.loginData.id+'&user='+user)
+            .success(function (data) {
+                $scope.reportedUsers = data;
+            });
+    }
 
-    $scope.addUser = function () {
-        $scope.test1 = 'sss';
-        if ($scope.selectedUser!=null) $scope.test1 = $scope.selectedUser.originalObject.name;
+
+    $scope.addUser = function (user) {
+        $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + $scope.loginData.id + '&user=' + user.originalObject.name)
+            .success(function (data) {
+                $scope.reportedUsers = data;
+                $scope.$broadcast('angucomplete-alt:clearInput', 'settings-AddUser');
+
+            });
     }
 
 
