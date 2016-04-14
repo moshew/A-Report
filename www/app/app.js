@@ -329,20 +329,21 @@ app.controller('statusListController', function ($scope, $http, $location, dataS
     $scope.dataShare = dataShare;
     $scope.editMode = false;
 
-    $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id)
+    $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.dataShare.get().id)
         .success(function (data) {
             $scope.reportedUsers = data;
         });
 
+
     $scope.removeUser = function (user) {
-        $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + $scope.loginData.id+'&user='+user)
+        $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + $scope.dataShare.get().id+'&user='+user)
             .success(function (data) {
                 $scope.reportedUsers = data;
             });
     }
 
     $scope.addUser = function (user) {
-        $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + $scope.loginData.id + '&user=' + user.originalObject.name)
+        $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + $scope.dataShare.get().id + '&user=' + user.originalObject.name)
             .success(function (data) {
                 $scope.reportedUsers = data;
                 $scope.$broadcast('angucomplete-alt:clearInput', 'settings-AddUser');
