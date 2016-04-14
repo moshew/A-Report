@@ -4,7 +4,6 @@
 // also include ngRoute for all our routing needs
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'ngMdIcons', 'angucomplete-alt']);
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
-//var domain = 'http://isra-net.co.il/~moridimt/';
 var domain = 'http://a-report.co.il/';
 
 // configure our routes
@@ -34,6 +33,11 @@ app.config(function ($routeProvider) {
         .when('/settings', {
             templateUrl: 'pages/settings.html',
             controller: 'settingsController'
+        })
+
+        .when('/statusList', {
+            templateUrl: 'pages/statusList.html',
+            controller: 'statusListController'
         })
 
         .when('/reportOpt', {
@@ -109,28 +113,46 @@ app.factory('dataShare', function ($http, $location, $timeout) {
     service.action = function (oper) {
         page = (oper == 'future') ? 'future_report' : 'login';
         url = domain + page + '.php?callback=JSON_CALLBACK&id=' + this.get().id;
+        service.setLoading(true);
         $http.jsonp(url)
         .success(function (data) {
+            service.setLoading(false);
             if (oper=='main' || oper=='future') service.changePage(data);
             else service.changePage(data, oper);
         });
     };
+
+    var _loading = false;
+    var wp = null;
+    service.setLoading = function (start) {
+        if (start) {
+            wp = $timeout(function () {
+                _loading = true;
+            }, 300);
+        }
+        else {
+            $timeout.cancel(wp);
+            _loading = false;
+        }
+    }
+
+    service.getLoading = function () {
+        return _loading;
+    }
 
     return service;
 });
 
 app.controller('mainController', function ($scope, $http, $location, dataShare) {
     $scope.dataShare = dataShare;
-    $scope.loading = false;
-    //$scope.zoom_factor = 50;
     $scope.zoom_factor = window.innerHeight / 6.67;
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
     $scope.enter = function () {
-        $scope.loading = true;
+        dataShare.setLoading(true);
         $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
             .success(function (data) {
-                $scope.loading = false;
+                dataShare.setLoading(false);
                 if (data.ver == 1.0) {
                     dataShare.changePage(data);
                 } else {
@@ -167,18 +189,20 @@ app.controller('loginController', function ($scope, $http, $location, $mdDialog,
         if (val != 'r') $scope.index++;
 
         if ($scope.loginSate == 'code' && $scope.index == 5) {
+            dataShare.setLoading(true);
             $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&id=' + $scope.value)
             .success(function (data) {
+                dataShare.setLoading(false);
                 refresh();
                 if (data.id != -1) dataShare.changePage(data);
             });
 
         } else if ($scope.loginSate == 'phone' && $scope.index == 10) {
-            $scope.sendCodeScreen = true;
-            $scope.loginLoading = true;
+            dataShare.setLoading(true);
             $http.jsonp(domain+'send_code.php?callback=JSON_CALLBACK&p_id=' + $scope.value)
             .success(function (data) {
-                $scope.loginLoading = false;
+                dataShare.setLoading(false);
+                $scope.sendCodeScreen = true;
                 $scope.loginCodeResponse = (data.status) ? 'found' : 'not-found';
             });
         }
@@ -205,11 +229,8 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     $scope.reportedUsers = [];
     $scope.reportPage='main';
 
-    var s = $scope.loginData.status;
-    $scope.status = (s < 10) ? ("0" + s) : s;
-    
     $scope.status_labels = ['נוכח', 'חופש', 'מחלה', 'חו"ל', '\'מחוץ ליח', 'קורס', 'מיוחדת', 'הצהרה', '\'יום ד', 'מחלת ילד', 'לידה', 'אחר'];
-    $scope.status_label = $scope.status_labels[s];
+    $scope.status_label = $scope.status_labels[dataShare.get().status];
     $scope.myStyle = [null,null,null,null,null,null,null,null,null,null,null,null];
 
     var reportSent = false;
@@ -221,8 +242,10 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         if (status>0) {
             $scope.myStyle[status] = { 'background-color': '#80be40' };
         }
+        dataShare.setLoading(true);
         $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&day=' + $scope.loginData.day + '&oper=' + status)
         .success(function (data) {
+            dataShare.setLoading(false);
             $http.put(domain+'report_notification.php');
             dataShare.changePage(data);
         });
@@ -292,6 +315,30 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
             });
     }
 
+    $scope.addUser = function (user) {
+        $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + $scope.loginData.id + '&user=' + user.originalObject.name)
+            .success(function (data) {
+                $scope.reportedUsers = data;
+                $scope.$broadcast('angucomplete-alt:clearInput', 'settings-AddUser');
+
+            });
+    }
+});
+
+app.controller('statusListController', function ($scope, $http, $location, dataShare) {
+    $scope.dataShare = dataShare;
+
+    $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + dataShare.get().id)
+        .success(function (data) {
+            $scope.reportedUsers = data;
+        });
+
+    $scope.removeUser = function (user) {
+        $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + $scope.loginData.id+'&user='+user)
+            .success(function (data) {
+                $scope.reportedUsers = data;
+            });
+    }
 
     $scope.addUser = function (user) {
         $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + $scope.loginData.id + '&user=' + user.originalObject.name)
@@ -301,11 +348,6 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
 
             });
     }
-
-
-
-
-
 });
 
 angular.module('app').config(function ($mdDateLocaleProvider) {

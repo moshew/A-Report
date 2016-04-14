@@ -1,9 +1,9 @@
 ﻿<div ng-click="enter()">
 {{i_width}}x{{i_height}}
    <div class="home-logo"><img src="assets/logo1.png" /></div>
-   <div ng-show="loading" class="home-spinner"></div>
    <div class="home-footer"><img src="assets/logo3.png" /></div>
 </div>
-<div ng-show="!loading && versionUpdate" class="popupScreen">
+<div ng-show="!dataShare.loading && versionUpdate" class="popupScreen">
     <a ng-href="http://a-report.co.il/download"><img src="assets/home_version.png" /></a>
 </div>
+<div ng-include="'pages/loader.html'" />

@@ -8,7 +8,7 @@
 <md-button class="md-fab md-mini md-primary" ng-click="press(7)">7</md-button><md-button class="md-fab md-mini md-primary" ng-click="press(8)">8</md-button><md-button class="md-fab md-mini md-primary" ng-click="press(9)">9</md-button><br />
 <md-button class="md-fab md-mini md-primary" ng-click="sendCode()"><img src="assets/login_{{loginSate}}.png" /></md-button><md-button class="md-fab md-mini md-primary" ng-click="press(0)">0</md-button><md-button class="md-fab md-mini md-primary" ng-click="press('r')" ><img src="assets/login_delete.png" /></md-button><br />
 <div ng-show="sendCodeScreen" class="popupScreen">
-    <div ng-show="loginLoading"><div class="home-spinner"></div></div>
-    <div ng-show="!loginLoading"><img src="assets/login_{{loginCodeResponse}}.png" /></div>
-    <div ng-show="!loginLoading"><md-button class="md-raised md-warn login-back" ng-click="sendCode();sendCodeScreen=false">חזור</md-button></div>
+    <div><img src="assets/login_{{loginCodeResponse}}.png" /></div>
+    <div><md-button class="md-raised md-warn login-back" ng-click="sendCode();sendCodeScreen=false">חזור</md-button></div>
 </div>
+<div ng-include="'pages/loader.html'" />
