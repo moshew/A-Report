@@ -280,7 +280,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         future_status = status;
     };
 });
-
+/*
 app.controller('settingsController', function ($scope, $http, $location, dataShare) {
     $scope.settingsPage='main';
     $scope.dataShare = dataShare;
@@ -324,11 +324,12 @@ app.controller('settingsController', function ($scope, $http, $location, dataSha
             });
     }
 });
-
+*/
 app.controller('statusListController', function ($scope, $http, $location, dataShare) {
     $scope.dataShare = dataShare;
+    $scope.editMode = false;
 
-    $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + dataShare.get().id)
+    $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id)
         .success(function (data) {
             $scope.reportedUsers = data;
         });
