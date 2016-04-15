@@ -2,7 +2,8 @@
 
 // create the module and name it app
 // also include ngRoute for all our routing needs
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'ngMdIcons', 'angucomplete-alt']);
+moment.lang('he');
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'ngMdIcons', 'angucomplete-alt', 'multipleDatePicker']);
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 var domain = 'http://a-report.co.il/';
 
@@ -81,6 +82,7 @@ app.factory('dataShare', function ($http, $location, $timeout) {
     service.get = function () {
         return this.data;
     };
+
     service.getSettings = function () {
         return this.settings;
     };
@@ -110,8 +112,7 @@ app.factory('dataShare', function ($http, $location, $timeout) {
         }, 5 * 60 * 1000);
     };
 
-    service.action = function (oper) {
-        page = (oper == 'future') ? 'future_report' : 'login';
+    service.action = function (oper, page) {
         url = domain + page + '.php?callback=JSON_CALLBACK&id=' + this.get().id;
         service.setLoading(true);
         $http.jsonp(url)
@@ -226,7 +227,6 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     $scope.loginData = dataShare.get();
     $scope.settingsData = dataShare.getSettings();
     $scope.mainPage = dataShare.mainPage;
-    $scope.reportedUsers = [];
     $scope.reportPage='main';
 
     $scope.status_labels = ['נוכח', 'חופש', 'מחלה', 'חו"ל', '\'מחוץ ליח', 'קורס', 'מיוחדת', 'הצהרה', '\'יום ד', 'מחלת ילד', 'לידה', 'אחר'];
@@ -262,10 +262,12 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
             });
     };
 
-    $scope.today = new Date($scope.loginData.day);
+    $scope.today = new Date(dataShare.get().day);
     var tomorrow = new Date();
     tomorrow.setDate($scope.today.getDate() + 1);
     $scope.report_dates = { start_day: tomorrow, end_day: tomorrow };
+    $scope.display1 = $scope.report_dates.start_day;
+    if ($scope.report_dates.end_date!=null) $scope.display1 += " - " + $scope.report_dates.end_date;
 
     $scope.dateChanged = function () {
         if ($scope.report_dates.end_day < $scope.report_dates.start_day)
@@ -279,73 +281,69 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         $scope.report2BtnStyle[status] = { 'background-color': '#80be40' };
         future_status = status;
     };
+
+    $scope.highlightDays = [{date: moment($scope.report_dates.start_day), css: 'picker-selected', selectable: true,title: ''}];
+    $scope.dateDisplay = moment($scope.report_dates.start_day).format('D/M');
+    $scope.daySelected = function(event, date) {
+        event.preventDefault(); // prevent the select to happen
+        //reproduce the standard behavior
+        if ($scope.report_dates.start_day==null || $scope.report_dates.end_day!=null) {
+            if (date>=$scope.today) {
+                $scope.report_dates.end_day=null;
+                $scope.report_dates.start_day = date;
+                $scope.highlightDays = [{date: moment(date), css: 'picker-selected', selectable: true,title: ''}];
+            }
+            else {
+                $scope.highlightDays = [];
+                $scope.report_dates.start_day = $scope.report_dates.end_day = null;
+            }
+        } else {
+            if (date > $scope.report_dates.start_day) {
+                $scope.report_dates.end_day = date;
+                var d = new Date($scope.report_dates.start_day);
+                while (d < $scope.report_dates.end_day) {
+                    d.setDate(d.getDate() + 1);
+                    $scope.highlightDays.push({
+                        date: moment(new Date(d)),
+                        css: 'picker-selected',
+                        selectable: true,
+                        title: ''
+                    });
+                }
+            }
+            else {
+                $scope.highlightDays = [];
+                $scope.report_dates.start_day = $scope.report_dates.end_day = null;
+            }
+        }
+    }
+
+    $scope.calanderBack = function() {
+        $scope.dateDisplay = moment($scope.report_dates.start_day).format('D/M');
+        if ($scope.report_dates.end_day==null) {
+            $scope.report_dates.end_day = $scope.report_dates.start_day
+        } else {
+            $scope.dateDisplay += " - " + moment($scope.report_dates.end_day).format('D/M');
+        }
+    }
+
+
 });
-/*
-app.controller('settingsController', function ($scope, $http, $location, dataShare) {
-    $scope.settingsPage='main';
-    $scope.dataShare = dataShare;
-    $scope.loginData = dataShare.get();
-    $scope.settingsData = dataShare.getSettings();
-    $scope.mainPage = dataShare.mainPage;
 
-    $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id)
-    .success(function (data) {
-        $scope.reportedUsers = data;
-    });
-
-    var changeSetting = false;
-    $scope.changeSettings = function (setting) {
-        if (changeSetting) return;
-        changeSetting = true;
-        key = Object.keys($scope.loginData.settings)[setting];
-        $scope.loginData.settings[key] = !($scope.loginData.settings[key]);
-        url = domain+'settings.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&key=' + key + '&value=' + $scope.loginData.settings[key];
-        $http.jsonp(url)
-        .success(function () {
-            setTimeout(function () {
-                changeSetting = false;
-            }, 500);
-        });
-    }
-
-    $scope.removeUser = function (user) {
-        $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + $scope.loginData.id+'&user='+user)
-            .success(function (data) {
-                $scope.reportedUsers = data;
-            });
-    }
-
-    $scope.addUser = function (user) {
-        $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + $scope.loginData.id + '&user=' + user.originalObject.name)
-            .success(function (data) {
-                $scope.reportedUsers = data;
-                $scope.$broadcast('angucomplete-alt:clearInput', 'settings-AddUser');
-
-            });
-    }
-});
-*/
 app.controller('statusListController', function ($scope, $http, $location, dataShare) {
     $scope.dataShare = dataShare;
-    $scope.editMode = false;
-
-    $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.dataShare.get().id)
-        .success(function (data) {
-            $scope.reportedUsers = data;
-        });
-
 
     $scope.removeUser = function (user) {
         $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + $scope.dataShare.get().id+'&user='+user)
             .success(function (data) {
-                $scope.reportedUsers = data;
+                dataShare.set(data);
             });
     }
 
     $scope.addUser = function (user) {
         $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + $scope.dataShare.get().id + '&user=' + user.originalObject.name)
             .success(function (data) {
-                $scope.reportedUsers = data;
+                dataShare.set(data);
                 $scope.$broadcast('angucomplete-alt:clearInput', 'settings-AddUser');
 
             });
@@ -358,3 +356,48 @@ angular.module('app').config(function ($mdDateLocaleProvider) {
     };
 });
 
+/*
+ app.controller('settingsController', function ($scope, $http, $location, dataShare) {
+ $scope.settingsPage='main';
+ $scope.dataShare = dataShare;
+ $scope.loginData = dataShare.get();
+ $scope.settingsData = dataShare.getSettings();
+ $scope.mainPage = dataShare.mainPage;
+
+ $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id)
+ .success(function (data) {
+ $scope.reportedUsers = data;
+ });
+
+ var changeSetting = false;
+ $scope.changeSettings = function (setting) {
+ if (changeSetting) return;
+ changeSetting = true;
+ key = Object.keys($scope.loginData.settings)[setting];
+ $scope.loginData.settings[key] = !($scope.loginData.settings[key]);
+ url = domain+'settings.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&key=' + key + '&value=' + $scope.loginData.settings[key];
+ $http.jsonp(url)
+ .success(function () {
+ setTimeout(function () {
+ changeSetting = false;
+ }, 500);
+ });
+ }
+
+ $scope.removeUser = function (user) {
+ $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + $scope.loginData.id+'&user='+user)
+ .success(function (data) {
+ $scope.reportedUsers = data;
+ });
+ }
+
+ $scope.addUser = function (user) {
+ $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + $scope.loginData.id + '&user=' + user.originalObject.name)
+ .success(function (data) {
+ $scope.reportedUsers = data;
+ $scope.$broadcast('angucomplete-alt:clearInput', 'settings-AddUser');
+
+ });
+ }
+ });
+ */
