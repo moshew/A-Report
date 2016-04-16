@@ -40,6 +40,7 @@
 
 div{
     -webkit-appearance:none;
+    font-size: 100%;
 }
 
 .page {
@@ -52,6 +53,7 @@ div{
     width:100%; 
     outline: none;
     color: white;
+
     background:#234a7d;
 }
 
@@ -139,6 +141,7 @@ div{
 .login-header {
     margin-top:30px;
     height: 100px;
+    font-size: 125%;
 }
 
 .login-phone {
@@ -198,7 +201,7 @@ div{
 }
 
 .report-date {
-    font-size: 137.5%;
+    font-size: 175%;
     margin-bottom: 25px;
 }
 
@@ -211,7 +214,7 @@ div{
     border-style: solid;
     border-color: #00aeef;
     display: inline-block;
-    font-size:90%;
+    font-size:125%;
 }
 
 .report {
@@ -228,7 +231,7 @@ div{
     text-align: left;
     font-size:200%;
     color:#199eec;
-    font-family:FrankRuehl;
+    /*font-family:FrankRuehl;*/
 }
 
 .status {
@@ -490,26 +493,27 @@ input[type=date] {
 
 .report2-save {
     width: 340px;
+    margin-top: 10px;
     text-align: left;
     display: inline-block;
 }
 
 .report2-save-btn {
     border-radius: 5px;
-    padding-top:6px;
+    padding-top:3px;
     margin: 4px;
     margin-top:15px;
     width: 100px;
     height: 35px;
     text-align: center;
     background:#4b688e;
-    font-size: 150%;
+    font-size: 160%;
 }
 
 .reprt2-date {
     width:330px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: inline-block;
 }
 
@@ -533,6 +537,38 @@ input[type=date] {
     float: right;
     text-align: right;
     font-size:175%;
+}
+
+.report2-calander_header {
+    margin-top:20%;
+    margin-bottom: 15px;
+    width:80%;
+    text-align:center;
+    font-size:187.5%;
+    background: #4b688e;
+    padding-right:15px;
+    display: inline-block;
+}
+
+.report2-calander_label {
+    margin-bottom: 20px;
+    width:80%;
+    display:inline-block;
+    text-align: right;
+    font-size:150%;
+}
+
+.report2-calander_btn {
+    border-radius: 5px;
+    padding-top:3px;
+    margin: 4px;
+    margin-top:15px;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    background:#4b688e;
+    font-size: 160%;
+    display: inline-block;
 }
 
 .report2-clander_page {

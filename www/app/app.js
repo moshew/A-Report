@@ -72,7 +72,7 @@ app.config(function ($mdThemingProvider) {
 app.factory('dataShare', function ($http, $location, $timeout) {
     var service = {};
     var pagePromise = null;
-    service.data = false;
+    service.data = null;
     service.settings = false;
 
     service.set = function (data) {
@@ -149,6 +149,14 @@ app.controller('mainController', function ($scope, $http, $location, dataShare) 
     $scope.zoom_factor = window.innerHeight / 6.67;
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
+
+    if (dataShare.get()==null) {
+        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
+            .success(function (data) {
+                dataShare.set(data);
+            });
+    }
+
     $scope.enter = function () {
         dataShare.setLoading(true);
         $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
@@ -319,11 +327,14 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     }
 
     $scope.calanderBack = function() {
-        $scope.dateDisplay = moment($scope.report_dates.start_day).format('D/M');
-        if ($scope.report_dates.end_day==null) {
-            $scope.report_dates.end_day = $scope.report_dates.start_day
-        } else {
-            $scope.dateDisplay += " - " + moment($scope.report_dates.end_day).format('D/M');
+        if ($scope.report_dates.start_day!=null) {
+            $scope.dateDisplay = moment($scope.report_dates.start_day).format('D/M');
+            if ($scope.report_dates.end_day == null) {
+                $scope.report_dates.end_day = $scope.report_dates.start_day
+            } else if ($scope.report_dates.end_day != $scope.report_dates.start_day) {
+                $scope.dateDisplay += " - " + moment($scope.report_dates.end_day).format('D/M');
+            }
+            $scope.showCalander=false;
         }
     }
 
