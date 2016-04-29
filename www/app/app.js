@@ -2,7 +2,7 @@
 
 // create the module and name it app
 // also include ngRoute for all our routing needs
-moment.lang('he');
+moment.locale('he');
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'ngMdIcons', 'angucomplete-alt', 'multipleDatePicker']);
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 var domain = 'http://a-report.co.il/';
@@ -146,7 +146,7 @@ app.factory('dataShare', function ($http, $location, $timeout) {
 
 app.controller('mainController', function ($scope, $http, $location, dataShare) {
     $scope.dataShare = dataShare;
-    $scope.zoom_factor = window.innerHeight / 6.67;
+    $scope.zoom_factor = Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
 
@@ -169,11 +169,20 @@ app.controller('mainController', function ($scope, $http, $location, dataShare) 
                 }
             });
     };
+
+    $scope.logout = function () {
+        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&delete')
+            .success(function (data) {
+                dataShare.changePage(data, '');
+            });
+    };
+
+
 });
 
 app.controller('loginController', function ($scope, $http, $location, $mdDialog, dataShare) {
     $scope.dataShare = dataShare;
-    $scope.loginSate = 'code';
+    $scope.loginState = 'code';
     $scope.message = 'הקש את קוד המשתמש לכניסה';
     $scope.value = '';
     $scope.index = 0;
@@ -191,13 +200,13 @@ app.controller('loginController', function ($scope, $http, $location, $mdDialog,
             $scope.value += val;
         }
 
-        if ($scope.loginSate == 'code') {
+        if ($scope.loginState == 'code') {
             $scope.fills[$scope.index].value = !($scope.fills[$scope.index].value);
         }
 
         if (val != 'r') $scope.index++;
 
-        if ($scope.loginSate == 'code' && $scope.index == 5) {
+        if ($scope.loginState == 'code' && $scope.index == 5) {
             dataShare.setLoading(true);
             $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&id=' + $scope.value)
             .success(function (data) {
@@ -206,7 +215,7 @@ app.controller('loginController', function ($scope, $http, $location, $mdDialog,
                 if (data.id != -1) dataShare.changePage(data);
             });
 
-        } else if ($scope.loginSate == 'phone' && $scope.index == 10) {
+        } else if ($scope.loginState == 'phone' && $scope.index == 10) {
             dataShare.setLoading(true);
             $http.jsonp(domain+'send_code.php?callback=JSON_CALLBACK&p_id=' + $scope.value)
             .success(function (data) {
@@ -219,8 +228,8 @@ app.controller('loginController', function ($scope, $http, $location, $mdDialog,
 
     $scope.sendCode = function () {
         refresh();
-        $scope.loginSate = ($scope.loginSate == 'code') ? 'phone' : 'code';
-        $scope.message = ($scope.loginSate == 'code') ? 'הקש את קוד המשתמש לכניסה' : 'הכנס מספר ווטסאפ למשלוח קוד';
+        $scope.loginState = ($scope.loginState == 'code') ? 'phone' : 'code';
+        $scope.message = ($scope.loginState == 'code') ? 'הקש את קוד המשתמש לכניסה' : 'הכנס מספר ווטסאפ למשלוח קוד';
     };
 
     refresh = function () {
@@ -236,16 +245,18 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     $scope.settingsData = dataShare.getSettings();
     $scope.mainPage = dataShare.mainPage;
     $scope.reportPage='main';
+    $scope.reportSent = false;
 
     $scope.status_labels = ['נוכח', 'חופש', 'מחלה', 'חו"ל', '\'מחוץ ליח', 'קורס', 'מיוחדת', 'הצהרה', '\'יום ד', 'מחלת ילד', 'לידה', 'אחר'];
     $scope.status_label = $scope.status_labels[dataShare.get().status];
     $scope.myStyle = [null,null,null,null,null,null,null,null,null,null,null,null];
 
-    var reportSent = false;
+
     $scope.report = function (status) {
-        if (reportSent && status >= 0) return;
-        else if (reportSent && status == -1) reportSent = true;
-        else reportSent = true;
+        //if (reportSent && status >= -1) return;
+        //else if (reportSent && status == -1) reportSent = true;
+        if ($scope.reportSent) return;
+        $scope.reportSent = true;
 
         if (status>0) {
             $scope.myStyle[status] = { 'background-color': '#80be40' };
@@ -254,7 +265,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&day=' + $scope.loginData.day + '&oper=' + status)
         .success(function (data) {
             dataShare.setLoading(false);
-            $http.put(domain+'report_notification.php');
+            //$http.put(domain+'report_notification.php');
             dataShare.changePage(data);
         });
     };
@@ -263,9 +274,11 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         if (cancel) future_status = -1;
         var start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
         var end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
+        dataShare.setLoading(true);
         $http.jsonp(domain+'future_report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + future_status)
             .success(function (data) {
-                $http.put(domain+'report_notification.php');
+                dataShare.setLoading(false);
+                //$http.put(domain+'report_notification.php');
                 dataShare.changePage(data);
             });
     };
@@ -343,6 +356,9 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
 app.controller('statusListController', function ($scope, $http, $location, dataShare) {
     $scope.dataShare = dataShare;
+    $scope.loginData = dataShare.get();
+    $scope.settingsData = dataShare.getSettings();
+    $scope.mainPage = dataShare.mainPage;
 
     $scope.removeUser = function (user) {
         $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + $scope.dataShare.get().id+'&user='+user)
@@ -356,7 +372,6 @@ app.controller('statusListController', function ($scope, $http, $location, dataS
             .success(function (data) {
                 dataShare.set(data);
                 $scope.$broadcast('angucomplete-alt:clearInput', 'settings-AddUser');
-
             });
     }
 });

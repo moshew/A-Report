@@ -2,10 +2,10 @@
 <div class="report-date" style="margin-bottom:40px;">{{loginData.date_str}}</div>
     <div class="status">
         <div class="status-delete">
-            <div ng-click="report(-1)"><img ng-if="loginData.lock==0" src="assets/status_delete.png" /></div>
+            <div ng-click="report(-1)"><img ng-show="loginData.lock==0" src="assets/status_delete.png" /></div>
             <img ng-if="loginData.lock!=0" src="assets/status_none.png" />
         </div>
-        <div><img id="status_icon" src="assets/report/{{dataShare.get().status}}.png" /></div>
+        <div><img id="status_icon" ng-src="assets/report/{{dataShare.get().status}}.png" /></div>
         <div style="font-size:18px;">{{status_label}}</div>
     </div>
 </div>
