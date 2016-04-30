@@ -1,5 +1,5 @@
 ﻿<div ng-cloak>
-   <div class="report-date">{{loginData.date_str}}</div>
+   <div class="report-date">{{dataShare.get().date_str}}</div>
    <div class="pageMain" ng-show="reportPage=='main'">
       <div ng-show="loginData.lock" class="report_locked"><img src="assets/report_locked.png" /></div>
       <div ng-show="!loginData.lock">

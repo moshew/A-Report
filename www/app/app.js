@@ -236,9 +236,6 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
 
 app.controller('statusController', function ($scope, $http, dataShare) {
     $scope.dataShare = dataShare;
-    $scope.loginData = dataShare.get();
-    $scope.settingsData = dataShare.getSettings();
-    $scope.mainPage = dataShare.mainPage;
     $scope.reportPage='main';
     $scope.reportSent = false;
 
@@ -257,7 +254,7 @@ app.controller('statusController', function ($scope, $http, dataShare) {
             $scope.myStyle[status] = { 'background-color': '#80be40' };
         }
         dataShare.setLoading(true);
-        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&day=' + $scope.loginData.day + '&oper=' + status)
+        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + dataShare.get().day + '&oper=' + status)
         .success(function (data) {
             dataShare.setLoading(false);
             //$http.put(domain+'report_notification.php');
@@ -270,7 +267,7 @@ app.controller('statusController', function ($scope, $http, dataShare) {
         var start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
         var end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
         dataShare.setLoading(true);
-        $http.jsonp(domain+'future_report.php?callback=JSON_CALLBACK&id=' + $scope.loginData.id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + future_status)
+        $http.jsonp(domain+'future_report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + future_status)
             .success(function (data) {
                 dataShare.setLoading(false);
                 //$http.put(domain+'report_notification.php');
@@ -351,20 +348,16 @@ app.controller('statusController', function ($scope, $http, dataShare) {
 
 app.controller('statusListController', function ($scope, $http, dataShare) {
     $scope.dataShare = dataShare;
-    $scope.loginData = dataShare.get();
-    $scope.settingsData = dataShare.getSettings();
-    $scope.mainPage = dataShare.mainPage;
-    $scope.editMode = false;
 
     $scope.removeUser = function (user) {
-        $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + $scope.dataShare.get().id+'&user='+user)
+        $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + dataShare.get().id+'&user='+user)
             .success(function (data) {
                 dataShare.set(data);
             });
     }
 
     $scope.addUser = function (user) {
-        $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + $scope.dataShare.get().id + '&user=' + user.originalObject.name)
+        $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + dataShare.get().id + '&user=' + user.originalObject.name)
             .success(function (data) {
                 dataShare.set(data);
                 $scope.$broadcast('angucomplete-alt:clearInput', 'settings-AddUser');
