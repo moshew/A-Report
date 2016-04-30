@@ -31,11 +31,6 @@ app.config(function ($routeProvider) {
             controller: 'statusController'
         })
 
-        .when('/settings', {
-            templateUrl: 'pages/settings.html',
-            controller: 'settingsController'
-        })
-
         .when('/statusList', {
             templateUrl: 'pages/statusList.html',
             controller: 'statusListController'
@@ -144,7 +139,7 @@ app.factory('dataShare', function ($http, $location, $timeout) {
     return service;
 });
 
-app.controller('mainController', function ($scope, $http, $location, dataShare) {
+app.controller('mainController', function ($scope, $http, dataShare) {
     $scope.dataShare = dataShare;
     $scope.zoom_factor = Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
     $scope.i_width = window.innerWidth;
@@ -180,7 +175,7 @@ app.controller('mainController', function ($scope, $http, $location, dataShare) 
 
 });
 
-app.controller('loginController', function ($scope, $http, $location, $mdDialog, dataShare) {
+app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
     $scope.dataShare = dataShare;
     $scope.loginState = 'code';
     $scope.message = 'הקש את קוד המשתמש לכניסה';
@@ -239,7 +234,7 @@ app.controller('loginController', function ($scope, $http, $location, $mdDialog,
     };
 });
 
-app.controller('statusController', function ($scope, $http, $location, dataShare) {
+app.controller('statusController', function ($scope, $http, dataShare) {
     $scope.dataShare = dataShare;
     $scope.loginData = dataShare.get();
     $scope.settingsData = dataShare.getSettings();
@@ -354,11 +349,12 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
 });
 
-app.controller('statusListController', function ($scope, $http, $location, dataShare) {
+app.controller('statusListController', function ($scope, $http, dataShare) {
     $scope.dataShare = dataShare;
     $scope.loginData = dataShare.get();
     $scope.settingsData = dataShare.getSettings();
     $scope.mainPage = dataShare.mainPage;
+    $scope.editMode = false;
 
     $scope.removeUser = function (user) {
         $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + $scope.dataShare.get().id+'&user='+user)
