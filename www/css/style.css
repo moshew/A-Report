@@ -242,7 +242,6 @@ div{
     text-align: left;
     font-size:200%;
     color:#199eec;
-    /*font-family:FrankRuehl;*/
 }
 
 .status {
@@ -281,19 +280,19 @@ div{
 }
 
 .statusList-info {
+    text-align:right;
     height:470px;
     overflow-y: auto;
 }
 .statusList-users {
-    margin-top: 7px;
     margin-right: 20px;
-    text-align:right;
+    margin-left: 20px;
+    margin-top: 7px;
     font-size:175%;
 }
 
 .statusList-user {
     padding-bottom: 7px;
-    width:94%;
     border-width: 1px;
     border-color: #1d6c96;
     border-style: none none solid none;
@@ -302,7 +301,6 @@ div{
 .statusList-delete
 {
     border-radius: 5px;
-    /*margin: 10px;*/
     width: 50px;
     height: 30px;
     border-width: 1px;
@@ -316,8 +314,6 @@ div{
 
 .statusList-new {
     margin: 20px;
-    text-align: right;
-    color: white;
 }
 
 .statusList-add {
@@ -326,16 +322,14 @@ div{
     border-width: 1px;
     border-color: #2a6496;
     padding-right: 10px;
-    width: 265px;
+    width: 250px;
     color: white;
     font-size: 150%;
     background: #4b688e;
 }
 
 .statusList-addButton {
-    /*padding-top: 5px;*/
     margin-top: 3px;
-    margin-right: 5px;
     width: 50px;
     height: 30px;
     border-width: 1px;
@@ -445,51 +439,7 @@ div{
     padding-right:15px;
     display: inline-block;
 }
-/*
-.report2-datepicker {
-    background:#234a7d;
-    width: 200px;
-}
-.md-datepicker-button{
-    display: none;
-}
 
-input[type=date] {
-    height: 25px;
-    margin-left: 10px;
-    padding-left: 7px;
-    width: 160px;
-    font-size: 100%;
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: #4b688e;
-    outline: none;
-    border-radius: 3px;
-    color: #4b688e;
-}
-    input::-webkit-inner-spin-button,
-    input::-webkit-clear-button {
-        display: none;
-    }
-
-    input::-webkit-calendar-picker-indicator:hover {
-        background-color: #4b688e;
-        color: #ffffff;
-        cursor: pointer;
-    }
-
-.report2-datepicker {
-    background:#234a7d;
-}
-
-.md-datepicker-input {
-    width: 150px;
-}
-
-.md-datepicker-button{
-    display: none;
-}
-*/
 .report2-btn {
     border-radius: 5px;
     padding-top:6px;

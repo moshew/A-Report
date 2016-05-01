@@ -1,6 +1,6 @@
 <div class="statusList-header">סטאטוסי דיווח<div class="statusList-edit" ng-click="editMode=!editMode">{{(editMode)?"סיום":"עריכה"}}</div></div><br />
 <div class="statusList-info">
-    <div ng-show="editMode" class="statusList-new">
+    <div dir="rtl" class="statusList-new" ng-show="editMode">
         <div ng-class="{'statusList-addButton':true, 'disabled':selectedUser==null}" ng-click="addUser(selectedUser)">הוסף</div>
         <angucomplete-alt dir="rtl"
                           id="statusList-AddUser"
