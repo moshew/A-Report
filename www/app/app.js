@@ -3,7 +3,7 @@
 // create the module and name it app
 // also include ngRoute for all our routing needs
 moment.locale('he');
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'ngMdIcons', 'angucomplete-alt', 'multipleDatePicker']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 var domain = 'http://a-report.co.il/';
 
