@@ -6,37 +6,37 @@
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="portrait"/>
   <preference name="target-device" value="universal"/>
-  <preference name="fullscreen" value="true"/>
+  <preference name="fullscreen" value="false"/>
   <preference name="webviewbounce" value="true"/>
   <preference name="prerendered-icon" value="true"/>
   <preference name="stay-in-webview" value="false"/>
   <preference name="ios-statusbarstyle" value="black-opaque"/>
   <preference name="detect-data-types" value="true"/>
   <preference name="exit-on-suspend" value="false"/>
-  <preference name="show-splash-screen-spinner" value="true"/>
+  <preference name="show-splash-screen-spinner" value="false"/>
   <preference name="auto-hide-splash-screen" value="true"/>
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
-  <gap:plugin name="org.apache.cordova.battery-status"/>
-  <gap:plugin name="org.apache.cordova.camera"/>
-  <gap:plugin name="org.apache.cordova.media-capture"/>
-  <gap:plugin name="org.apache.cordova.console"/>
+  <!--<gap:plugin name="org.apache.cordova.battery-status"/>-->
+  <!--<gap:plugin name="org.apache.cordova.camera"/>-->
+  <!--<gap:plugin name="org.apache.cordova.media-capture"/>-->
+  <!--<gap:plugin name="org.apache.cordova.console"/>-->
   <!--<gap:plugin name="org.apache.cordova.contacts"/>-->
   <plugin name="org.apache.cordova.contacts" spec="0.2.16" source="pgb" />
-  <gap:plugin name="org.apache.cordova.device"/>
-  <gap:plugin name="org.apache.cordova.device-motion"/>
-  <gap:plugin name="org.apache.cordova.device-orientation"/>
-  <gap:plugin name="org.apache.cordova.dialogs"/>
-  <gap:plugin name="org.apache.cordova.file"/>
-  <gap:plugin name="org.apache.cordova.file-transfer"/>
-  <gap:plugin name="org.apache.cordova.geolocation"/>
-  <gap:plugin name="org.apache.cordova.globalization"/>
-  <gap:plugin name="org.apache.cordova.inappbrowser"/>
-  <gap:plugin name="org.apache.cordova.media"/>
-  <gap:plugin name="org.apache.cordova.network-information"/>
-  <gap:plugin name="org.apache.cordova.splashscreen"/>
-  <gap:plugin name="org.apache.cordova.vibration"/>
+  <!--<gap:plugin name="org.apache.cordova.device"/>-->
+  <!--<gap:plugin name="org.apache.cordova.device-motion"/>-->
+  <!--<gap:plugin name="org.apache.cordova.device-orientation"/>-->
+  <!--<gap:plugin name="org.apache.cordova.dialogs"/>-->
+  <!--<gap:plugin name="org.apache.cordova.file"/>-->
+  <!--<gap:plugin name="org.apache.cordova.file-transfer"/>-->
+  <!--<gap:plugin name="org.apache.cordova.geolocation"/>-->
+  <!--<gap:plugin name="org.apache.cordova.globalization"/>-->
+  <!--<gap:plugin name="org.apache.cordova.inappbrowser"/>-->
+  <!--<gap:plugin name="org.apache.cordova.media"/>-->
+  <!--<gap:plugin name="org.apache.cordova.network-information"/>-->
+  <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
+  <!--<gap:plugin name="org.apache.cordova.vibration"/>-->
   <icon src="icon.png"/>
   <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
@@ -51,6 +51,7 @@
   <icon src="res/icon/webos/icon-64.png" gap:platform="webos"/>
   <icon src="res/icon/windows-phone/icon-48.png" gap:platform="winphone"/>
   <icon src="res/icon/windows-phone/icon-173-tile.png" gap:platform="winphone" gap:role="background"/>
+  <gap:splash src="splash.png" />
   <gap:splash src="res/screen/android/screen-ldpi-portrait.png" gap:platform="android" gap:qualifier="port-ldpi"/>
   <gap:splash src="res/screen/android/screen-mdpi-portrait.png" gap:platform="android" gap:qualifier="port-mdpi"/>
   <gap:splash src="res/screen/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi"/>
