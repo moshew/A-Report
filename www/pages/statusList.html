@@ -1,7 +1,7 @@
-<div class="statusList-header">סטאטוסי דיווח<div class="statusList-edit" ng-click="editMode=!editMode">{{(editMode)?"סיום":"עריכה"}}</div></div><br />
+<div ng-cloak class="statusList-header">סטאטוסי דיווח<div class="statusList-edit" ng-click="editMode=!editMode">{{(editMode)?"סיום":"עריכה"}}</div></div><br />
 <div class="statusList-info">
     <div dir="rtl" class="statusList-new" ng-show="editMode">
-        <div ng-class="{'statusList-addButton':true, 'disabled':selectedUser==null}" ng-click="addUser(selectedUser)">הוסף</div>
+        <div ng-class="{'statusList-addButton':true, 'disabled':selectedUser==null}" ng-click="addUser(selectedUser)"><img src="assets/add-user.png" /></div>
         <angucomplete-alt dir="rtl"
                           id="statusList-AddUser"
                           pause="100"
@@ -15,8 +15,8 @@
                           auto-match="true">
         </angucomplete-alt>
     </div>
-    <div class="statusList-users" dir="rtl" ng-repeat="user in dataShare.get().reported"><div class="statusList-user"><img style="display: inline-block; margin-left: 10px;" width="30" ng-src="assets/report/{{user.status}}.png" />{{ user.name }}<div ng-show="editMode" class="statusList-delete" ng-click="removeUser(user.name)">מחק</div></div></div>
-    <div class="statusList-users" dir="rtl" ng-repeat="user in dataShare.get().waiting"><div class="statusList-user"><div class="statusList-status"><img style="display: inline-block; margin-left: 10px;" width="30" src="assets/report/97.png" />{{ user }}<span style="margin-right:10px;font-size: 12px">ממתין לאישור...</span><div ng-show="editMode" class="statusList-delete" ng-click="removeUser(user)">מחק</div></div></div></div>
+    <div class="statusList-users" dir="rtl" ng-repeat="user in dataShare.get().reported"><div class="statusList-user"><img class="statusList-userImg" width="30" ng-src="assets/report/{{user.status}}.png" />{{ user.name }}<div ng-show="editMode" class="statusList-delete" ng-click="removeUser(user.name)"><img src="assets/delete-user.png" /></div></div></div>
+    <div class="statusList-users" dir="rtl" ng-repeat="user in dataShare.get().waiting"><div class="statusList-user"><div class="statusList-status"><img class="statusList-userImg" width="30" src="assets/report/97.png" />{{ user }}<span style="margin-right:10px;font-size: 12px">ממתין לאישור...</span><div ng-show="editMode" class="statusList-delete" ng-click="removeUser(user)"><img src="assets/delete-user.png" /></div></div></div></div>
 </div>
 <div ng-include="'pages/footer1.html'"></div>
 <div ng-include="'pages/loader.html'" />

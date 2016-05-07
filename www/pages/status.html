@@ -3,8 +3,8 @@
     <div class="status">
         <div class="status-delete" ng-show="dataShare.get().lock==0" ng-click="report(-1)"><img src="assets/status_delete.png" /></div>
         <div class="status-delete" ng-show="dataShare.get().lock!=0" ><img src="assets/status_none.png" /></div>
-        <div><img id="status_icon" src="assets/report/{{dataShare.get().status}}.png" /></div>
-        <div style="font-size:18px;">{{status_label}}</div>
+        <div><img id="status_icon" src="assets/report/t{{dataShare.get().status}}.png" /></div>
+        <!--<div style="font-size:18px;">{{status_label}}</div>-->
     </div>
 </div>
 <div ng-include="'pages/footer1.html'"></div>

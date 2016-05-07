@@ -53,10 +53,15 @@ div{
     width:100%; 
     outline: none;
     color: white;
-
     background:#234a7d;
 }
 
+.centered {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+}
 .loader {
     /*border-radius: 0px;*/
     width: 100%;
@@ -92,7 +97,8 @@ div{
 }
 
 .footer-option {
-    margin-left: 4%;
+    margin-right: 10px;
+    margin-left: 10px;
     display: inline-block;
 }
 
@@ -133,6 +139,10 @@ div{
 	position:absolute;
 	bottom:0;
 	left:0;
+}
+
+.centered.login {
+    margin-top: -285px;
 }
 
 .md-button.md-fab.md-mini {
@@ -177,23 +187,28 @@ div{
     transition: background 0.3s;
 }
 
-    .login-circle.border {
-        background: #def9fb;
-    }
+.login-circle.border {
+    background: #def9fb;
+}
+
+.login-btn {
+    margin: 7px;
+    display: inline-block;
+}
 
 .popupScreen {
-    bottom:0;
-    padding-top:45%;
-    position:absolute;
-    text-align:center;
+    position:fixed;
     top:0;
+    bottom: 0;
     width:100%;
-    outline: none;
-    font-size: 100%;
-    color: white;
     background:#183255;
     opacity:0.95;
     z-index:20;
+}
+
+.centered.loginResult
+{
+    margin-top: -160px;
 }
 
 .md-raised.md-warn.login-back {
@@ -212,6 +227,30 @@ div{
     margin-bottom: 25px;
 }
 
+.login {
+    position: absolute;
+    top: 50%;
+    margin-top: -194px;
+    width: 100%;
+    text-align: center;
+}
+
+.centered.locked {
+    position: absolute;
+    top: 50%;
+    margin-top: -194px;
+    width: 100%;
+    text-align: center;
+}
+
+.centered.notLocked {
+    position: fixed;
+    top: 50%;
+    margin-top: -235px;
+    width: 100%;
+    text-align: center;
+}
+
 .report-btn {
     border-radius: 5px;
     margin: 8px;
@@ -221,7 +260,7 @@ div{
     border-style: solid;
     border-color: #00aeef;
     display: inline-block;
-    font-size:120%;
+    /*font-size:120%;*/
 }
 
 .report-btnLabel {
@@ -232,19 +271,25 @@ div{
     margin-top:30px;
 }
 
-.report_locked {
-    margin-top:20%;
+.report_not-here {
+    border-radius: 5px;
+    margin: 25px;
+    width: 260px;
+    height: 70px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #00aeef;
+    display: inline-block;
 }
 
-.report_not-here {
-    margin-top: 70px;
-    margin-left: 25px;
-    text-align: left;
-    font-size:200%;
-    color:#199eec;
-}
 
 .status {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -210px;
+    margin-left: -140px;
+
     width:280px;
     height:390px;
     background-image: url('../assets/status.png');
@@ -256,7 +301,9 @@ div{
 }
 
 #status_icon {
-    width:75px;
+    zoom: 1.1;
+    margin-top: 3px;
+    margin-right: 5px;
     display: inline-block;
 }
 
@@ -296,6 +343,11 @@ div{
     border-width: 1px;
     border-color: #1d6c96;
     border-style: none none solid none;
+}
+
+.statusList-userImg {
+    display: inline-block;
+    margin-left: 10px;
 }
 
 .statusList-delete
@@ -432,6 +484,7 @@ div{
 
 .report2-header {
     margin-bottom: 5px;
+    padding-left: 15px;
     width:98%;
     text-align:center;
     font-size:187.5%;
@@ -484,7 +537,8 @@ div{
 }
 
 .report2-date_display {
-    width: 130px;
+    width: 150px;
+    height: 30px;
     float: left;
     margin-left: 10px;
     text-align: center;
@@ -492,6 +546,7 @@ div{
     border-color: #ffffff;
     border-style: none none solid none;
     font-size: 150%;
+    vertical-align: bottom;
 }
 
 .report2-label {

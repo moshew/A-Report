@@ -142,6 +142,7 @@ app.factory('dataShare', function ($http, $location, $timeout) {
 app.controller('mainController', function ($scope, $http, dataShare) {
     $scope.dataShare = dataShare;
     $scope.zoom_factor = Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
+    /*$scope.zoom_factor = window.innerHeight/6.67;*/
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
 
