@@ -174,6 +174,15 @@ app.controller('mainController', function ($scope, $http, dataShare) {
     };
 
 
+
+
+/*
+
+    var onSuccess = function(contact) {
+        $scope.test1 = JSON.stringify(contact);
+    }
+    navigator.contacts.pickContact(onSuccess);
+*/
 });
 
 app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
