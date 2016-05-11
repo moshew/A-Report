@@ -10,7 +10,7 @@
     <div class="login-btn" ng-click="sendCode()"><img ng-src="assets/login/btn11-{{loginState}}.png" /></div><div class="login-btn" ng-click="press(0)"><img ng-src="assets/login/btn10.png" /></div><div class="login-btn" ng-click="press('r')"><img src="assets/login/btn12.png" /></div><br />
     <div class="popupScreen" ng-show="sendCodeScreen">
         <div class="centered loginResult">
-            <img src="assets/login_{{loginCodeResponse}}.png" />
+            <img src="assets/login_{{loginCodeResponse}}.png" /><br>
             <md-button class="md-raised md-warn login-back" ng-click="sendCode();sendCodeScreen=false">חזור</md-button>
         </div>
     </div>

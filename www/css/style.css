@@ -57,7 +57,7 @@ div{
 }
 
 .centered {
-    position: absolute;
+    position: fixed;
     top: 50%;
     width: 100%;
     text-align: center;
@@ -142,7 +142,7 @@ div{
 }
 
 .centered.login {
-    margin-top: -285px;
+    margin-top: -250px;
 }
 
 .md-button.md-fab.md-mini {
@@ -156,7 +156,6 @@ div{
 }
 
 .login-header {
-    margin-top:30px;
     height: 100px;
     font-size: 125%;
 }
@@ -227,28 +226,13 @@ div{
     margin-bottom: 25px;
 }
 
-.login {
-    position: absolute;
-    top: 50%;
-    margin-top: -194px;
-    width: 100%;
-    text-align: center;
-}
 
 .centered.locked {
-    position: absolute;
-    top: 50%;
     margin-top: -194px;
-    width: 100%;
-    text-align: center;
 }
 
 .centered.notLocked {
-    position: fixed;
-    top: 50%;
     margin-top: -235px;
-    width: 100%;
-    text-align: center;
 }
 
 .report-btn {
