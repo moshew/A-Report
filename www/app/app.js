@@ -1,11 +1,29 @@
 ﻿// script.js
 
-// create the module and name it app
-// also include ngRoute for all our routing needs
-moment.locale('he');
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 var domain = 'http://a-report.co.il/';
+moment.locale('he');
+
+// create the module and name it app
+// also include ngRoute for all our routing needs
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
+app.run(function($rootScope){
+    document.addEventListener('deviceready', function () {
+        // Enable to debug issues.
+        // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+
+        var notificationOpenedCallback = function(jsonData) {
+            console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+        };
+
+        window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
+            {googleProjectNumber: "1054956038916"},
+            notificationOpenedCallback);
+
+        // Show an alert box if a notification comes in when the user is in your app.
+        window.plugins.OneSignal.enableInAppAlertNotification(true);
+    }, false);
+});
 
 // configure our routes
 app.config(function ($routeProvider) {
