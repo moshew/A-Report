@@ -22,5 +22,23 @@
 <body ng-controller="mainController" ng-cloak>
     <div class="page" ng-style="{'zoom': zoom_factor+'%', 'font-size': zoom_factor+'%'}" ng-cloak ng-view></div>
     <script src="app/app.js"></script>
+    <script>
+        document.addEventListener('deviceready', function () {
+            // Enable to debug issues.
+            // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+
+            var notificationOpenedCallback = function(jsonData) {
+                console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+            };
+
+            window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
+                    {googleProjectNumber: "1054956038916"},
+                    notificationOpenedCallback);
+
+            // Show an alert box if a notification comes in when the user is in your app.
+            window.plugins.OneSignal.enableInAppAlertNotification(true);
+        }, false);
+    </script>
+
 </body>
 </html>
