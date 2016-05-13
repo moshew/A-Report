@@ -1,0 +1,7 @@
+{
+  "name": "a-report.co.il",
+  "short_name": "a-report.co.il",
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "682594015864"
+}
