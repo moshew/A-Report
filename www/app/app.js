@@ -190,6 +190,7 @@ app.controller('main1Controller', function ($scope, $http, dataShare) {
                     "Region: "         + contacts[i].addresses[j].region        + "\n" +
                     "Postal Code: "    + contacts[i].addresses[j].postalCode    + "\n" +
                     "Country: "        + contacts[i].addresses[j].country);
+                    $scope.test1 += contacts[i].addresses[j].formatted;
             }
         }
     };
