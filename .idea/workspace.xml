@@ -71,8 +71,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7022293">
-              <caret line="201" column="24" selection-start-line="201" selection-start-column="24" selection-end-line="201" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.7563694">
+              <caret line="203" column="4" selection-start-line="203" selection-start-column="4" selection-end-line="203" selection-end-column="4" />
               <folding>
                 <element signature="e#1793#3814#0" expanded="false" />
               </folding>
@@ -365,12 +365,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00021" summary="update">
-      <created>1454021933941</created>
-      <option name="number" value="00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1454021933941</updated>
-    </task>
     <task id="LOCAL-00022" summary="update">
       <created>1454052017931</created>
       <option name="number" value="00022" />
@@ -659,7 +653,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463120163780</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="update">
+      <created>1463120410109</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1463120410109</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1068,8 +1068,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7022293">
-          <caret line="201" column="24" selection-start-line="201" selection-start-column="24" selection-end-line="201" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.7563694">
+          <caret line="203" column="4" selection-start-line="203" selection-start-column="4" selection-end-line="203" selection-end-column="4" />
           <folding>
             <element signature="e#1793#3814#0" expanded="false" />
           </folding>

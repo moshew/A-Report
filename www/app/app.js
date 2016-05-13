@@ -203,7 +203,7 @@ app.controller('main1Controller', function ($scope, $http, dataShare) {
     var options = new ContactFindOptions();
     options.filter = "";
     var filter = ["displayName", "addresses"];
-    navigator.contacts.find(filter, onSuccess, onError, options);
+    navigator.contacts.find(filter, onSuccess, onError);
 
 });
 
