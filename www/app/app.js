@@ -1,4 +1,7 @@
 ﻿// script.js
+document.addEventListener('deviceready', function onDeviceReady() {
+    angular.bootstrap(document, ['app']);
+}, false);
 
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 var domain = 'http://a-report.co.il/';
