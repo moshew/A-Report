@@ -8,6 +8,21 @@ moment.locale('he');
 // also include ngRoute for all our routing needs
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
 
+app.run(function() {
+    FastClick.attach(document.body);
+
+    var notificationOpenedCallback = function (jsonData) {
+        console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+    };
+
+    window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
+        {googleProjectNumber: "682594015864"},
+        notificationOpenedCallback);
+
+    // Show an alert box if a notification comes in when the user is in your app.
+    window.plugins.OneSignal.enableInAppAlertNotification(true);
+});
+
 // configure our routes
 app.config(function ($routeProvider) {
     $routeProvider
@@ -176,25 +191,38 @@ app.controller('mainController', function ($scope, $http, dataShare) {
 });
 
 app.controller('main1Controller', function ($scope, $http, dataShare) {
-    function init() {
+    $scope.dataShare = dataShare;
+    $scope.test1 = new Array();
 
-        navigator.contacts.find(
-            [navigator.contacts.fieldType.displayName],
-            gotContacts,
-            errorHandler);
-
-    }
-
-    function errorHandler(e) {
-        console.log("errorHandler: "+e);
-    }
-
-    function gotContacts(c) {
-        console.log("gotContacts, number of results "+c.length);
-        for(var i=0, len=c.length; i<len; i++) {
-            test1 += c[i];
+    function onSuccess(contacts) {
+        try {
+            for (i = 0; i < contacts.length; i++) {
+                for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
+                    var phone = contacts[i].phoneNumbers[j].value;
+                    phone = phone.replace(/\+972/g, "0");
+                    phone = phone.replace(/\(|\)|\ |\-/g, "");
+                    $scope.test1.push({phone: phone, name: contacts[i].name.formatted});
+                }
+            }
         }
-    }
+        catch (err) {
+
+        }
+        document.getElementById('contactInformation').innerHTML = JSON.stringify(test1, null, 4);
+    };
+    //
+    function onError(contactError) {
+        alert('onError!');
+    };
+
+    // find all contacts with 'me' in any name field
+    var options      = new ContactFindOptions();
+    options.filter   = "";
+    options.multiple = true;
+    //options.desiredFields = [navigator.contacts.fieldType.id];
+    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+    navigator.contacts.find(fields, onSuccess, onError, options);
+
 });
 
 app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
