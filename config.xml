@@ -29,7 +29,6 @@
   <!--<gap:plugin name="org.apache.cordova.media-capture"/>-->
   <!--<gap:plugin name="org.apache.cordova.console"/>-->
   <!--<gap:plugin name="org.apache.cordova.contacts"/>-->
-  <plugin name="org.apache.cordova.contacts" spec="0.2.16" source="pgb" />
   <!--<gap:plugin name="org.apache.cordova.device"/>-->
   <!--<gap:plugin name="org.apache.cordova.device-motion"/>-->
   <!--<gap:plugin name="org.apache.cordova.device-orientation"/>-->
