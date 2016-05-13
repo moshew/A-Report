@@ -10,7 +10,7 @@ var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomp
 
 app.run(function() {
     FastClick.attach(document.body);
-
+/*
     var notificationOpenedCallback = function (jsonData) {
         console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
     };
@@ -21,6 +21,7 @@ app.run(function() {
 
     // Show an alert box if a notification comes in when the user is in your app.
     window.plugins.OneSignal.enableInAppAlertNotification(true);
+*/
 });
 
 // configure our routes
