@@ -13,8 +13,8 @@ app.config(function ($routeProvider) {
     $routeProvider
 
         .when('/', {
-            templateUrl: 'pages/home.html',
-            controller: 'mainController'
+            templateUrl: 'pages/home1.html',
+            controller: 'main1Controller'
         })
 
         .when('/login', {
@@ -173,17 +173,37 @@ app.controller('mainController', function ($scope, $http, dataShare) {
                 dataShare.changePage(data, '');
             });
     };
+});
 
+app.controller('main1Controller', function ($scope, $http, dataShare) {
 
+    // display the address information for all contacts
 
+    function onSuccess(contacts) {
+        for (var i = 0; i < contacts.length; i++) {
+            for (var j = 0; j < contacts[i].addresses.length; j++) {
+                alert("Pref: "         + contacts[i].addresses[j].pref          + "\n" +
+                    "Type: "           + contacts[i].addresses[j].type          + "\n" +
+                    "Formatted: "      + contacts[i].addresses[j].formatted     + "\n" +
+                    "Street Address: " + contacts[i].addresses[j].streetAddress + "\n" +
+                    "Locality: "       + contacts[i].addresses[j].locality      + "\n" +
+                    "Region: "         + contacts[i].addresses[j].region        + "\n" +
+                    "Postal Code: "    + contacts[i].addresses[j].postalCode    + "\n" +
+                    "Country: "        + contacts[i].addresses[j].country);
+            }
+        }
+    };
 
-/*
+    function onError(contactError) {
+        alert('onError!');
+    };
 
-    var onSuccess = function(contact) {
-        $scope.test1 = JSON.stringify(contact);
-    }
-    navigator.contacts.pickContact(onSuccess);
-*/
+    // find all contacts
+    var options = new ContactFindOptions();
+    options.filter = "";
+    var filter = ["displayName", "addresses"];
+    navigator.contacts.find(filter, onSuccess, onError, options);
+
 });
 
 app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
