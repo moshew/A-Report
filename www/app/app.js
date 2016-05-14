@@ -202,15 +202,16 @@ app.controller('main1Controller', function ($scope, $http, dataShare) {
     options.multiple = true;
     var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
     navigator.contacts.find(fields, function (contacts) {
-        $scope.test1 = new Array();
+        var test11 = new Array();
         for (i = 0; i < contacts.length; i++) {
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
                 var phone = contacts[i].phoneNumbers[j].value;
                 phone = phone.replace(/\+972/g, "0");
                 phone = phone.replace(/\(|\)|\ |\-/g, "");
-                $scope.test1.push({phone: phone, name: contacts[i].name.formatted});
+                test11.push({phone: phone, name: contacts[i].name.formatted});
             }
         }
+        $scope.test1 = test11;
     }, function (contactError) {
     }, options);
 });
