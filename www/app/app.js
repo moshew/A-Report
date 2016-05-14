@@ -11,24 +11,12 @@ document.addEventListener('deviceready', function() {
 
 // create the module and name it app
 // also include ngRoute for all our routing needs
-var app = angular.module('app', ['ng-fastclick', 'ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
 
 /*
 app.run(function() {
     //FastClick.attach(document.body);
-
-    function notificationOpenedCallback(jsonData) {
-        console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
-    };
-
-    window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
-        {googleProjectNumber: "682594015864"},
-        notificationOpenedCallback);
-
-    // Show an alert box if a notification comes in when the user is in your app.
-    window.plugins.OneSignal.enableInAppAlertNotification(true);
-
-});
+ });
 */
 
 // configure our routes
@@ -142,6 +130,9 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         });
     };
 
+    service.notificationOpenedCallback = function(jsonData) {
+    };
+
     var _loading = false;
     var wp = null;
     service.setLoading = function (start) {
@@ -237,6 +228,12 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
             dataShare.setLoading(true);
             $http.jsonp(domain+'send_code.php?callback=JSON_CALLBACK&p_id=' + $scope.value)
             .success(function (data) {
+                window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
+                    {googleProjectNumber: "682594015864"},
+                    dataShare.notificationOpenedCallback);
+                window.plugins.OneSignal.enableInAppAlertNotification(true);
+                window.plugins.OneSignal.sendTag("phone", $scope.value);
+
                 dataShare.setLoading(false);
                 $scope.sendCodeScreen = true;
                 $scope.loginCodeResponse = (data.status) ? 'found' : 'not-found';
