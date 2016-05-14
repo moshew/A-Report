@@ -228,12 +228,14 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
             dataShare.setLoading(true);
             $http.jsonp(domain+'send_code.php?callback=JSON_CALLBACK&p_id=' + $scope.value)
             .success(function (data) {
-                window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
-                    {googleProjectNumber: "682594015864"},
-                    dataShare.notificationOpenedCallback);
-                window.plugins.OneSignal.enableInAppAlertNotification(true);
-                window.plugins.OneSignal.sendTag("phone", $scope.value);
-
+                try {
+                    window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
+                        {googleProjectNumber: "682594015864"},
+                        dataShare.notificationOpenedCallback);
+                    window.plugins.OneSignal.enableInAppAlertNotification(true);
+                    window.plugins.OneSignal.sendTag("phone", $scope.value);
+                }
+                catch (err) {}
                 dataShare.setLoading(false);
                 $scope.sendCodeScreen = true;
                 $scope.loginCodeResponse = (data.status) ? 'found' : 'not-found';
