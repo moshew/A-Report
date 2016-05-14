@@ -267,7 +267,7 @@ app.controller('statusController', function ($scope, $http, dataShare) {
         if ($scope.reportSent) return;
         $scope.reportSent = true;
 
-        if (status>0) {
+        if (status>=0) {
             $scope.myStyle[status] = { 'background-color': '#80be40' };
         }
         dataShare.setLoading(true);
