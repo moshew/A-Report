@@ -223,16 +223,15 @@ div{
 
 .report-date {
     font-size: 175%;
-    margin-bottom: 25px;
 }
 
 
 .centered.locked {
-    margin-top: -194px;
+    margin-top: -175px;
 }
 
 .centered.notLocked {
-    margin-top: -235px;
+    margin-top: -220px;
 }
 
 .report-btn {
