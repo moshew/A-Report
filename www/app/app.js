@@ -48,7 +48,7 @@ app.config(function ($routeProvider) {
         })
 
         .when('/report', {
-            templateUrl: 'pages/hom1.html',
+            templateUrl: 'pages/home1.html',
             controller: 'main1Controller'
         })
 
