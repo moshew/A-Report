@@ -2,19 +2,15 @@
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 var domain = 'http://a-report.co.il/';
 moment.locale('he');
-
+/*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
 }, false);
-
+*/
 // create the module and name it app
 // also include ngRoute for all our routing needs
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
 
-app.run(function(dataShare) {
-
-
-});
 /*
 app.run(function() {
     //FastClick.attach(document.body);
@@ -111,7 +107,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
 
     service.setContacts = function (data) {
         this.test1 = data;
-        $window.alert(data[0].name);
+        $window.alert(data);
     };
     service.getContacts = function () {
         //return "Hello";
@@ -176,7 +172,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
     return service;
 });
 
-app.controller('mainController', function ($scope, $rootScope, $http, $window, dataShare) {
+app.controller('mainController', function ($scope, $rootScope, $http, $window, $timeout, dataShare) {
     $scope.dataShare = dataShare;
     $scope.zoom_factor = Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
     /*$scope.zoom_factor = window.innerHeight/6.67;*/
@@ -194,18 +190,33 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, d
     navigator.contacts.find(fields, function (contacts) {
         for (i = 0; i < contacts.length; i++) {
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
-                var phone = contacts[i].phoneNumbers[j].value;
-                phone = phone.replace(/\+972/g, "0");
-                phone = phone.replace(/\(|\)|\ |\-/g, "");
-                test2.push({phone: phone, name: contacts[i].name.formatted});
+                try {
+                    var phone = contacts[i].phoneNumbers[j].value;
+                    phone = phone.replace(/\+972/g, "0");
+                    phone = phone.replace(/\(|\)|\ |\-/g, "");
+                    test2.push({phone: phone, name: contacts[i].name.formatted});
+                } catch (err) {
+                }
             }
         }
-        $window.alert(test2[0]);
         $scope.test22 = test2;
         dataShare.setContacts(test2);
-        $scope.$apply();
+        //$scope.$apply();
     }, function (contactError) {
     }, options);
+
+    /*
+    $timeout(function () {
+
+        for (i = 0; i < 4; i++) {
+            for (j = 0; j < 3; j++) {
+                test2.push({phone: i, name: j});
+            }
+        }
+        $scope.test22 = test2;
+        dataShare.setContacts(test2);
+    }, 1000);
+    */
 
     if (dataShare.get()==null) {
         $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
