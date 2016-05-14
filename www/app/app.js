@@ -15,26 +15,26 @@ function onSuccess(contacts) {
     catch (err) {
 
     }
-    document.getElementById('test11').innerHTML = JSON.stringify(test1, null, 4);
+    document.getElementById('test11').innerHTML = JSON.stringify(contacts, null, 4);
 };
 //
 function onError(contactError) {
     alert('onError!');
 };
 
-document.addEventListener('deviceready', function onDeviceReady() {
-    angular.bootstrap(document, ['app']);
-
+document.addEventListener("deviceready", onDeviceReady, false);
+//
+function onDeviceReady() {
     // find all contacts with 'me' in any name field
-    var options      = new ContactFindOptions();
-    options.filter   = "";
+    var options = new ContactFindOptions();
+    options.filter = "";
     options.multiple = true;
     //options.desiredFields = [navigator.contacts.fieldType.id];
-    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+    var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
     navigator.contacts.find(fields, onSuccess, onError, options);
 
-
-}, false);
+    angular.bootstrap(document, ['app']);
+};
 
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 var domain = 'http://a-report.co.il/';
