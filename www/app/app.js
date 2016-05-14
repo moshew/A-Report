@@ -230,6 +230,13 @@ app.controller('mainController', function ($scope, $http, dataShare) {
 
 app.controller('main1Controller', function ($scope, $http, dataShare) {
 
+    $scope.alertDeviceInfo = function() {
+        $scope.test2 = ('Device Platform: ' + device.platform + '\n'
+        + 'Device Version: ' + device.version + '\n' + 'Device Model: '
+        + device.model + '\n' + 'Device UUID: ' + device.uuid + '\n');
+    };
+
+    alertDeviceInfo();
 });
 
 app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
