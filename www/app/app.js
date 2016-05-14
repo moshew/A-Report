@@ -2,11 +2,11 @@
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 var domain = 'http://a-report.co.il/';
 moment.locale('he');
-/*
+
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
 }, false);
-*/
+
 // create the module and name it app
 // also include ngRoute for all our routing needs
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
