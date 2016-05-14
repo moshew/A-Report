@@ -13,7 +13,8 @@ var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomp
 
 app.run(function() {
     FastClick.attach(document.body);
-    var notificationOpenedCallback = function (jsonData) {
+
+    function notificationOpenedCallback(jsonData) {
         console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
     };
 
