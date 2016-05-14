@@ -90,7 +90,7 @@ app.config(function ($mdThemingProvider) {
         .backgroundPalette('blue-grey')
 });
 
-app.factory('dataShare', function ($http, $location, $timeout) {
+app.factory('dataShare', function ($http, $location, $timeout, $window) {
     var service = {};
     var pagePromise = null;
     service.data = null;
@@ -111,6 +111,7 @@ app.factory('dataShare', function ($http, $location, $timeout) {
 
     service.setContacts = function (data) {
         this.test1 = data;
+        $window.alert(data[0].name);
     };
     service.getContacts = function () {
         //return "Hello";
