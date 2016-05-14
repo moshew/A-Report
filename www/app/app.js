@@ -187,20 +187,19 @@ app.controller('mainController', function ($scope, $rootScope, $http, dataShare)
     options.multiple = true;
     var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
     navigator.contacts.find(fields, function (contacts) {
-        var test11 = new Array();
+        $scope.test22 = new Array();
         for (i = 0; i < contacts.length; i++) {
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
                 var phone = contacts[i].phoneNumbers[j].value;
                 phone = phone.replace(/\+972/g, "0");
                 phone = phone.replace(/\(|\)|\ |\-/g, "");
-                test11.push({phone: phone, name: contacts[i].name.formatted});
+                $scope.test22.push({phone: phone, name: contacts[i].name.formatted});
             }
         }
-        dataShare.setContacts(test11);
+        dataShare.setContacts($scope.test22);
+        $rootScope.$apply();
     }, function (contactError) {
     }, options);
-    $rootScope.$apply();
-
 
     if (dataShare.get()==null) {
         $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
