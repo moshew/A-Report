@@ -194,6 +194,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
                     phone = phone.replace(/\+972/g, '0');
                     phone = phone.replace(/\s/g, '');
                     phone = phone.replace(/\(|\)|\-/g, '');
+                    phone = phone.split('-').join('');
                     test2.push({phone: phone, name: contacts[i].name.formatted});
                 }
             } catch (err) {
