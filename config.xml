@@ -27,6 +27,7 @@
   <plugin name="cordova-plugin-contacts"       source="npm" spec="1.1.0" />
   <plugin name="cordova-plugin-device"         source="npm" spec="1.0.1" />
   <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
+  <plugin name="com.onesignal.plugins.onesignal" spec="1.9.0" source="pgb" />
   <icon src="icon.png"/>
   <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
