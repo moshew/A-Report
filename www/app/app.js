@@ -113,7 +113,8 @@ app.factory('dataShare', function ($http, $location, $timeout) {
         this.test1 = data;
     };
     service.getContacts = function () {
-        return this.test1;
+        return "Hello";
+        //return this.test1;
     };
 
 
