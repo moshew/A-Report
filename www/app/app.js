@@ -48,11 +48,6 @@ app.config(function ($routeProvider) {
             controller: 'statusListController'
         })
 
-        .when('/reportOpt', {
-            templateUrl: 'pages/reportOpt.html',
-            controller: 'statusController'
-        })
-
         .when('/futureReport', {
             templateUrl: 'pages/futureReport.html',
             controller: 'statusController'
