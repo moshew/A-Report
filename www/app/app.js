@@ -191,8 +191,10 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
                 for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
 
                     var phone = contacts[i].phoneNumbers[j].value;
-                    phone=phone.replace(/[^a-zA-Z0-9*?:.+\-^"_ ]+/g,'');
+                    phone = phone.replace(/\+972 /g, '0');
                     phone = phone.replace(/\+972/g, '0');
+                    phone = phone.replace(/\(|\)|-/g, '');
+                    phone = phone.split(' ').join('');
                     test2.push({phone: phone, name: contacts[i].name.formatted});
                 }
             } catch (err) {
