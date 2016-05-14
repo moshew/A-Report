@@ -197,7 +197,11 @@ app.controller('mainController', function ($scope, $http, dataShare) {
 
 app.controller('main1Controller', function ($scope, $http, dataShare) {
 
-    function onSuccess(contacts) {
+    var options = new ContactFindOptions();
+    options.filter = "";
+    options.multiple = true;
+    var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+    navigator.contacts.find(fields, function (contacts) {
         $scope.test1 = new Array();
         for (i = 0; i < contacts.length; i++) {
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
@@ -207,16 +211,8 @@ app.controller('main1Controller', function ($scope, $http, dataShare) {
                 $scope.test1.push({phone: phone, name: contacts[i].name.formatted});
             }
         }
-    };
-
-    function onError(contactError) {
-    };
-
-    var options = new ContactFindOptions();
-    options.filter = "";
-    options.multiple = true;
-    var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-    navigator.contacts.find(fields, onSuccess, onError, options);
+    }, function (contactError) {
+    }, options);
 });
 
 app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
