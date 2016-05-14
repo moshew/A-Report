@@ -4,7 +4,6 @@
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/home.html" afterPath="$PROJECT_DIR$/www/pages/home.html" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,8 +53,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17592593">
-              <caret line="189" column="32" selection-start-line="189" selection-start-column="32" selection-end-line="189" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.39399293">
+              <caret line="195" column="29" selection-start-line="195" selection-start-column="29" selection-end-line="195" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -165,8 +164,8 @@
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/pages/home1.html" />
         <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/pages/home.html" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
       </list>
     </option>
   </component>
@@ -365,12 +364,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00082" summary="update">
-      <created>1463184927084</created>
-      <option name="number" value="00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1463184927084</updated>
     </task>
     <task id="LOCAL-00083" summary="update">
       <created>1463185239830</created>
@@ -660,7 +653,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463224177901</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="update">
+      <created>1463224446618</created>
+      <option name="number" value="00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1463224446618</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1074,8 +1073,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17592593">
-          <caret line="189" column="32" selection-start-line="189" selection-start-column="32" selection-end-line="189" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.39399293">
+          <caret line="195" column="29" selection-start-line="195" selection-start-column="29" selection-end-line="195" selection-end-column="29" />
           <folding />
         </state>
       </provider>

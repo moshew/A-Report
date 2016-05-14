@@ -193,7 +193,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
 */
         for (i = 0; i < 3; i++) {
-            for (j = 0; j < 0; j++) {
+            for (j = 0; j < 1; j++) {
                 try {
                     var phone = contacts[i].phoneNumbers[j].value;
                     phone = phone.replace(/\+972/g, "0");
