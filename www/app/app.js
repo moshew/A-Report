@@ -188,8 +188,12 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
 
     var test2 = new Array();
     navigator.contacts.find(fields, function (contacts) {
+/*
         for (i = 0; i < contacts.length; i++) {
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
+*/
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 0; j++) {
                 try {
                     var phone = contacts[i].phoneNumbers[j].value;
                     phone = phone.replace(/\+972/g, "0");
@@ -201,7 +205,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
         }
         $scope.test22 = test2;
         dataShare.setContacts(test2);
-        //$scope.$apply();
+        $scope.$apply();
     }, function (contactError) {
     }, options);
 
