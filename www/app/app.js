@@ -13,9 +13,11 @@ document.addEventListener('deviceready', function() {
 // also include ngRoute for all our routing needs
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
 
+/*
 app.run(function() {
     FastClick.attach(document.body);
  });
+*/
 
 // configure our routes
 app.config(function ($routeProvider) {
