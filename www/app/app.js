@@ -14,7 +14,7 @@ document.addEventListener('deviceready', function() {
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
 
 app.run(function() {
-    //FastClick.attach(document.body);
+    FastClick.attach(document.body);
  });
 
 // configure our routes
