@@ -15,7 +15,7 @@ function onSuccess(contacts) {
     catch (err) {
 
     }
-    document.getElementById('test11').innerHTML = JSON.stringify(contacts, null, 4);
+    document.getElementById('test11').innerHTML = JSON.stringify(test1, null, 4);
 };
 //
 function onError(contactError) {
