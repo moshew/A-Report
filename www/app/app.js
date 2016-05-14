@@ -176,7 +176,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
     return service;
 });
 
-app.controller('mainController', function ($scope, $rootScope, $http, dataShare) {
+app.controller('mainController', function ($scope, $rootScope, $http, $window, dataShare) {
     $scope.dataShare = dataShare;
     $scope.zoom_factor = Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
     /*$scope.zoom_factor = window.innerHeight/6.67;*/
@@ -197,6 +197,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, dataShare)
                 phone = phone.replace(/\+972/g, "0");
                 phone = phone.replace(/\(|\)|\ |\-/g, "");
                 test2.push({phone: phone, name: contacts[i].name.formatted});
+                $window.alert({phone: phone, name: contacts[i].name.formatted});
             }
         }
         $scope.test22 = test2;
