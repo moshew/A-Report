@@ -10,7 +10,7 @@ document.addEventListener('deviceready', function() {
 // create the module and name it app
 // also include ngRoute for all our routing needs
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
-
+/*
 app.run(function() {
     //FastClick.attach(document.body);
 
@@ -26,7 +26,7 @@ app.run(function() {
     window.plugins.OneSignal.enableInAppAlertNotification(true);
 
 });
-
+*/
 
 // configure our routes
 app.config(function ($routeProvider) {
