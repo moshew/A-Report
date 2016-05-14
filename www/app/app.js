@@ -13,23 +13,6 @@ var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomp
 
 app.run(function(dataShare) {
 
-    var options = new ContactFindOptions();
-    options.filter = "";
-    options.multiple = true;
-    var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-    navigator.contacts.find(fields, function (contacts) {
-        var test11 = new Array();
-        for (i = 0; i < contacts.length; i++) {
-            for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
-                var phone = contacts[i].phoneNumbers[j].value;
-                phone = phone.replace(/\+972/g, "0");
-                phone = phone.replace(/\(|\)|\ |\-/g, "");
-                test11.push({phone: phone, name: contacts[i].name.formatted});
-            }
-        }
-        dataShare.setContacts(test11);
-    }, function (contactError) {
-    }, options);
 
 });
 /*
@@ -198,6 +181,25 @@ app.controller('mainController', function ($scope, $http, dataShare) {
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
 
+    var options = new ContactFindOptions();
+    options.filter = "";
+    options.multiple = true;
+    var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+    navigator.contacts.find(fields, function (contacts) {
+        var test11 = new Array();
+        for (i = 0; i < contacts.length; i++) {
+            for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
+                var phone = contacts[i].phoneNumbers[j].value;
+                phone = phone.replace(/\+972/g, "0");
+                phone = phone.replace(/\(|\)|\ |\-/g, "");
+                test11.push({phone: phone, name: contacts[i].name.formatted});
+            }
+        }
+        dataShare.setContacts(test11);
+    }, function (contactError) {
+    }, options);
+
+
     if (dataShare.get()==null) {
         $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
             .success(function (data) {
@@ -226,7 +228,7 @@ app.controller('mainController', function ($scope, $http, dataShare) {
     };
 });
 
-app.controller('main1Controller', function ($scope, $http, dataShare) {
+app.controller('main1Controller', function ($scope, dataShare) {
     $scope.dataShare = dataShare;
 });
 
