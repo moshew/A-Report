@@ -193,8 +193,8 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
                 for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
 
                     var phone = contacts[i].phoneNumbers[j].value;
-                    phone = phone.replace(/\+972\ /g, "0");
                     phone = phone.replace(/\(|\)|\ |\-/g, "");
+                    phone = phone.replace(/\+972/g, "0");
                     test2.push({phone: phone, name: contacts[i].name.formatted});
                 }
             } catch (err) {
@@ -204,19 +204,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
         $scope.$apply();
     }, function (contactError) {
     }, options);
-
-    /*
-    $timeout(function () {
-
-        for (i = 0; i < 4; i++) {
-            for (j = 0; j < 3; j++) {
-                test2.push({phone: i, name: j});
-            }
-        }
-        $scope.test22 = test2;
-        dataShare.setContacts(test2);
-    }, 1000);
-    */
 
     if (dataShare.get()==null) {
         $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
