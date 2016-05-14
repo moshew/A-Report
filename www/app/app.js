@@ -1,6 +1,39 @@
 ﻿// script.js
+function onSuccess(contacts) {
+    //alert('Found ' + contacts.length + ' contacts.');
+    var test1= new Array();
+    try {
+        for (i = 0; i < contacts.length; i++) {
+            for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
+                var phone = contacts[i].phoneNumbers[j].value;
+                phone = phone.replace(/\+972/g, "0");
+                phone = phone.replace(/\(|\)|\ |\-/g, "");
+                test1.push({phone: phone, name: contacts[i].name.formatted});
+            }
+        }
+    }
+    catch (err) {
+
+    }
+    document.getElementById('test11').innerHTML = JSON.stringify(test1, null, 4);
+};
+//
+function onError(contactError) {
+    alert('onError!');
+};
+
 document.addEventListener('deviceready', function onDeviceReady() {
-   angular.bootstrap(document, ['app']);
+    angular.bootstrap(document, ['app']);
+
+    // find all contacts with 'me' in any name field
+    var options      = new ContactFindOptions();
+    options.filter   = "";
+    options.multiple = true;
+    //options.desiredFields = [navigator.contacts.fieldType.id];
+    var fields       = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+    navigator.contacts.find(fields, onSuccess, onError, options);
+
+
 }, false);
 
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
@@ -196,36 +229,6 @@ app.controller('mainController', function ($scope, $http, dataShare) {
 });
 
 app.controller('main1Controller', function ($scope, $http, dataShare) {
-    $scope.dataShare = dataShare;
-
-    var onSuccess = function (contacts) {
-        $scope.test1 = contacts;
-/*
-        try {
-            for (i = 0; i < contacts.length; i++) {
-                for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
-                    var phone = contacts[i].phoneNumbers[j].value;
-                    phone = phone.replace(/\+972/g, "0");
-                    phone = phone.replace(/\(|\)|\ |\-/g, "");
-                    $scope.test1.push({phone: phone, name: contacts[i].name.formatted});
-                }
-            }
-        }
-        catch (err) {
-        }
-*/
-    };
-    var onError = function (contactError) {
-        alert('onError!');
-    };
-
-        // find all contacts with 'me' in any name field
-        var options = new ContactFindOptions();
-        options.filter = "";
-        options.multiple = true;
-        //options.desiredFields = [navigator.contacts.fieldType.id];
-        var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-        navigator.contacts.find(fields, onSuccess, onError, options);
 
 });
 
