@@ -188,7 +188,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
 
     navigator.contacts.find(fields, function (contacts) {
         var test2 = new Array();
-        $windows.alert(contacts.length);
+        $scope.test33 = contacts.length;
 
         for (i = 0; i < contacts.length; i++) {
             try {
