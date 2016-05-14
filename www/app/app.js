@@ -113,8 +113,8 @@ app.factory('dataShare', function ($http, $location, $timeout) {
         this.test1 = data;
     };
     service.getContacts = function () {
-        return "Hello";
-        //return this.test1;
+        //return "Hello";
+        return this.test1;
     };
 
 
@@ -175,7 +175,7 @@ app.factory('dataShare', function ($http, $location, $timeout) {
     return service;
 });
 
-app.controller('mainController', function ($scope, $http, dataShare) {
+app.controller('mainController', function ($scope, $rootScope, $http, dataShare) {
     $scope.dataShare = dataShare;
     $scope.zoom_factor = Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
     /*$scope.zoom_factor = window.innerHeight/6.67;*/
@@ -199,6 +199,7 @@ app.controller('mainController', function ($scope, $http, dataShare) {
         dataShare.setContacts(test11);
     }, function (contactError) {
     }, options);
+    $rootScope.$apply();
 
 
     if (dataShare.get()==null) {
