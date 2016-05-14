@@ -182,22 +182,25 @@ app.controller('mainController', function ($scope, $rootScope, $http, dataShare)
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
 
+    $scope.test22 = null;
+
     var options = new ContactFindOptions();
     options.filter = "";
     options.multiple = true;
     var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
     navigator.contacts.find(fields, function (contacts) {
-        $scope.test22 = new Array();
+        var test2 = new Array();
         for (i = 0; i < contacts.length; i++) {
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
                 var phone = contacts[i].phoneNumbers[j].value;
                 phone = phone.replace(/\+972/g, "0");
                 phone = phone.replace(/\(|\)|\ |\-/g, "");
-                $scope.test22.push({phone: phone, name: contacts[i].name.formatted});
+                test2.push({phone: phone, name: contacts[i].name.formatted});
             }
         }
-        dataShare.setContacts($scope.test22);
-        $rootScope.$apply();
+        $scope.test22 = test2;
+        dataShare.setContacts(test2);
+        $scope.$apply();
     }, function (contactError) {
     }, options);
 
