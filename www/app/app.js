@@ -189,17 +189,18 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, d
     options.filter = "";
     options.multiple = true;
     var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+
+    var test2 = new Array();
     navigator.contacts.find(fields, function (contacts) {
-        var test2 = new Array();
         for (i = 0; i < contacts.length; i++) {
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
                 var phone = contacts[i].phoneNumbers[j].value;
                 phone = phone.replace(/\+972/g, "0");
                 phone = phone.replace(/\(|\)|\ |\-/g, "");
                 test2.push({phone: phone, name: contacts[i].name.formatted});
-                $window.alert({phone: phone, name: contacts[i].name.formatted});
             }
         }
+        $window.alert(test2[0]);
         $scope.test22 = test2;
         dataShare.setContacts(test2);
         $scope.$apply();

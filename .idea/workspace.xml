@@ -54,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.7208481">
-              <caret line="199" column="80" selection-start-line="199" selection-start-column="80" selection-end-line="199" selection-end-column="80" />
+              <caret line="202" column="32" selection-start-line="202" selection-start-column="32" selection-end-line="202" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -362,12 +362,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00077" summary="update">
-      <created>1463181887405</created>
-      <option name="number" value="00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1463181887405</updated>
-    </task>
     <task id="LOCAL-00078" summary="update">
       <created>1463181980366</created>
       <option name="number" value="00078" />
@@ -656,7 +650,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463222751241</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="update">
+      <created>1463222896432</created>
+      <option name="number" value="00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1463222896432</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1073,7 +1073,7 @@
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7208481">
-          <caret line="199" column="80" selection-start-line="199" selection-start-column="80" selection-end-line="199" selection-end-column="80" />
+          <caret line="202" column="32" selection-start-line="202" selection-start-column="32" selection-end-line="202" selection-end-column="32" />
           <folding />
         </state>
       </provider>
