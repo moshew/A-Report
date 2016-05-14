@@ -107,7 +107,6 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
 
     service.setContacts = function (data) {
         this.test1 = data;
-        $window.alert(data);
     };
     service.getContacts = function () {
         //return "Hello";
@@ -186,8 +185,9 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
     options.multiple = true;
     var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
 
-    var test2 = new Array();
+
     navigator.contacts.find(fields, function (contacts) {
+        var test2 = new Array();
 /*
         for (i = 0; i < contacts.length; i++) {
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
@@ -203,7 +203,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
                 }
             }
         }
-        $scope.test22 = test2;
         dataShare.setContacts(test2);
         $scope.$apply();
     }, function (contactError) {
