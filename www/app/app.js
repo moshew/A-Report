@@ -219,7 +219,6 @@ app.controller('main1Controller', function ($scope, $http, dataShare) {
         alert('onError!');
     };
 
-    if (window.cordova) {
         // find all contacts with 'me' in any name field
         var options = new ContactFindOptions();
         options.filter = "";
@@ -227,7 +226,6 @@ app.controller('main1Controller', function ($scope, $http, dataShare) {
         //options.desiredFields = [navigator.contacts.fieldType.id];
         var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
         navigator.contacts.find(fields, onSuccess, onError, options);
-    }
 
 });
 
