@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="update">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/css/ng-mobile.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/scripts/ng-mobile.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/app/fastclick.js" afterPath="" />
+    <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/report.html" afterPath="$PROJECT_DIR$/www/pages/report.html" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,7 +62,7 @@
       <file leaf-file-name="ng-mobile.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/scripts/ng-mobile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4147541">
+            <state vertical-scroll-proportion="0.8360656">
               <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
               <folding />
             </state>
@@ -401,12 +394,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00110" summary="update">
-      <created>1463218535494</created>
-      <option name="number" value="00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1463218535494</updated>
-    </task>
     <task id="LOCAL-00111" summary="update">
       <created>1463218783696</created>
       <option name="number" value="00111" />
@@ -695,7 +682,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463257776975</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="update">
+      <created>1463258889300</created>
+      <option name="number" value="00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1463258889300</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1125,7 +1118,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/scripts/ng-mobile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4147541">
+        <state vertical-scroll-proportion="0.8360656">
           <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
           <folding />
         </state>
