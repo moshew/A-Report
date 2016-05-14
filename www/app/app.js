@@ -33,8 +33,8 @@ app.config(function ($routeProvider) {
     $routeProvider
 
         .when('/', {
-            templateUrl: 'pages/home.html',
-            controller: 'mainController'
+            templateUrl: 'pages/home1.html',
+            controller: 'main1Controller'
         })
 
         .when('/login', {
@@ -48,8 +48,8 @@ app.config(function ($routeProvider) {
         })
 
         .when('/report', {
-            templateUrl: 'pages/home1.html',
-            controller: 'main1Controller'
+            templateUrl: 'pages/report.html',
+            controller: 'statusController'
         })
 
         .when('/statusList', {
