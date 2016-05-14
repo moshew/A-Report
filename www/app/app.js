@@ -1,44 +1,11 @@
 ﻿// script.js
-function onSuccess(contacts) {
-    //alert('Found ' + contacts.length + ' contacts.');
-    $rootScope.test1= new Array();
-    try {
-        for (i = 0; i < contacts.length; i++) {
-            for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
-                var phone = contacts[i].phoneNumbers[j].value;
-                phone = phone.replace(/\+972/g, "0");
-                phone = phone.replace(/\(|\)|\ |\-/g, "");
-                $rootScope.test1.push({phone: phone, name: contacts[i].name.formatted});
-            }
-        }
-    }
-    catch (err) {
-
-    }
-    //document.getElementById('test11').innerHTML = JSON.stringify(test1, null, 4);
-};
-//
-function onError(contactError) {
-    alert('onError!');
-};
-
-document.addEventListener("deviceready", onDeviceReady, false);
-//
-function onDeviceReady() {
-    // find all contacts with 'me' in any name field
-    var options = new ContactFindOptions();
-    options.filter = "";
-    options.multiple = true;
-    //options.desiredFields = [navigator.contacts.fieldType.id];
-    var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-    navigator.contacts.find(fields, onSuccess, onError, options);
-
-    angular.bootstrap(document, ['app']);
-};
-
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 var domain = 'http://a-report.co.il/';
 moment.locale('he');
+
+document.addEventListener('deviceready', function onDeviceReady() {
+    angular.bootstrap(document, ['app']);
+}, false);
 
 // create the module and name it app
 // also include ngRoute for all our routing needs
@@ -230,13 +197,29 @@ app.controller('mainController', function ($scope, $http, dataShare) {
 
 app.controller('main1Controller', function ($scope, $http, dataShare) {
 
-    $scope.alertDeviceInfo = function() {
-        $scope.test2 = ('Device Platform: ' + device.platform + '\n'
-        + 'Device Version: ' + device.version + '\n' + 'Device Model: '
-        + device.model + '\n' + 'Device UUID: ' + device.uuid + '\n');
-    };
-
-    $scope.alertDeviceInfo();
+    var options = new ContactFindOptions();
+    options.filter = "";
+    options.multiple = true;
+    //options.desiredFields = [navigator.contacts.fieldType.id];
+    var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+    navigator.contacts.find(fields, function(contacts) {
+        //alert('Found ' + contacts.length + ' contacts.');
+        $scope.test1= new Array();
+        try {
+            for (i = 0; i < contacts.length; i++) {
+                for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
+                    var phone = contacts[i].phoneNumbers[j].value;
+                    phone = phone.replace(/\+972/g, "0");
+                    phone = phone.replace(/\(|\)|\ |\-/g, "");
+                    $scope.test1.push({phone: phone, name: contacts[i].name.formatted});
+                }
+            }
+        }
+        catch (err) {
+        }
+        //document.getElementById('test11').innerHTML = JSON.stringify(test1, null, 4);
+    }, function(contactError) {
+    }, options);
 });
 
 app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
