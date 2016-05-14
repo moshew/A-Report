@@ -9,7 +9,7 @@ document.addEventListener('deviceready', function() {
 
 // create the module and name it app
 // also include ngRoute for all our routing needs
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
+var app = angular.module('app', ['ng-fastclick', 'ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
 
 /*
 app.run(function() {
@@ -91,7 +91,6 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
     var pagePromise = null;
     service.data = null;
     service.settings = false;
-    service.test1 = null;
 
     service.set = function (data) {
         this.data = data;
@@ -104,15 +103,6 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
     service.getSettings = function () {
         return this.settings;
     };
-
-    service.setContacts = function (data) {
-        this.test1 = data;
-    };
-    service.getContacts = function () {
-        //return "Hello";
-        return this.test1;
-    };
-
 
     service.changePage = function (data, path) {
         this.mainPage = false;
@@ -178,33 +168,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
 
-    var options = new ContactFindOptions();
-    options.filter = "";
-    options.multiple = true;
-    var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-
-
-    navigator.contacts.find(fields, function (contacts) {
-        var test2 = new Array();
-        for (i = 0; i < contacts.length; i++) {
-            try {
-                for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
-
-                    var phone = contacts[i].phoneNumbers[j].value;
-                    phone = phone.replace(/\+972/g, '0');
-                    phone = phone.replace(/\s/g, '');
-                    phone = phone.replace(/\(|\)|\-/g, '');
-                    phone = phone.split('-').join('');
-                    test2.push({phone: phone, name: contacts[i].name.formatted});
-                }
-            } catch (err) {
-            }
-        }
-        dataShare.setContacts(test2);
-        $scope.$apply();
-    }, function (contactError) {
-    }, options);
-
     if (dataShare.get()==null) {
         $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
             .success(function (data) {
@@ -231,10 +194,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
                 dataShare.changePage(data, '');
             });
     };
-});
-
-app.controller('main1Controller', function ($scope, dataShare) {
-    $scope.dataShare = dataShare;
 });
 
 app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
