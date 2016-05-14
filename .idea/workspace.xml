@@ -4,6 +4,7 @@
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,21 +49,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="8.884615">
-              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.717608">
+              <caret line="40" column="83" selection-start-line="40" selection-start-column="83" selection-end-line="40" selection-end-column="83" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4124204">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -154,10 +155,10 @@
         <option value="$USER_HOME$/Downloads/notifications.php" />
         <option value="$USER_HOME$/Downloads/OneSignalSDKFiles/manifest.json" />
         <option value="$PROJECT_DIR$/www/app/index.js" />
-        <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/pages/home1.html" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/app/app.js" />
+        <option value="$PROJECT_DIR$/www/index.html" />
       </list>
     </option>
   </component>
@@ -357,12 +358,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00050" summary="update">
-      <created>1462023400509</created>
-      <option name="number" value="00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1462023400509</updated>
     </task>
     <task id="LOCAL-00051" summary="update">
       <created>1462023465919</created>
@@ -652,14 +647,20 @@
       <option name="project" value="LOCAL" />
       <updated>1463214366854</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="update">
+      <created>1463214688722</created>
+      <option name="number" value="00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1463214688722</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31012657" sideWeight="0.49166667" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31012657" sideWeight="0.5083333" order="10" side_tool="true" content_ui="tabs" />
@@ -1024,14 +1025,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="8.884615">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/home1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1050,11 +1043,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4124204">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.717608">
+          <caret line="40" column="83" selection-start-line="40" selection-start-column="83" selection-end-line="40" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
