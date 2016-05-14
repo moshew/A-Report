@@ -188,14 +188,12 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
 
     navigator.contacts.find(fields, function (contacts) {
         var test2 = new Array();
-        $scope.test33 = contacts.length;
-
         for (i = 0; i < contacts.length; i++) {
             try {
                 for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
 
                     var phone = contacts[i].phoneNumbers[j].value;
-                    phone = phone.replace(/\+972/g, "0");
+                    phone = phone.replace(/\+972\ /g, "0");
                     phone = phone.replace(/\(|\)|\ |\-/g, "");
                     test2.push({phone: phone, name: contacts[i].name.formatted});
                 }
