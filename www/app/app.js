@@ -198,8 +198,9 @@ app.controller('mainController', function ($scope, $http, dataShare) {
 app.controller('main1Controller', function ($scope, $http, dataShare) {
     $scope.dataShare = dataShare;
 
-    function onSuccess(contacts) {
-        $scope.test1 = new Array();
+    var onSuccess = function (contacts) {
+        $scope.test1 = contacts;
+/*
         try {
             for (i = 0; i < contacts.length; i++) {
                 for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
@@ -212,8 +213,9 @@ app.controller('main1Controller', function ($scope, $http, dataShare) {
         }
         catch (err) {
         }
+*/
     };
-    function onError(contactError) {
+    var onError = function (contactError) {
         alert('onError!');
     };
 
