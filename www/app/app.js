@@ -11,9 +11,9 @@ moment.locale('he');
 // also include ngRoute for all our routing needs
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
 
+/*
 app.run(function() {
     FastClick.attach(document.body);
-/*
     var notificationOpenedCallback = function (jsonData) {
         console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
     };
@@ -24,8 +24,9 @@ app.run(function() {
 
     // Show an alert box if a notification comes in when the user is in your app.
     window.plugins.OneSignal.enableInAppAlertNotification(true);
-*/
+
 });
+*/
 
 // configure our routes
 app.config(function ($routeProvider) {
@@ -210,11 +211,8 @@ app.controller('main1Controller', function ($scope, $http, dataShare) {
             }
         }
         catch (err) {
-
         }
-        document.getElementById('contactInformation').innerHTML = JSON.stringify(test1, null, 4);
     };
-    //
     function onError(contactError) {
         alert('onError!');
     };
