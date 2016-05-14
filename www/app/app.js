@@ -236,7 +236,7 @@ app.controller('main1Controller', function ($scope, $http, dataShare) {
         + device.model + '\n' + 'Device UUID: ' + device.uuid + '\n');
     };
 
-    alertDeviceInfo();
+    $scope.alertDeviceInfo();
 });
 
 app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
