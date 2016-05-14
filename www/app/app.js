@@ -178,8 +178,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
 
-    $scope.test22 = null;
-
     var options = new ContactFindOptions();
     options.filter = "";
     options.multiple = true;
@@ -193,8 +191,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
                 for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
 
                     var phone = contacts[i].phoneNumbers[j].value;
-                    phone = phone.split(' ').join('');
-                    phone = phone.replace(/\(|\)|\-/g, '');
+                    phone=phone.replace(/[^a-zA-Z0-9*?:.+\-^"_ ]+/g,'');
                     phone = phone.replace(/\+972/g, '0');
                     test2.push({phone: phone, name: contacts[i].name.formatted});
                 }
