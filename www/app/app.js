@@ -188,12 +188,9 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
 
     navigator.contacts.find(fields, function (contacts) {
         var test2 = new Array();
-/*
+
         for (i = 0; i < contacts.length; i++) {
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
-*/
-        for (i = 0; i < 3; i++) {
-            for (j = 0; j < 1; j++) {
                 try {
                     var phone = contacts[i].phoneNumbers[j].value;
                     phone = phone.replace(/\+972/g, "0");
