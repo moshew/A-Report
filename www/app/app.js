@@ -227,8 +227,7 @@ app.controller('mainController', function ($scope, $http, dataShare) {
 });
 
 app.controller('main1Controller', function ($scope, $http, dataShare) {
-
-    $
+    $scope.dataShare = dataShare;
 });
 
 app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
