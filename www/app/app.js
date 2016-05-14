@@ -1,21 +1,21 @@
 ﻿// script.js
 function onSuccess(contacts) {
     //alert('Found ' + contacts.length + ' contacts.');
-    var test1= new Array();
+    $scope.test1= new Array();
     try {
         for (i = 0; i < contacts.length; i++) {
             for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
                 var phone = contacts[i].phoneNumbers[j].value;
                 phone = phone.replace(/\+972/g, "0");
                 phone = phone.replace(/\(|\)|\ |\-/g, "");
-                test1.push({phone: phone, name: contacts[i].name.formatted});
+                $scope.test1.push({phone: phone, name: contacts[i].name.formatted});
             }
         }
     }
     catch (err) {
 
     }
-    document.getElementById('test11').innerHTML = JSON.stringify(test1, null, 4);
+    //document.getElementById('test11').innerHTML = JSON.stringify(test1, null, 4);
 };
 //
 function onError(contactError) {
