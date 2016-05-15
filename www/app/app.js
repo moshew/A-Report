@@ -228,8 +228,7 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
                         {googleProjectNumber: "682594015864"},
                         dataShare.notificationOpenedCallback);
                     window.plugins.OneSignal.enableInAppAlertNotification(true);
-                    /*window.plugins.OneSignal.sendTag("phone", $scope.value);*/
-                    window.plugins.OneSignal.sendTag("phone", "7665");
+                    window.plugins.OneSignal.sendTag("phone", $scope.value);
                 }
                 catch (err) {}
                 dataShare.setLoading(false);

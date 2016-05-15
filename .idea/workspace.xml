@@ -62,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.6232877">
-              <caret line="231" column="67" selection-start-line="231" selection-start-column="67" selection-end-line="231" selection-end-column="67" />
+              <caret line="231" column="0" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -405,12 +405,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00115" summary="update">
-      <created>1463219501334</created>
-      <option name="number" value="00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1463219501334</updated>
-    </task>
     <task id="LOCAL-00116" summary="update">
       <created>1463219508864</created>
       <option name="number" value="00116" />
@@ -699,7 +693,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463261670716</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="update">
+      <created>1463288818718</created>
+      <option name="number" value="00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1463288818718</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1129,7 +1129,7 @@
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6232877">
-          <caret line="231" column="67" selection-start-line="231" selection-start-column="67" selection-end-line="231" selection-end-column="67" />
+          <caret line="231" column="0" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
