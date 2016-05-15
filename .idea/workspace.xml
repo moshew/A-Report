@@ -28,21 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5788531">
+            <state vertical-scroll-proportion="-6.2115383">
               <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="statusList.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="statusList.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/pages/statusList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2692308">
-              <caret line="5" column="48" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.09139785">
+              <caret line="3" column="76" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -51,8 +51,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="379" column="84" selection-start-line="379" selection-start-column="84" selection-end-line="379" selection-end-column="84" />
+            <state vertical-scroll-proportion="-19.23077">
+              <caret line="382" column="9" selection-start-line="382" selection-start-column="9" selection-end-line="382" selection-end-column="9" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -109,8 +109,8 @@
         <option value="$USER_HOME$/Downloads/notifications.php" />
         <option value="$USER_HOME$/Downloads/pre_confirm.php" />
         <option value="$USER_HOME$/Downloads/UnreportedAlert.php" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
       </list>
     </option>
   </component>
@@ -346,12 +346,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00117" summary="update">
-      <created>1463220325900</created>
-      <option name="number" value="00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1463220325901</updated>
     </task>
     <task id="LOCAL-00118" summary="update">
       <created>1463220482505</created>
@@ -641,7 +635,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463288972750</updated>
     </task>
-    <option name="localTasksCounter" value="166" />
+    <task id="LOCAL-00166" summary="update">
+      <created>1463336548114</created>
+      <option name="number" value="00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1463336548114</updated>
+    </task>
+    <option name="localTasksCounter" value="167" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1042,24 +1042,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/statusList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
-          <caret line="5" column="48" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="379" column="84" selection-start-line="379" selection-start-column="84" selection-end-line="379" selection-end-column="84" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/status.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.9615384">
@@ -1070,8 +1052,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5788531">
+        <state vertical-scroll-proportion="-6.2115383">
           <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.23077">
+          <caret line="382" column="9" selection-start-line="382" selection-start-column="9" selection-end-line="382" selection-end-column="9" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/statusList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09139785">
+          <caret line="3" column="76" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="76" />
           <folding />
         </state>
       </provider>

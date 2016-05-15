@@ -374,11 +374,13 @@ app.controller('statusListController', function ($scope, $http, dataShare) {
     }
 
     $scope.addUser = function (user) {
-        $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + dataShare.get().id + '&user=' + user.originalObject.name)
-            .success(function (data) {
-                dataShare.set(data);
-                $scope.$broadcast('angucomplete-alt:clearInput', 'statusList-AddUser');
-            });
+        if (user!=null) {
+            $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + dataShare.get().id + '&user=' + user.originalObject.name)
+                .success(function (data) {
+                    dataShare.set(data);
+                    $scope.$broadcast('angucomplete-alt:clearInput', 'statusList-AddUser');
+                });
+        }
     }
 });
 
