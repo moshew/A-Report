@@ -62,9 +62,6 @@ app.config(function ($routeProvider) {
             templateUrl: 'pages/futureStatus.html',
             controller: 'statusController'
         });
-
-
-
 });
 
 app.config(function ($mdThemingProvider) {
@@ -177,7 +174,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
         $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (data.ver == 1.0) {
+                if (data.ver <= 1.1) {
                     dataShare.changePage(data);
                 } else {
                     $scope.versionUpdate = true;
