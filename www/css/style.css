@@ -205,6 +205,7 @@ div{
     z-index:20;
 }
 
+
 .centered.loginResult
 {
     margin-top: -160px;
@@ -264,7 +265,73 @@ div{
     border-color: #00aeef;
     display: inline-block;
 }
+.report_popup {
+    position:fixed;
+    top:0;
+    bottom: 0;
+    width:100%;
+    background:#234a7d;
+    opacity:0.8;
+    z-index:0;
+    -webkit-transition: linear 0.3s;
+    transition: linear 0.3s;
+}
 
+.report_infoMsg {
+    position: fixed;
+    top: 100px;
+    right: 50%;
+    margin-right: -146px;
+    -webkit-transition: linear 0.4s;
+    transition: linear 0.4s;
+}
+
+.report_infoMsg.ng-hide {
+    top: -230px;
+}
+
+.report_infoInput {
+    position: fixed;
+    top: 215px;
+    right: 50%;
+    margin-right: -112px;
+    width:235px;
+    height: 30px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #2a6496;
+    padding-right: 10px;
+    color: white;
+    font-size: 150%;
+    background: #4b688e;
+    -webkit-transition: linear 0.4s;
+    transition: linear 0.4s;
+}
+.report_infoInput.ng-hide {
+    top: -115px;
+}
+
+.report_infoBtn {
+    position: fixed;
+    top: 250px;
+    right: 50%;
+    margin-right: 20px;
+    border-radius: 5px;
+    padding-top:0px;
+    margin-top:15px;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    background:#ef3a28;
+    font-size: 160%;
+    display: inline-block;
+    -webkit-transition: linear 0.4s;
+    transition: linear 0.4s;
+}
+
+.report_infoBtn.ng-hide {
+    top: -80px;
+}
 
 .status {
     position: absolute;
@@ -290,25 +357,52 @@ div{
     display: inline-block;
 }
 
+.status_savedMsg {
+    position: fixed;
+    bottom: 103px;
+    right: 3px;
+    -webkit-transition: linear 0.4s;
+    transition: linear 0.4s;
+}
+
+.status_savedMsg.ng-hide {
+    bottom: 0px;
+}
+
 .statusList-header {
-    margin-bottom: 3px;
     width:98%;
+    margin-bottom: 10px;
     text-align:center;
     font-size:187.5%;
     background: #4b688e;
-    padding-right:10px;
     display: inline-block;
 }
 
-.statusList-edit {
+.statusList-leftOpt {
     float: left;
-    width:10px;
+    width:85px;
+    height:30px;
+    text-align: left;
     margin-top: 5px;
     margin-left: 10px;
     font-size: 70%;
     color: #00aeef;
 }
 
+.statusList-rightOpt {
+    float: right;
+    width:85px;
+    height:30px;
+    text-align: right;
+    margin-top: 5px;
+    margin-right: 10px;
+    font-size: 70%;
+    color: #00aeef;
+}
+
+.statusList-rightOpt.highlight {
+    color: red;
+}
 .statusList-info {
     text-align:right;
     height:470px;
@@ -329,8 +423,8 @@ div{
 }
 
 .statusList-userImg {
-    display: inline-block;
     margin-left: 10px;
+    display: inline-block;
 }
 
 .statusList-delete
@@ -386,55 +480,28 @@ div{
     color: #fffc0e;
 }
 
-.settings-cb {
-    width:20px;
-    display: inline-block;
-}
-
-.settings-option
-{
-    display: inline-block;
-}
-
-.settings-label {
+.premmisions_user {
     text-align:right;
     margin-right: 4%;
-    font-size:125%;
     padding-bottom:2px;
+    display: inline-block;
 }
 
-.settings-switch {
+.premmisions_switch {
     text-align: left;
     margin-left: 4%;
 }
 
-.settings-label2 {
-    float:right;
-    margin-right: 4%;
-    font-size:125%;
-    padding-bottom:2px;
-}
-
-.settings-next {
-    float: left;
-    margin-left: 4%;
-}
-
-.settings-back {
-    position:absolute;
-    top:-30px;
-    right: 15px;
-}
-
-.switch1 {
+.yesno-switch {
     position: relative;
     float: left;
     line-height: 1.6em;
     text-indent: 4em;
-    margin: 0;
+    margin-top: 5px;
     cursor: pointer;
+    font-size: 65%;
 }
-    .switch1:before, .switch1:after {
+    .yesno-switch:before, .yesno-switch:after {
         position: absolute;
         display: block;
         top: 0;
@@ -447,7 +514,7 @@ div{
         box-shadow: inset 0 0.2em 0 rgba(0, 0, 0, 0.3);
     }
 
-    .switch1:after {
+    .yesno-switch:after {
         width: 1.4em;
         top: 0.1em;
         bottom: 0.1em;
@@ -457,11 +524,11 @@ div{
         box-shadow: inset 0 -0.2em 0 rgba(0, 0, 0, 0.2);
     }
 
-    .switch1.on1:before {
+    .yesno-switch.on:before {
         background-color: #393;
     }
 
-    .switch1.on1:after {
+    .yesno-switch.on:after {
         margin-left: 0.2em;
     }
 

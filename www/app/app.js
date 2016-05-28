@@ -48,6 +48,11 @@ app.config(function ($routeProvider) {
             controller: 'statusListController'
         })
 
+        .when('/permissions', {
+            templateUrl: 'pages/permissions.html',
+            controller: 'permissionsController'
+        })
+
         .when('/futureReport', {
             templateUrl: 'pages/futureReport.html',
             controller: 'statusController'
@@ -75,7 +80,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
     var service = {};
     var pagePromise = null;
     service.data = null;
-    service.settings = false;
+    service.settings = null;
 
     service.set = function (data) {
         this.data = data;
@@ -88,6 +93,10 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
     service.getSettings = function () {
         return this.settings;
     };
+
+    service.setSettings = function(key1, val1) {
+        this.settings[key1] = val1;
+    }
 
     service.changePage = function (data, path) {
         this.mainPage = false;
@@ -251,33 +260,52 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
     };
 });
 
-app.controller('statusController', function ($scope, $http, dataShare) {
+app.controller('statusController', function ($scope, $http, dataShare, $timeout) {
     $scope.dataShare = dataShare;
     $scope.reportPage='main';
-    $scope.reportSent = false;
+    $scope.report_info = '';
+    $scope.info_image = null;
 
     $scope.status_labels = ['נוכח', 'חופש', 'מחלה', 'חו"ל', '\'מחוץ ליח', 'קורס', 'מיוחדת', 'הצהרה', '\'יום ד', 'מחלת ילד', 'לידה', 'אחר'];
     $scope.status_label = $scope.status_labels[dataShare.get().status];
     $scope.myStyle = [null,null,null,null,null,null,null,null,null,null,null,null];
 
+    if ('report' in dataShare.get()) {
+        $timeout(function () {
+            $scope.status_savedMsg = true;
+            $timeout(function () {
+                $scope.status_savedMsg = false;
+            }, 5 * 1000);
+        }, 250);
+    };
 
+    var reportSent = false;
     $scope.report = function (status) {
-        //if (reportSent && status >= -1) return;
-        //else if (reportSent && status == -1) reportSent = true;
-        if ($scope.reportSent) return;
-        $scope.reportSent = true;
+        if (reportSent) return;
+        else reportSent = true;
 
-        if (status>=0) {
-            $scope.myStyle[status] = { 'background-color': '#80be40' };
-        }
+        if (status==null) status=statusSelected;
+        if (status>=0) $scope.myStyle[status] = { 'background-color': '#80be40' };
+
         dataShare.setLoading(true);
-        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + dataShare.get().day + '&oper=' + status)
+        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + dataShare.get().day + '&oper=' + status + '&info='+$scope.report_info)
         .success(function (data) {
             dataShare.setLoading(false);
             //$http.put(domain+'report_notification.php');
             dataShare.changePage(data);
         });
     };
+
+    var statusSelected = null;
+    $scope.report2 = function (status) {
+        $scope.info_image = (status==4)?'report_info':'report_info2';
+        statusSelected = status;
+        $scope.report_infoMsg=true;
+    };
+
+    $scope.keyEvent = function(keyEvent) {
+        if (keyEvent.which === 13) $scope.report();
+    }
 
     $scope.futureReport = function (cancel) {
         if (cancel) future_status = -1;
@@ -360,7 +388,6 @@ app.controller('statusController', function ($scope, $http, dataShare) {
         }
     }
 
-
 });
 
 app.controller('statusListController', function ($scope, $http, dataShare) {
@@ -371,7 +398,7 @@ app.controller('statusListController', function ($scope, $http, dataShare) {
             .success(function (data) {
                 dataShare.set(data);
             });
-    }
+    };
 
     $scope.addUser = function (user) {
         if (user!=null) {
@@ -381,7 +408,29 @@ app.controller('statusListController', function ($scope, $http, dataShare) {
                     $scope.$broadcast('angucomplete-alt:clearInput', 'statusList-AddUser');
                 });
         }
-    }
+    };
+});
+
+app.controller('permissionsController', function ($scope, $http, dataShare) {
+    $scope.dataShare = dataShare;
+    var permissions = {};
+
+    dataShare.setSettings('permission_request', 0);
+
+    $scope.switchPermission = function (user) {
+        user.status = !user.status;
+        if (user.nId in permissions) delete permissions[user.nId];
+        else permissions[user.nId] = user.status;
+    };
+
+    $scope.savePermissions = function () {
+        for (nId in permissions) {
+            $http.jsonp(domain + 'permissions.php?callback=JSON_CALLBACK&op=change&id=' + dataShare.get().id + '&nId=' + nId + '&status=' + permissions[nId])
+                .success(function (data) {
+                });
+        }
+        dataShare.action('statusList', 'notifications');
+    };
 });
 
 angular.module('app').config(function ($mdDateLocaleProvider) {
