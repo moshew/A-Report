@@ -1,0 +1,6 @@
+﻿<div class="report_popup" ng-show="report_infoMsg"></div>
+<div class="report_infoMsg" ng-show="report_infoMsg">
+    <img src="assets/{{info_image}}.png" />
+    <input  class="report_infoInput" ng-show="report_infoMsg" ng-model="report_info" ng-maxlength="100" ng-keypress="keyEvent($event)" dir="rtl" type="text" />
+    <div class="report_infoBtn" ng-show="report_infoMsg" ng-click="InfoPopupCB(report_info)"><img src="assets/continue.png" /></div>
+</div>

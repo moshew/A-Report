@@ -1,8 +1,6 @@
 ﻿// script.js
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
 var domain = 'http://a-report.co.il/';
-moment.locale('he');
-
 /*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
@@ -11,6 +9,7 @@ document.addEventListener('deviceready', function() {
 
 // create the module and name it app
 // also include ngRoute for all our routing needs
+moment.locale("he");
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
 
 /*
@@ -61,6 +60,11 @@ app.config(function ($routeProvider) {
         .when('/futureStatus', {
             templateUrl: 'pages/futureStatus.html',
             controller: 'statusController'
+        })
+
+        .when('/tracking', {
+            templateUrl: 'pages/tracking.html',
+            controller: 'trackingController'
         });
 });
 
@@ -260,8 +264,7 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
 app.controller('statusController', function ($scope, $http, dataShare, $timeout) {
     $scope.dataShare = dataShare;
     $scope.reportPage='main';
-    $scope.report_info = '';
-    $scope.info_image = null;
+    $scope.info_image = 'report_info';
 
     $scope.status_labels = ['נוכח', 'חופש', 'מחלה', 'חו"ל', '\'מחוץ ליח', 'קורס', 'מיוחדת', 'הצהרה', '\'יום ד', 'מחלת ילד', 'לידה', 'אחר'];
     $scope.status_label = $scope.status_labels[dataShare.get().status];
@@ -274,42 +277,58 @@ app.controller('statusController', function ($scope, $http, dataShare, $timeout)
                 $scope.status_savedMsg = false;
             }, 5 * 1000);
         }, 250);
+    }
+
+    $scope.keyEvent = function(keyEvent) {
+        if (keyEvent.which === 13) $scope.InfoPopupCB();
+    };
+
+    var isFuture = false;
+    var statusSelected = 1;
+    $scope.report = function (status) {
+        if (status==null) isFuture=true;
+        else statusSelected = status;
+
+        if (statusSelected==4 || statusSelected==11) {
+            $scope.info_image = (statusSelected == 4) ? 'report_info' : 'report_info2';
+            $scope.report_infoMsg = true;
+        }
+        else if (isFuture) futureReport(statusSelected);
+        else dayReport(statusSelected);
+    };
+    $scope.cancelReport = function(future) {
+        if (future) futureReport(-1);
+        else dayReport(-1);
+    }
+
+    $scope.InfoPopupCB = function (info) {
+        if (isFuture) futureReport(statusSelected, info);
+        else dayReport(statusSelected, info);
     };
 
     var reportSent = false;
-    $scope.report = function (status) {
+    var dayReport = function (status, info) {
         if (reportSent) return;
         else reportSent = true;
 
-        if (status==null) status=statusSelected;
+        if (info == null) info='';
         if (status>=0) $scope.myStyle[status] = { 'background-color': '#80be40' };
 
         dataShare.setLoading(true);
-        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + dataShare.get().day + '&oper=' + status + '&info='+$scope.report_info)
-        .success(function (data) {
-            dataShare.setLoading(false);
-            //$http.put(domain+'report_notification.php');
-            dataShare.changePage(data);
-        });
+        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + dataShare.get().day + '&oper=' + status + '&info='+info)
+            .success(function (data) {
+                dataShare.setLoading(false);
+                //$http.put(domain+'report_notification.php');
+                dataShare.changePage(data);
+            });
     };
 
-    var statusSelected = null;
-    $scope.report2 = function (status) {
-        $scope.info_image = (status==4)?'report_info':'report_info2';
-        statusSelected = status;
-        $scope.report_infoMsg=true;
-    };
-
-    $scope.keyEvent = function(keyEvent) {
-        if (keyEvent.which === 13) $scope.report();
-    }
-
-    $scope.futureReport = function (cancel) {
-        if (cancel) future_status = -1;
+    var futureReport = function (status, info) {
+        if (info == null) info='';
         var start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
         var end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
         dataShare.setLoading(true);
-        $http.jsonp(domain+'future_report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + future_status)
+        $http.jsonp(domain+'future_report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + status + '&info='+info)
             .success(function (data) {
                 dataShare.setLoading(false);
                 //$http.put(domain+'report_notification.php');
@@ -329,12 +348,11 @@ app.controller('statusController', function ($scope, $http, dataShare, $timeout)
             $scope.report_dates.end_day = $scope.report_dates.start_day;
     };
 
-    var future_status = 1;
     $scope.report2BtnStyle = [null, { 'background-color': '#80be40' }, null, null, null, null, null, null, null, null, null, null];
     $scope.changeFutureStatus = function (status) {
-        $scope.report2BtnStyle[future_status] = { 'background-color': '#234a7d' };
+        $scope.report2BtnStyle[statusSelected] = { 'background-color': '#234a7d' };
         $scope.report2BtnStyle[status] = { 'background-color': '#80be40' };
-        future_status = status;
+        statusSelected = status;
     };
 
     $scope.highlightDays = [{date: moment($scope.report_dates.start_day), css: 'picker-selected', selectable: true,title: ''}];
@@ -427,6 +445,38 @@ app.controller('permissionsController', function ($scope, $http, dataShare) {
                 });
         }
         dataShare.action('statusList', 'notifications');
+    };
+});
+
+app.controller('trackingController', function ($scope, $http, $timeout, dataShare) {
+    $scope.dataShare = dataShare;
+    var wp = null;
+
+    var eventsColors = ['green', 'purple', 'red', 'purple', 'green', 'green', 'purple', 'red', 'red', 'red', 'purple', 'orange'];
+    var historyCallback = function (data) {
+        $scope.highlightDays = [];
+        for (var i = 0; i < data.reported.length; i++) {
+            $scope.highlightDays.push({
+                date: data.reported[i].day,
+                css: eventsColors[data.reported[i].status],
+                selectable: false,
+                title: ''
+            });
+        }
+
+    };
+
+    $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id).success(historyCallback);
+
+    $scope.logMonthChanged = function (newMonth, oldMonth) {
+        $timeout.cancel(wp);
+        wp = $timeout(function () {
+            $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&month=' + newMonth.format('YYYY-MM')).success(historyCallback);
+        }, 350);
+    };
+
+    $scope.daySelected = function (event, date) {
+        event.preventDefault(); // prevent the select to happen
     };
 });
 
