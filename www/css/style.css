@@ -93,8 +93,8 @@ div{
     height:100px;
     position:absolute;
     bottom:0;
-    left:0px;
-    z-index: 19px;
+    left:0;
+    z-index: 19;
 }
 
 .footer-option {
@@ -373,9 +373,10 @@ div{
 
 .statusList-header {
     width:98%;
+    height:40px;
     margin-bottom: 10px;
     text-align:center;
-    font-size:187.5%;
+    font-size:185%;
     background: #4b688e;
     display: inline-block;
 }
