@@ -10,7 +10,7 @@
 <div class="report2-btn" style="color:#707070;font-size:14px;border-color: #707070;"><img src="assets/report/12.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[11]" ng-click="changeFutureStatus(11)"><img src="assets/report/11.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[10]"ng-click="changeFutureStatus(10)"><img src="assets/report/10.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[9]" ng-click="changeFutureStatus(9)"><img src="assets/report/9.png" /></div><br />
 <div class="report2-save"><div class="report2-save-btn" ng-click="report()"><img src="assets/save.png" /></div></div>
 </div>
-<div ng-include="'pages/calendar.html'"></div>
+<div ng-if="showCalander" ng-include="'pages/calendar.html'"></div>
 <div ng-include="'pages/reportInfo.html'"></div>
 <div ng-include="'pages/footer1.html'"></div>
 <div ng-include="'pages/loader.html'"></div>
