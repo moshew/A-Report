@@ -1,4 +1,4 @@
-﻿<div dir="rtl" class="tracking-info" ng-class="{green:test1=='green', red:test1=='red', purple: test1=='purple', orange:test1=='orange'}" ng-style="{top: yinfo, left: xinfo, zoom:100/dataShare.getZoomFactor()}" ng-show="infoShow" ng-click="closeInfo()">
+﻿<div dir="rtl" class="tracking-info" ng-class="{green:test1=='green', red:test1=='red', purple: test1=='purple', orange:test1=='orange', regular: test1=='regular'}" ng-style="{top: yinfo, left: xinfo, zoom:100/dataShare.getZoomFactor()}" ng-show="infoShow" ng-click="closeInfo()">
     <img class="tracking-statusImage" ng-show="infoShow" src="assets/report/t{{dayInfo.status}}.png" />
     <div class="tracking-statusInfo" ng-show="infoShow">{{(dayInfo.info!='')?dayInfo.info:'אין הערות'}}</div>
 </div>

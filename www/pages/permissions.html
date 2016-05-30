@@ -1,6 +1,6 @@
 ﻿<div ng-cloak class="statusList-header">הרשאות
-    <div class="statusList-leftOpt" ng-click="savePermissions()">שמור וסגור</div>
-    <div class="statusList-rightOpt"></div>
+    <div class="statusList-leftOpt" ng-click="closePermissions(true)">אשר</div>
+    <div class="statusList-rightOpt"ng-click="closePermissions(false)">בטל</div>
 </div><br />
     <div class="statusList-info">
         <div class="statusList-users" dir="rtl" ng-repeat="user in dataShare.get().permissions">

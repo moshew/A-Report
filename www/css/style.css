@@ -70,7 +70,7 @@ div{
     position: absolute;
     background: #234a7d;
     opacity: 0.9;
-    z-index:22;
+    z-index:0;
 }
 
 .loader-image
@@ -297,7 +297,7 @@ div{
     right: 50%;
     margin-right: -112px;
     width:235px;
-    height: 30px;
+    height: 35px;
     border-radius: 5px;
     border-width: 1px;
     border-color: #2a6496;
@@ -569,7 +569,7 @@ div{
     margin: 4px;
     margin-top:15px;
     width: 100px;
-    height: 35px;
+    height: 40px;
     text-align: center;
     background:#4b688e;
     font-size: 160%;
@@ -607,8 +607,8 @@ div{
 }
 
 .report2-calander_header {
-    margin-top:20%;
-    margin-bottom: 15px;
+    margin-top:25px;
+    margin-bottom: 20px;
     width:80%;
     text-align:center;
     font-size:187.5%;
@@ -626,13 +626,14 @@ div{
 }
 
 .report2-calander_btn {
-    border-radius: 5px;
-    padding-top:0px;
-    margin: 4px;
-    margin-top:15px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -50px;
     width: 100px;
     height: 35px;
     text-align: center;
+    border-radius: 5px;
     background:#4b688e;
     font-size: 160%;
     display: inline-block;
@@ -734,3 +735,4 @@ div{
 .purple{ background: #aa11ff; }
 .red{ background: #ff0000; }
 .orange{ background: #ff8d00; }
+.regular { background-color: #31597d; }

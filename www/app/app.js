@@ -441,11 +441,11 @@ app.controller('permissionsController', function ($scope, $http, dataShare) {
         else permissions[user.nId] = user.status;
     };
 
-    $scope.savePermissions = function () {
-        for (nId in permissions) {
-            $http.jsonp(domain + 'permissions.php?callback=JSON_CALLBACK&op=change&id=' + dataShare.get().id + '&nId=' + nId + '&status=' + permissions[nId])
-                .success(function (data) {
-                });
+    $scope.closePermissions = function (save) {
+        if (save) {
+            for (nId in permissions) {
+                $http.jsonp(domain + 'permissions.php?callback=JSON_CALLBACK&op=change&id=' + dataShare.get().id + '&nId=' + nId + '&status=' + permissions[nId]).success(function (data) { });
+            }
         }
         dataShare.action('statusList', 'notifications');
     };
@@ -455,7 +455,7 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
     $scope.dataShare = dataShare;
     var wp = null;
 
-    var eventsColors = ['green', 'purple', 'red', 'purple', 'green', 'green', 'purple', 'red', 'red', 'red', 'purple', 'orange'];
+    var eventsColors = ['green', 'purple', 'red', 'purple', 'green', 'green', 'purple', 'red', 'red', 'red', 'purple', 'orange', 'regular'];
     var historyCallback = function (data) {
         $scope.highlightDays = [];
         for (var i = 0; i < data.reported.length; i++) {
