@@ -439,7 +439,7 @@ app.controller('permissionsController', function ($scope, $http, $timeout, dataS
     $scope.switchPermission = function (user) {
         if (switchEnable) {
             switchEnable = false;
-            $timeout(function () { switchEnable = true; }, 350);
+            $timeout(function () { switchEnable = true; }, 500);
             user.status = !user.status;
             if (user.nId in permissions) delete permissions[user.nId];
             else permissions[user.nId] = user.status;

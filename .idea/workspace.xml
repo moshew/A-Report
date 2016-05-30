@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
     </list>
     <ignored path="A-Report.iws" />
@@ -54,7 +53,7 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5359589">
+            <state vertical-scroll-proportion="-0.16267124">
               <caret line="441" column="61" selection-start-line="441" selection-start-column="61" selection-end-line="441" selection-end-column="61" />
               <folding />
             </state>
@@ -417,12 +416,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00132" summary="update">
-      <created>1463224469128</created>
-      <option name="number" value="00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1463224469128</updated>
-    </task>
     <task id="LOCAL-00133" summary="update">
       <created>1463224579959</created>
       <option name="number" value="00133" />
@@ -711,7 +704,13 @@
       <option name="project" value="LOCAL" />
       <updated>1464620166636</updated>
     </task>
-    <option name="localTasksCounter" value="181" />
+    <task id="LOCAL-00181" summary="update">
+      <created>1464627612340</created>
+      <option name="number" value="00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1464627612341</updated>
+    </task>
+    <option name="localTasksCounter" value="182" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1118,7 +1117,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5359589">
+        <state vertical-scroll-proportion="-0.16267124">
           <caret line="441" column="61" selection-start-line="441" selection-start-column="61" selection-end-line="441" selection-end-column="61" />
           <folding />
         </state>
