@@ -429,16 +429,21 @@ app.controller('statusListController', function ($scope, $http, dataShare) {
     };
 });
 
-app.controller('permissionsController', function ($scope, $http, dataShare) {
+app.controller('permissionsController', function ($scope, $http, $timeout, dataShare) {
     $scope.dataShare = dataShare;
+    var switchEnable = true;
     var permissions = {};
 
     dataShare.setSettings('permission_request', 0);
 
     $scope.switchPermission = function (user) {
-        user.status = !user.status;
-        if (user.nId in permissions) delete permissions[user.nId];
-        else permissions[user.nId] = user.status;
+        if (switchEnable) {
+            switchEnable = false;
+            $timeout(function () { switchEnable = true; }, 350);
+            user.status = !user.status;
+            if (user.nId in permissions) delete permissions[user.nId];
+            else permissions[user.nId] = user.status;
+        }
     };
 
     $scope.closePermissions = function (save) {
