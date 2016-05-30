@@ -97,7 +97,6 @@ div{
 }
 
 .footer-option {
-    float:left;
     margin-right: 0px;
     margin-left: 1px;
     display: inline-block;
@@ -665,6 +664,24 @@ div{
     left:50%;
     margin-left: -160px;
     display: inline-block;
+}
+
+.tracking-info{
+    position: fixed;
+    width:80px;
+    height: 80px;
+    background: #ffe764;
+    border-radius: 5px;
+    -webkit-transition: linear 0.3s;
+    transition: linear 0.3s;
+}
+
+.tracking-info.ng-hide {
+    width: 0px;
+    height: 0px;
+    margin-top:40px;
+    margin-left:40px;
+    opacity: 0;
 }
 
 .history_calendar {

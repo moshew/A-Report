@@ -469,6 +469,7 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
     $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id).success(historyCallback);
 
     $scope.logMonthChanged = function (newMonth, oldMonth) {
+        $scope.infoShow = false;
         $timeout.cancel(wp);
         wp = $timeout(function () {
             $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&month=' + newMonth.format('YYYY-MM')).success(historyCallback);
@@ -477,6 +478,10 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
 
     $scope.daySelected = function (event, date) {
         event.preventDefault(); // prevent the select to happen
+        $scope.xinfo = (event.x-42.5)+"px";
+        $scope.yinfo = (event.y-42.5)+"px";
+        $scope.mcolor = 'green';
+        $scope.infoShow = true;
     };
 });
 
