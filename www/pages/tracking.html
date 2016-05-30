@@ -1,6 +1,6 @@
 ﻿<div ng-cloak class="tracking-header">יומן דיווחים</div>
-<div style="width:80%;margin-left: 10%;margin-bottom: 20px;"><multiple-date-picker calendar-id="'fc1'" class="history_calendar" sunday-first-day="true" highlight-days="highlightDays" day-click="daySelected" month-changed="logMonthChanged" /></div>
+<div style="width:80%;margin-left: 10%;"><multiple-date-picker calendar-id="'fc1'" class="history_calendar" sunday-first-day="true" highlight-days="highlightDays" day-click="daySelected" month-changed="logMonthChanged" /></div>
 <div class="tracking-legend"><img src="assets/history.png" /></div>
-<div class="tracking-info" ng-style="{top: yinfo, left: xinfo}" ng-show="infoShow" ng-click="infoShow=false">{{test1}}</div>
+<div ng-include="'pages/trackingInfo.html'"></div>
 <div ng-include="'pages/footer1.html'"></div>
-<div ng-include="'pages/loader.html'" />
+<div ng-include="'pages/loader.html'"></div>

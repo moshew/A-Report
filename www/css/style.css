@@ -669,9 +669,10 @@ div{
 .tracking-info{
     position: fixed;
     width:80px;
-    height: 80px;
-    background: #ffe764;
+    height: 120px;
+    background: #00a267;
     border-radius: 5px;
+    border: solid 2px #ffffff;
     -webkit-transition: linear 0.3s;
     transition: linear 0.3s;
 }
@@ -679,10 +680,37 @@ div{
 .tracking-info.ng-hide {
     width: 0px;
     height: 0px;
-    margin-top:40px;
     margin-left:40px;
+    margin-top:60px;
     opacity: 0;
 }
+
+.tracking-statusImage {
+    width:60px;
+    margin-top:5px;
+    margin-left:0px;
+    -webkit-transition: linear 0.3s;
+    transition: linear 0.3s;
+
+}
+.tracking-statusImage.ng-hide {
+    width:0px;
+    margin-top:5px;
+    margin-left:0px;
+    opacity: 0;
+}
+
+.tracking-statusInfo {
+    text-align: center;
+    -webkit-transition: linear 0.3s;
+    transition: linear 0.3s;
+}
+
+.tracking-statusInfo.ng-hide {
+    width:0px;
+    opacity: 0;
+}
+
 
 .history_calendar {
 }

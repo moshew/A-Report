@@ -99,6 +99,10 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         this.settings[key1] = val1;
     }
 
+    service.getZoomFactor = function() {
+        return Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
+    }
+
     service.changePage = function (data, path) {
         this.mainPage = false;
         this.set(data);
@@ -161,8 +165,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
 
 app.controller('mainController', function ($scope, $rootScope, $http, $window, $timeout, dataShare) {
     $scope.dataShare = dataShare;
-    $scope.zoom_factor = Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
-    /*$scope.zoom_factor = window.innerHeight/6.67;*/
+    $scope.zoomFactor = dataShare.getZoomFactor();
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
 
@@ -463,7 +466,6 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
                 title: ''
             });
         }
-
     };
 
     $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id).success(historyCallback);
@@ -476,13 +478,24 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
         }, 350);
     };
 
+    $scope.dayInfo = null;
     $scope.daySelected = function (event, date) {
         event.preventDefault(); // prevent the select to happen
+        $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + date.format('YYYY-MM-DD'))
+            .success(function (data) {
+                $scope.dayInfo = data;
+                $scope.test1 = eventsColors[data.status];
+            });
         $scope.xinfo = (event.x-42.5)+"px";
         $scope.yinfo = (event.y-42.5)+"px";
-        $scope.mcolor = 'green';
         $scope.infoShow = true;
     };
+
+    $scope.closeInfo = function () {
+        $scope.infoShow = false;
+    };
+
+
 });
 
 angular.module('app').config(function ($mdDateLocaleProvider) {
