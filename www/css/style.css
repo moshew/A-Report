@@ -373,7 +373,7 @@ div{
 
 .statusList-header {
     width:98%;
-    height:40px;
+    height:45px;
     margin-bottom: 10px;
     text-align:center;
     font-size:185%;
@@ -699,7 +699,7 @@ div{
 .tracking-statusImage.ng-hide {
     width:0px;
     margin-top:5px;
-    margin-left:0px;
+    margin-left:40px;
     opacity: 0;
 }
 
@@ -710,7 +710,8 @@ div{
 }
 
 .tracking-statusInfo.ng-hide {
-    width:0px;
+    font-size:0px;
+    margin-left:40px;
     opacity: 0;
 }
 

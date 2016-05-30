@@ -483,8 +483,12 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
         event.preventDefault(); // prevent the select to happen
         $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + date.format('YYYY-MM-DD'))
             .success(function (data) {
+                $scope.infoBg = eventsColors[data.status];
                 $scope.dayInfo = data;
-                $scope.test1 = eventsColors[data.status];
+                $scope.infoMessage = (data.info!='')?data.info:'אין הערות';
+                if (eventsColors[data.status]=='red') {
+                    $scope.infoMessage = '[צרף אישור]';
+                }
             });
         $scope.xinfo = (event.x-42.5)+"px";
         $scope.yinfo = (event.y-42.5)+"px";

@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/trackingInfo.html" afterPath="$PROJECT_DIR$/www/pages/trackingInfo.html" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -83,7 +86,7 @@
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="448" column="9" selection-start-line="448" selection-start-column="9" selection-end-line="448" selection-end-column="9" />
+              <caret line="489" column="53" selection-start-line="489" selection-start-column="53" selection-end-line="489" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -93,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/www/pages/trackingInfo.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="162" selection-start-line="0" selection-start-column="162" selection-end-line="0" selection-end-column="162" />
+              <caret line="0" column="156" selection-start-line="0" selection-start-column="156" selection-end-line="0" selection-end-column="156" />
               <folding />
             </state>
           </provider>
@@ -122,8 +125,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39426523">
-              <caret line="375" column="16" selection-start-line="375" selection-start-column="16" selection-end-line="375" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.5125448">
+              <caret line="708" column="26" selection-start-line="708" selection-start-column="26" selection-end-line="708" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -182,12 +185,12 @@
         <option value="$PROJECT_DIR$/www/pages/reportInfo.html" />
         <option value="$USER_HOME$/Downloads/login.php" />
         <option value="$PROJECT_DIR$/www/pages/home.html" />
-        <option value="$PROJECT_DIR$/www/pages/trackingInfo.html" />
         <option value="$PROJECT_DIR$/www/pages/permissions.html" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/pages/calendar.html" />
         <option value="$PROJECT_DIR$/www/pages/futureReport.html" />
         <option value="$PROJECT_DIR$/www/pages/statusList.html" />
+        <option value="$PROJECT_DIR$/www/pages/trackingInfo.html" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
       </list>
     </option>
@@ -296,6 +299,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="A-Report" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="A-Report" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope">
@@ -395,12 +416,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00129" summary="update">
-      <created>1463223889429</created>
-      <option name="number" value="00129" />
-      <option name="project" value="LOCAL" />
-      <updated>1463223889429</updated>
     </task>
     <task id="LOCAL-00130" summary="update">
       <created>1463224177901</created>
@@ -690,7 +705,13 @@
       <option name="project" value="LOCAL" />
       <updated>1464618363477</updated>
     </task>
-    <option name="localTasksCounter" value="178" />
+    <task id="LOCAL-00178" summary="update">
+      <created>1464618956887</created>
+      <option name="number" value="00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1464618956887</updated>
+    </task>
+    <option name="localTasksCounter" value="179" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1013,26 +1034,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/trackingInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="162" selection-start-line="0" selection-start-column="162" selection-end-line="0" selection-end-column="162" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/permissions.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
           <caret line="1" column="62" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="448" column="9" selection-start-line="448" selection-start-column="9" selection-end-line="448" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -1061,6 +1066,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/statusList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="29" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/tracking.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -1071,18 +1084,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/statusList.html">
+    <entry file="file://$PROJECT_DIR$/www/pages/trackingInfo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="29" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="156" selection-start-line="0" selection-start-column="156" selection-end-line="0" selection-end-column="156" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="489" column="53" selection-start-line="489" selection-start-column="53" selection-end-line="489" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39426523">
-          <caret line="375" column="16" selection-start-line="375" selection-start-column="16" selection-end-line="375" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.5125448">
+          <caret line="708" column="26" selection-start-line="708" selection-start-column="26" selection-end-line="708" selection-end-column="26" />
           <folding />
         </state>
       </provider>
