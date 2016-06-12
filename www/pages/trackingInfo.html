@@ -1,4 +1,10 @@
-﻿<div dir="rtl" class="tracking-info" ng-class="{green:infoBg=='green', red:infoBg=='red', purple: infoBg=='purple', orange:infoBg=='orange', regular: infoBg=='regular'}" ng-style="{top: yinfo, left: xinfo, zoom:100/dataShare.getZoomFactor()}" ng-show="infoShow" ng-click="closeInfo()">
-    <img class="tracking-statusImage" ng-show="infoShow" src="assets/report/t{{dayInfo.status}}.png" />
+﻿<div dir="rtl" class="tracking-info" ng-class="{green:infoBg=='green', red:infoBg=='red', purple: infoBg=='purple', orange:infoBg=='orange', regular: infoBg=='regular'}" ng-style="{top: yinfo, left: xinfo, zoom:100/dataShare.getZoomFactor()}" ng-show="infoShow" ng-click="">
+    <img class="tracking-statusImage" ng-show="infoShow" src="assets/report/t{{dayInfo.status}}.png">
+    <img class="tracking-closeBtn" src="assets/status_delete.png" ng-click="closeInfo()" />
     <div class="tracking-statusInfo" ng-show="infoShow">{{infoMessage}}</div>
+    <div class="tracking-statusInfo" ng-show="infoShow && infoMessage=='מצורף אישור'" ng-click="deleteAttachment()">[ מחק ]</div>
+    <div class="tracking-statusInfo" ng-show="infoShow">
+        <label for="file-input" style="font-size: 12px;">{{approvalFile}}</label>
+        <button id="file-input" style="display: none;" type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB"></button>
+    </div>
 </div>

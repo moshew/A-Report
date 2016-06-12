@@ -1,6 +1,7 @@
 ﻿// script.js
 //var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
-var domain = 'http://a-report.co.il/';
+//var domain = 'http://a-report.co.il/';
+var domain = 'http://mx.isra-net.co.il/~moridimt/';
 /*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
@@ -10,7 +11,7 @@ document.addEventListener('deviceready', function() {
 // create the module and name it app
 // also include ngRoute for all our routing needs
 moment.locale("he");
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile', 'ngFileUpload']);
 
 /*
 app.run(function() {
@@ -65,7 +66,13 @@ app.config(function ($routeProvider) {
         .when('/tracking', {
             templateUrl: 'pages/tracking.html',
             controller: 'trackingController'
+        })
+
+        .when('/reportAdmin', {
+            templateUrl: 'pages/reportAdmin.html',
+            controller: 'trackingController'
         });
+
 });
 
 app.config(function ($mdThemingProvider) {
@@ -176,13 +183,14 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
             });
     }
 
-    $scope.enter = function () {
+    $scope.enter = function (admin) {
         dataShare.setLoading(true);
-        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
+        $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK')
             .success(function (data) {
                 dataShare.setLoading(false);
                 if (data.ver <= 1.1) {
-                    dataShare.changePage(data);
+                    path=(admin)?'reportAdmin':null;
+                    dataShare.changePage(data, path);
                 } else {
                     $scope.versionUpdate = true;
                 }
@@ -456,7 +464,7 @@ app.controller('permissionsController', function ($scope, $http, $timeout, dataS
     };
 });
 
-app.controller('trackingController', function ($scope, $http, $timeout, dataShare) {
+app.controller('trackingController', function ($scope, $http, $timeout, dataShare, Upload) {
     $scope.dataShare = dataShare;
     var wp = null;
 
@@ -484,17 +492,30 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
     };
 
     $scope.dayInfo = null;
-    $scope.daySelected = function (event, date) {
-        event.preventDefault(); // prevent the select to happen
-        $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + date.format('YYYY-MM-DD'))
+    var loadDayInfo = function () {
+        $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD'))
             .success(function (data) {
                 $scope.infoBg = eventsColors[data.status];
                 $scope.dayInfo = data;
-                $scope.infoMessage = (data.info!='')?data.info:'אין הערות';
+                $scope.approvalFile = '';
                 if (eventsColors[data.status]=='red') {
-                    $scope.infoMessage = '[צרף אישור]';
+                    if (data.attach) $scope.infoMessage = 'מצורף אישור';
+                    else {
+                        $scope.infoMessage = '';
+                        $scope.approvalFile = '[צרף אישור]';
+                    }
+                } else {
+                    $scope.infoMessage = (data.info!='')?data.info:'אין הערות';
                 }
             });
+    }
+
+    var selectedDay = null;
+    $scope.daySelected = function (event, date) {
+        event.preventDefault(); // prevent the select to happen
+        if (isUploading) exit();
+        selectedDay = date;
+        loadDayInfo();
         $scope.xinfo = (event.x-42.5)+"px";
         $scope.yinfo = (event.y-42.5)+"px";
         $scope.infoShow = true;
@@ -504,6 +525,42 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
         $scope.infoShow = false;
     };
 
+    var isUploading = false;
+    $scope.uploadFiles = function(file, errFiles) {
+        if (file) {
+            isUploading = true;
+            $scope.infoMessage = 'מעלה: 0%';
+            $scope.approvalFile = '';
+
+            file.upload = Upload.upload({
+                url: 'http://mx.isra-net.co.il/~moridimt/approval_upload.php',
+                method: 'POST',
+                sendFieldsAs: 'form',
+                data: {fileToUpload: file, filename: dataShare.get().id+selectedDay.format('YYYYMMDD')}
+            });
+            file.upload.then(
+                function (response) {
+                    $timeout(function () {
+                        $http.jsonp(domain + 'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD') + '&attach=&oper=1')
+                            .success(function (data) { loadDayInfo(); });
+                        isUploading = false;
+                    });
+                },
+                function (response) {
+                    file.result = response.data;
+                },
+                function (evt) {
+                    var progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                    $scope.infoMessage = 'מעלה: '+progress+'%';
+                }
+            );
+        }
+    };
+
+    $scope.deleteAttachment = function() {
+        $http.jsonp(domain + 'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD') + '&attach=&oper=0')
+            .success(function (data) { loadDayInfo(); });
+    }
 
 });
 

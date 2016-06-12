@@ -373,7 +373,6 @@ div{
 
 .statusList-header {
     width:98%;
-    height:45px;
     margin-bottom: 10px;
     text-align:center;
     font-size:185%;
@@ -386,7 +385,7 @@ div{
     width:85px;
     height:30px;
     text-align: left;
-    margin-top: 5px;
+    margin-top: 6px;
     margin-left: 10px;
     font-size: 70%;
     color: #00aeef;
@@ -397,7 +396,7 @@ div{
     width:85px;
     height:30px;
     text-align: right;
-    margin-top: 5px;
+    margin-top: 6px;
     margin-right: 10px;
     font-size: 70%;
     color: #00aeef;
@@ -609,9 +608,9 @@ div{
 }
 
 .report2-calander_header {
-    margin-top:25px;
+    margin-top:20px;
     margin-bottom: 20px;
-    width:80%;
+    width:98%;
     text-align:center;
     font-size:187.5%;
     background: #4b688e;
@@ -703,6 +702,12 @@ div{
     opacity: 0;
 }
 
+.tracking-closeBtn {
+    position: absolute;
+    width: 30px;
+    top: -10px;
+    right: -10px;
+}
 .tracking-statusInfo {
     text-align: center;
     -webkit-transition: linear 0.3s;
