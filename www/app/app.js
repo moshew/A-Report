@@ -122,9 +122,12 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         if (path == null) {
             if (data.id == -1) path = 'login';
             else {
-                this.mainPage = true;
-                if (data.status == -1) path = 'report';
-                else path = 'status';
+                if (this.settings.message_status==2) this.action('message', 'message');
+                else {
+                    this.mainPage = true;
+                    if (data.status == -1) path = 'report';
+                    else path = 'status';
+                }
             }
         }
         $location.path(path);
@@ -201,7 +204,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
     $scope.logout = function () {
         $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&delete')
             .success(function (data) {
-                dataShare.changePage(data, '');
+                dataShare.changePage(data);
             });
     };
 });
@@ -277,13 +280,13 @@ app.controller('messageController', function ($scope, $http, $location, $timeout
     $scope.dataShare = dataShare;
     if (dataShare.get()==null) $location.path('');
 
-    $scope.closePermissions = function (save) {
-        if (save) {
-            for (nId in permissions) {
-                $http.jsonp(domain + 'permissions.php?callback=JSON_CALLBACK&op=change&id=' + dataShare.get().id + '&nId=' + nId + '&status=' + permissions[nId]).success(function (data) { });
-            }
-        }
-        dataShare.action('statusList', 'notifications');
+    $scope.confirm = function () {
+        dataShare.setLoading(true);
+        $http.jsonp(domain + 'message.php?callback=JSON_CALLBACK&op=confirm&id=' + dataShare.get().id)
+            .success(function (data) {
+                dataShare.setLoading(false);
+                dataShare.action('main', 'login');
+            });
     };
 });
 
@@ -537,11 +540,11 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
             .success(function (data) {
                 $scope.infoBg = eventsColors[data.status];
                 $scope.dayInfo = data;
-                $scope.attachState = false;
+                $scope.addAttach = false;
                 $scope.infoMessage = '';
                 if (eventsColors[data.status]=='red') {
-                    if (data.attach) $scope.attachState = true;
-                    else $scope.infoMessage = 'הצג אישור';
+                    if (data.attach) $scope.infoMessage = 'הצג אישור';
+                    else $scope.addAttach = true;
                 } else {
                     $scope.infoMessage = (data.info!='')?data.info:'אין הערות';
                 }
@@ -559,6 +562,13 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
         $scope.infoShow = true;
     };
 
+    $scope.infoSelected = function () {
+        if ($scope.dayInfo.attach) {
+            var url = domain + 'attachments.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD');
+            window.open(url, '_system');
+        }
+    };
+
     $scope.closeInfo = function () {
         $scope.infoShow = false;
     };
@@ -567,14 +577,14 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
     $scope.uploadFiles = function(file, errFiles) {
         if (file) {
             isUploading = true;
+            $scope.addAttach = false;
             $scope.infoMessage = 'מעלה: 0%';
-            $scope.attachState = false;
 
             file.upload = Upload.upload({
-                url: 'http://mx.isra-net.co.il/~moridimt/approval_upload.php',
+                url: 'http://online-files.co.il/upload_attachment.php',
                 method: 'POST',
                 sendFieldsAs: 'form',
-                data: {fileToUpload: file, filename: dataShare.get().id+selectedDay.format('YYYYMMDD')}
+                data: {fileToUpload: file, filename: selectedDay.format('YYYYMMDD')+dataShare.get().id}
             });
             file.upload.then(
                 function (response) {

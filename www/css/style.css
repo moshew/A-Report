@@ -1,4 +1,4 @@
-﻿div:focus, div:active, span:focus, span:active {
+﻿div:focus, div:active, span:focus, span:active, img:focus, img:active {
     outline: none;
     -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
 }
@@ -247,8 +247,20 @@ div{
     padding-right: 20px;
     padding-left: 20px;
     white-space: pre-line;
-    height:490px;
+    height:510px;
     overflow-y: auto;
+}
+
+.message-btn {
+    width: 85%;
+    height: 40px;
+    margin: 20px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    background: #ef3a28;
+    display: inline-block;
 }
 
 .report-back {
