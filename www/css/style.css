@@ -1,6 +1,13 @@
-﻿div:focus, div:active {
+﻿div:focus, div:active, span:focus, span:active {
     outline: none;
     -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+}
+
+pre {
+    background:#234a7d;
+    color: white;
+    border: none;
+    white-space: pre-line;
 }
 
 .pageMain {
@@ -130,6 +137,14 @@ div{
     font-size: 110%;
 }
 
+.home-message {
+    clear: right;
+    float:right;
+    margin-top:10px;
+    margin-right: 30px;
+}
+
+
 .home-logo {
     margin-top:105px;
     margin-bottom:25px;
@@ -207,7 +222,6 @@ div{
     z-index:20;
 }
 
-
 .centered.loginResult
 {
     margin-top: -160px;
@@ -216,6 +230,25 @@ div{
 .md-raised.md-warn.login-back {
     font-size:150%;
     margin-top:5%;
+}
+
+.message-header {
+    width:98%;
+    margin-bottom: 10px;
+    text-align:center;
+    font-size:185%;
+    background: #4b688e;
+    display: inline-block;
+}
+
+.message-info {
+    text-align:right;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    white-space: pre-line;
+    height:490px;
+    overflow-y: auto;
 }
 
 .report-back {
@@ -405,11 +438,13 @@ div{
 .statusList-rightOpt.highlight {
     color: red;
 }
+
 .statusList-info {
     text-align:right;
     height:490px;
     overflow-y: auto;
 }
+
 .statusList-users {
     margin-right: 20px;
     margin-left: 20px;
@@ -534,6 +569,61 @@ div{
         margin-left: 0.2em;
     }
 
+.futureReport-header {
+    width:98%;
+    margin-bottom: 10px;
+    text-align:center;
+    font-size:185%;
+    background: #4b688e;
+    display: inline-block;
+}
+.futureReport-leftOpt {
+    float: left;
+    width:85px;
+    height:30px;
+    text-align: left;
+    margin-top: 6px;
+    margin-left: 10px;
+    font-size: 70%;
+    color: #00aeef;
+}
+
+.futureReport-rightOpt {
+    float: right;
+    width:85px;
+    height:30px;
+    text-align: right;
+    margin-top: -5px;
+    margin-right: 10px;
+    font-size: 120%;
+    color: #00aeef;
+}
+.futureReport-dates {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 7px;
+    font-size:175%;
+}
+
+.futureReport-date {
+    padding-bottom: 7px;
+    border-width: 1px;
+    border-color: #1d6c96;
+    border-style: none none solid none;
+}
+
+.futureReport-delete {
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    background: #ef3a28;
+    float: left;
+    font-size:75%;
+    text-align: center;
+}
 .report2-header {
     margin-bottom: 5px;
     padding-left: 15px;
@@ -690,7 +780,7 @@ div{
 .tracking-statusImage {
     width:60px;
     margin-top:5px;
-    margin-left:0px;
+    margin-bottom: 3px;
     -webkit-transition: linear 0.3s;
     transition: linear 0.3s;
 
@@ -710,13 +800,19 @@ div{
 }
 .tracking-statusInfo {
     text-align: center;
+    font-size: 85%;
+/*
     -webkit-transition: linear 0.3s;
     transition: linear 0.3s;
+*/
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
 }
 
 .tracking-statusInfo.ng-hide {
-    font-size:0px;
+/*    font-size:0px;
     margin-left:40px;
+    */
     opacity: 0;
 }
 

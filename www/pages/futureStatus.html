@@ -1,7 +1,9 @@
-﻿<div ng-cloak class="report-date" style="margin-bottom:40px;">{{dataShare.get().date_str}} <img src="assets/fr.png" style="padding-bottom:5px;" /></div>
-<div class="status">
-    <div class="status-delete" ng-click="cancelReport(true)"><img src="assets/status_delete.png" /></div>
-    <div><img id="status_icon" src="assets/report/t{{dataShare.get().status}}.png" /></div>
+﻿<div class="futureReport-header">דיווחי עתידי
+    <div class="futureReport-leftOpt" ng-click="editMode=!editMode">{{(editMode)?"סיים":"ערוך"}}</div>
+    <div class="futureReport-rightOpt"><div ng-show="!editMode" ng-click="dataShare.action('futureReport', 'login')">+</div></div>
+</div><br />
+<div class="statusList-info" ng-cloak>
+    <div class="futureReport-dates" dir="rtl" ng-repeat="task in dataShare.get().future_tasks"><div class="futureReport-date"><img class="statusList-userImg" width="30" ng-src="assets/report/{{task.status}}.png" />{{ task.date_str }}<span style="margin-right:10px;font-size: 12px">{{task.info}}</span><div ng-if="editMode" class="futureReport-delete" ng-click="cancelTask(task.id)"><img src="assets/delete-user.png" /></div></div></div>
 </div>
 <div ng-include="'pages/footer1.html'"></div>
 <div ng-include="'pages/loader.html'" />

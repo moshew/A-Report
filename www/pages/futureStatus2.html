@@ -1,0 +1,7 @@
+﻿<div ng-cloak class="report-date" style="margin-bottom:40px;">{{dataShare.get().date_str}} <img src="assets/fr.png" style="padding-bottom:5px;" /></div>
+<div class="status">
+    <div class="status-delete" ng-click="cancelReport(true)"><img src="assets/status_delete.png" /></div>
+    <div><img id="status_icon" src="assets/report/t{{dataShare.get().status}}.png" /></div>
+</div>
+<div ng-include="'pages/footer1.html'"></div>
+<div ng-include="'pages/loader.html'" />
