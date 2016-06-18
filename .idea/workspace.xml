@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/footer/footer-future.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/footer/footer-history.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/footer/footer-home.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/footer/footer-settings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/footer/footer_logout.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/footer/footer_status+.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/footer/footer_status.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/message.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/msg_confirm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/assets/report_error.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="A-Report.iws" />
@@ -37,26 +27,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="footer1.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pages/footer1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="18" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pages/footer2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="trackingInfo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/pages/trackingInfo.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -151,7 +121,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/Downloads/OneSignalSDKFiles/manifest.json" />
         <option value="$PROJECT_DIR$/www/app/index.js" />
         <option value="$PROJECT_DIR$/www/pages/home1.html" />
         <option value="$PROJECT_DIR$/../psd/test.html" />
@@ -202,6 +171,7 @@
         <option value="$PROJECT_DIR$/www/pages/trackingInfo.html" />
         <option value="$USER_HOME$/Downloads/moridimt_a-report.sql" />
         <option value="$PROJECT_DIR$/www/app/app.js" />
+        <option value="$USER_HOME$/Downloads/db_conn.php" />
       </list>
     </option>
   </component>
@@ -485,12 +455,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00139" summary="update">
-      <created>1463226103655</created>
-      <option name="number" value="00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1463226103655</updated>
     </task>
     <task id="LOCAL-00140" summary="update">
       <created>1463226171001</created>
@@ -780,7 +744,13 @@
       <option name="project" value="LOCAL" />
       <updated>1466255718038</updated>
     </task>
-    <option name="localTasksCounter" value="188" />
+    <task id="LOCAL-00188" summary="update">
+      <created>1466255855786</created>
+      <option name="number" value="00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1466255855786</updated>
+    </task>
+    <option name="localTasksCounter" value="189" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -837,21 +807,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/statusList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="152" selection-start-line="20" selection-start-column="152" selection-end-line="20" selection-end-column="152" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/scripts/angular.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1180,6 +1135,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="150" selection-start-line="0" selection-start-column="109" selection-end-line="0" selection-end-column="150" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/report.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_a-report_sapir.zip/db_conn.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.018438177">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/db_conn.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.018438177">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
           <folding />
         </state>
       </provider>
