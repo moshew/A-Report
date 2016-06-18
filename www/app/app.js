@@ -569,7 +569,7 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
         $scope.addAttach = false;
 
         var options = new FileUploadOptions();
-        options.fileKey = "file";
+        options.fileKey = "fileToUpload";
         options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1) + '.jpg';
         options.mimeType = "text/plain";
 
