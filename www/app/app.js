@@ -564,20 +564,29 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
         $scope.infoShow = false;
     };
 
+    var isUploading = false;
     var uploadPhoto = function (imageURI) {
+        if (isUploading) exit();
+
         isUploading = true;
         $scope.addAttach = false;
+        $scope.infoMessage = 'מעלה: 0%';
 
         var options = new FileUploadOptions();
         options.fileKey = "fileToUpload";
-        options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1) + '.jpg';
-        options.mimeType = "text/plain";
 
         var params = new Object();
         params.filename = selectedDay.format('YYYYMMDD') + dataShare.get().id;
         options.params = params;
 
         var ft = new FileTransfer();
+        ft.onprogress = function(event) {
+            if (progressEvent.lengthComputable) {
+                var progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                $scope.infoMessage = 'מעלה: ' + progress + '%';
+            }
+        };
+
         ft.upload(imageURI, encodeURI("http://online-files.co.il/upload_attachment.php"),
             function (r) {
                 $timeout(function () {
@@ -587,19 +596,11 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
                         });
                     isUploading = false;
                 });
-            },
-            function (error) {
-                alert("An error has occurred: Code = " + error.code);
-            }, options);
+            }, { }, options);
     };
 
-    var isUploading = false;
     $scope.uploadFile = function () {
-        // Retrieve image file location from specified source
-        navigator.camera.getPicture(uploadPhoto,
-            function (message) {
-                alert('get picture failed');
-            },
+        navigator.camera.getPicture(uploadPhoto, { },
             {
                 quality: 50,
                 destinationType: navigator.camera.DestinationType.FILE_URI,
