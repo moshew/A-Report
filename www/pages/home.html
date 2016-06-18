@@ -1,5 +1,5 @@
-﻿<div class="home-logout" ng-show="dataShare.get().id>0"><span ng-click="logout()">(התנתק)</span><span ng-if="dataShare.getSettings().message_status==0" ng-click="logout()"><img src="assets/user.png" /></span><span ng-if="dataShare.getSettings().message_status>0" ng-click="dataShare.action('message', 'message')"><img src="assets/message.png" /></span>
-</div><br>
+﻿<div class="home-logout" ng-show="dataShare.get().id>0"><span ng-click="logout()">(התנתק)</span><span ng-if="dataShare.getSettings().message_status==0" ng-click="logout()"><img src="assets/user.png" /></span><span ng-if="dataShare.getSettings().message_status>0" ng-click="dataShare.action('message', 'message')"><img src="assets/message.png" /></span></div><br />
+<div class="home-logout" ng-show="!dataShare.get().admin"><img src="assets/user.png" /></div>
 
 <div ng-click="enter()">
    <div class="home-logo"><img src="assets/logo1.png" /></div>
