@@ -580,8 +580,13 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
         var ft = new FileTransfer();
         ft.upload(imageURI, encodeURI("http://online-files.co.il/upload_attachment.php"),
             function (r) {
-                isUploading = false;
-                loadDayInfo();
+                $timeout(function () {
+                    $http.jsonp(domain + 'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD') + '&attach=&oper=1')
+                        .success(function (data) {
+                            loadDayInfo();
+                        });
+                    isUploading = false;
+                });
             },
             function (error) {
                 alert("An error has occurred: Code = " + error.code);
