@@ -73,7 +73,7 @@ app.config(function ($routeProvider) {
 
         .when('/reportAdmin', {
             templateUrl: 'pages/reportAdmin.html',
-            controller: 'trackingController'
+            controller: 'adminController'
         });
 
 });
@@ -596,11 +596,12 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
                         });
                     isUploading = false;
                 });
-            }, { }, options);
+            }, function () { }, options);
     };
 
     $scope.uploadFile = function () {
-        navigator.camera.getPicture(uploadPhoto, { },
+        navigator.camera.getPicture(uploadPhoto,
+            function () { },
             {
                 quality: 50,
                 destinationType: navigator.camera.DestinationType.FILE_URI,
@@ -649,7 +650,24 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
                 loadDayInfo();
             });
     }
+});
 
+app.controller('adminController', function ($scope, $http, $timeout, dataShare) {
+    $scope.dataShare = dataShare;
+    var switchEnable = true;
+
+    $scope.switchOp = function (id) {
+        if (switchEnable) {
+            switchEnable = false;
+            $timeout(function () { switchEnable = true; }, 500);
+            dataShare.setLoading(true)
+            $http.jsonp(domain + 'lock.php?callback=JSON_CALLBACK&op='+!dataShare.get().lock + '&id=' + dataShare.get().id)
+                .success(function (data) {
+                    dataShare.setLoading(false);
+                    dataShare.set(data);
+                });
+        }
+    };
 });
 
 angular.module('app').config(function ($mdDateLocaleProvider) {

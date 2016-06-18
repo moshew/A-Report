@@ -1,19 +1,10 @@
-﻿<!--
-<div ng-cloak class="statusList-header">הרשאות
-    <div class="statusList-leftOpt" ng-click="closePermissions(true)">אשר</div>
-    <div class="statusList-rightOpt"ng-click="closePermissions(false)">בטל</div>
-</div><br />
-    <div class="statusList-info">
-        <div class="statusList-users" dir="rtl" ng-repeat="user in dataShare.get().permissions">
-            <div class="statusList-user">
-                <div class="premmisions_switch" ng-click="switchPermission(user)"><label ng-class="{'yesno-switch': true, 'on': user.status}">&nbsp;</label></div>
-                <div class="premmisions_user">{{user.name}}</div>
-            </div>
-        </div>
-    </div>
+﻿<div ng-cloak class="statusList-header">הפקת דוח</div><br />
+
+<div class="reportAdmin-setting">
+    <div class="reportAdmin_switch" ng-click="switchOp(0)"><label ng-class="{'yesno-switch': true, 'on': !dataShare.get().lock}">&nbsp;</label></div>
+    <div class="reportAdmin_op">מצב דיווח</div>
 </div>
-<div ng-include="'pages/footer1.html'"></div>
-<div ng-include="'pages/loader.html'" />
--->
-<img style="background: red;" src="http://a-report.co.il/qrcode.php" />
+
+<img src="http://a-report.co.il/qrcode.php" />
 <div ng-include="'pages/footer2.html'"></div>
+<div ng-include="'pages/loader.html'" />

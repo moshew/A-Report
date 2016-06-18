@@ -853,3 +853,28 @@ div{
 .red{ background: #ff0000; }
 .orange{ background: #ff8d00; }
 .regular { background-color: #31597d; }
+
+.reportAdmin-setting {
+    width: 90%;
+    padding-bottom: 7px;
+    border-width: 1px;
+    border-color: #1d6c96;
+    border-style: none none solid none;
+    margin-bottom: 20px;
+    font-size:175%;
+    display: inline-block;
+}
+
+.reportAdmin_switch {
+    width: 100px;
+    text-align: left;
+    margin-left: 4%;
+}
+
+.reportAdmin_op {
+    float: right;
+    text-align:right;
+    margin-right: 4%;
+    padding-bottom:2px;
+    display: inline-block;
+}
