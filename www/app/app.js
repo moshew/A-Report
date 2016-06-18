@@ -10,14 +10,23 @@ document.addEventListener('deviceready', function() {
 
 // create the module and name it app
 // also include ngRoute for all our routing needs
-moment.locale("he");
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile', 'ngFileUpload']);
 
-/*
-app.run(function() {
-    FastClick.attach(document.body);
- });
-*/
+app.run(function($http, dataShare) {
+    //FastClick.attach(document.body);
+    $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
+        .success(function (data) {
+            dataShare.set(data);
+            if (data.id>0)
+            try {
+                window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610", {googleProjectNumber: "682594015864"}, dataShare.notificationOpenedCallback);
+                window.plugins.OneSignal.enableInAppAlertNotification(true);
+                window.plugins.OneSignal.sendTag("id", data.id);
+            } catch (err) {}
+        });
+
+});
+
 
 // configure our routes
 app.config(function ($routeProvider) {
@@ -180,13 +189,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
 
-    if (dataShare.get()==null) {
-        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
-            .success(function (data) {
-                dataShare.set(data);
-            });
-    }
-
     $scope.enter = function (admin) {
         dataShare.setLoading(true);
         $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK')
@@ -204,7 +206,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
     $scope.logout = function () {
         $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&delete')
             .success(function (data) {
-                dataShare.changePage(data);
+                dataShare.set(data);
             });
     };
 });
@@ -248,6 +250,7 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
             dataShare.setLoading(true);
             $http.jsonp(domain+'send_code.php?callback=JSON_CALLBACK&p_id=' + $scope.value)
             .success(function (data) {
+                /*
                 try {
                     window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
                         {googleProjectNumber: "682594015864"},
@@ -256,6 +259,7 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
                     window.plugins.OneSignal.sendTag("phone", $scope.value);
                 }
                 catch (err) {}
+                */
                 dataShare.setLoading(false);
                 $scope.sendCodeScreen = true;
                 $scope.loginCodeResponse = (data.status) ? 'found' : 'not-found';
