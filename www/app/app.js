@@ -1,7 +1,6 @@
 ﻿// script.js
-//var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
-var domain = 'http://a-report.co.il/';
 //var domain = 'http://mx.isra-net.co.il/~moridimt/';
+var domain = 'http://a-report.co.il/';
 /*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
@@ -10,21 +9,11 @@ document.addEventListener('deviceready', function() {
 
 // create the module and name it app
 // also include ngRoute for all our routing needs
+moment.locale("he");
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile', 'ngFileUpload']);
 
 app.run(function($http, dataShare) {
-    //FastClick.attach(document.body);
-    $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
-        .success(function (data) {
-            dataShare.set(data);
-            if (data.id>0)
-            try {
-                window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610", {googleProjectNumber: "682594015864"}, dataShare.notificationOpenedCallback);
-                window.plugins.OneSignal.enableInAppAlertNotification(true);
-                window.plugins.OneSignal.sendTag("id", data.id);
-            } catch (err) {}
-        });
-
+    $http.jsonp(domain+'login.php?callback=JSON_CALLBACK').success(function (data) { dataShare.set(data); });
 });
 
 
@@ -250,7 +239,6 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
             dataShare.setLoading(true);
             $http.jsonp(domain+'send_code.php?callback=JSON_CALLBACK&p_id=' + $scope.value)
             .success(function (data) {
-                /*
                 try {
                     window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
                         {googleProjectNumber: "682594015864"},
@@ -259,7 +247,6 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
                     window.plugins.OneSignal.sendTag("phone", $scope.value);
                 }
                 catch (err) {}
-                */
                 dataShare.setLoading(false);
                 $scope.sendCodeScreen = true;
                 $scope.loginCodeResponse = (data.status) ? 'found' : 'not-found';
