@@ -8,6 +8,6 @@
         <label for="file-input" style="font-size: 12px;">{{(addAttach)?'[צרף אישור]':''}}</label>
         <button id="file-input" style="display: none;" type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">צרף אישור</button>
 -->
-        <button id="file-input" type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-size="1MB">צרף אישור</button>
+        <label style="font-size: 12px;" ng-click="uploadFile()">{{(addAttach)?'[צרף אישור]':''}}</label>
     </div>
 </div>
