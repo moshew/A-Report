@@ -4,8 +4,7 @@
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/footer2.html" afterPath="$PROJECT_DIR$/www/pages/footer2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/futureStatus.html" afterPath="$PROJECT_DIR$/www/pages/futureStatus.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/reportAdmin.html" afterPath="$PROJECT_DIR$/www/pages/reportAdmin.html" />
     </list>
     <ignored path="A-Report.iws" />
@@ -43,24 +42,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63123643">
-              <caret line="598" column="24" selection-start-line="598" selection-start-column="24" selection-end-line="598" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="658" column="4" selection-start-line="658" selection-start-column="4" selection-end-line="658" selection-end-column="4" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pages/footer2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3076923">
-              <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -78,8 +67,8 @@
       <file leaf-file-name="reportAdmin.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/pages/reportAdmin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3076923">
-              <caret line="2" column="31" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="31" />
+            <state vertical-scroll-proportion="-3.9230769">
+              <caret line="6" column="104" selection-start-line="6" selection-start-column="99" selection-end-line="6" selection-end-column="104" />
               <folding />
             </state>
           </provider>
@@ -115,6 +104,29 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="message.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/pages/message.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.3076923">
+              <caret line="2" column="23" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="futureStatus.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/pages/futureStatus.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.07589286">
+              <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/pages/home.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -123,16 +135,6 @@
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.745098">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -182,7 +184,6 @@
         <option value="$USER_HOME$/Downloads/style.css" />
         <option value="$USER_HOME$/Downloads/UnreportedAlert.php" />
         <option value="$PROJECT_DIR$/www/index.html" />
-        <option value="$PROJECT_DIR$/www/pages/futureStatus.html" />
         <option value="$PROJECT_DIR$/www/pages/reportInfo.html" />
         <option value="$PROJECT_DIR$/www/pages/statusList.html" />
         <option value="$PROJECT_DIR$/www/pages/footer1.html" />
@@ -194,9 +195,10 @@
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/pages/home.html" />
         <option value="$PROJECT_DIR$/www/pages/footer2.html" />
-        <option value="$PROJECT_DIR$/www/pages/reportAdmin.html" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
+        <option value="$PROJECT_DIR$/www/pages/reportAdmin.html" />
         <option value="$PROJECT_DIR$/www/app/app.js" />
+        <option value="$PROJECT_DIR$/www/pages/futureStatus.html" />
       </list>
     </option>
   </component>
@@ -422,12 +424,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00152" summary="update">
-      <created>1463247384369</created>
-      <option name="number" value="00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1463247384369</updated>
     </task>
     <task id="LOCAL-00153" summary="update">
       <created>1463247603888</created>
@@ -717,7 +713,13 @@
       <option name="project" value="LOCAL" />
       <updated>1466273304889</updated>
     </task>
-    <option name="localTasksCounter" value="201" />
+    <task id="LOCAL-00201" summary="update">
+      <created>1466280897591</created>
+      <option name="number" value="00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1466280897591</updated>
+    </task>
+    <option name="localTasksCounter" value="202" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -973,13 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/futureStatus.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="24" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/futureStatus2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -1039,14 +1034,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.018973215">
           <caret line="1" column="62" selection-start-line="1" selection-start-column="62" selection-end-line="1" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/message.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03794643">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1117,14 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/reportAdmin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/trackingInfo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5384617">
@@ -1135,12 +1114,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/message.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/reportAdmin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9230769">
+          <caret line="6" column="104" selection-start-line="6" selection-start-column="99" selection-end-line="6" selection-end-column="104" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63123643">
-          <caret line="598" column="24" selection-start-line="598" selection-start-column="24" selection-end-line="598" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="658" column="4" selection-start-line="658" selection-start-column="4" selection-end-line="658" selection-end-column="4" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/futureStatus.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07589286">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

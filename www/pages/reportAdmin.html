@@ -4,7 +4,6 @@
     <div class="reportAdmin_switch" ng-click="switchOp(0)"><label ng-class="{'yesno-switch': true, 'on': !dataShare.get().lock}">&nbsp;</label></div>
     <div class="reportAdmin_op">מצב דיווח</div>
 </div>
-
-<img src="http://a-report.co.il/qrcode.php" />
+<img ng-click="qr_op=(qr_op=='status')?'info':'status'" src="http://a-report.co.il/qrcode.php?op={{qr_op}}" />
 <div ng-include="'pages/footer2.html'"></div>
 <div ng-include="'pages/loader.html'" />

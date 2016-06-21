@@ -656,6 +656,8 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
     $scope.dataShare = dataShare;
     var switchEnable = true;
 
+    $scope.qr_op = 'status';
+
     $scope.switchOp = function (id) {
         if (switchEnable) {
             switchEnable = false;
