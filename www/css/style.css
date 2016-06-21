@@ -650,10 +650,9 @@ div{
 
 .report2-btn {
     border-radius: 5px;
-    padding-top:6px;
-    margin: 7px;
-    width: 72px;
-    height: 80px;
+    margin: 8px;
+    width: 78px;
+    height: 85px;
     border-width: 1px;
     border-style: solid;
     border-color: #00aeef;
@@ -680,9 +679,9 @@ div{
 }
 
 .reprt2-date {
-    width:330px;
+    width:270px;
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     display: inline-block;
 }
 
@@ -692,7 +691,7 @@ div{
 }
 
 .report2-date_display {
-    width: 150px;
+    width: 130px;
     height: 30px;
     float: left;
     margin-left: 10px;
