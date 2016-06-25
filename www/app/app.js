@@ -1,6 +1,6 @@
 ﻿// script.js
-//var domain = 'http://mx.isra-net.co.il/~moridimt/';
-var domain = 'http://a-report.co.il/';
+var domain = 'http://mx.isra-net.co.il/~moridimt/';
+//var domain = 'http://a-report.co.il/';
 /*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
@@ -10,7 +10,7 @@ document.addEventListener('deviceready', function() {
 // create the module and name it app
 // also include ngRoute for all our routing needs
 moment.locale("he");
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile', 'ngFileUpload']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
 
 app.run(function($http, dataShare) {
     $http.jsonp(domain+'login.php?callback=JSON_CALLBACK').success(function (data) { dataShare.set(data); });
@@ -301,8 +301,8 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         }, 250);
     }
 
-    $scope.keyEvent = function(keyEvent) {
-        if (keyEvent.which === 13) $scope.InfoPopupCB();
+    $scope.keyEvent = function(keyEvent, info) {
+        if (keyEvent.which === 13) $scope.InfoPopupCB(info);
     };
 
     var isFuture = false;
@@ -498,7 +498,7 @@ app.controller('permissionsController', function ($scope, $http, $timeout, dataS
     };
 });
 
-app.controller('trackingController', function ($scope, $http, $timeout, dataShare, Upload) {
+app.controller('trackingController', function ($scope, $http, $timeout, dataShare) {
     $scope.dataShare = dataShare;
     $scope.dayInfo = null;
 
@@ -535,7 +535,7 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
                 $scope.infoMessage = '';
                 if (eventsColors[data.status] == 'red') {
                     if (data.attach) $scope.infoMessage = 'הצג אישור';
-                    else $scope.addAttach = true;
+                    else $scope.infoMessage = '[צרף אישור]';
                 } else {
                     $scope.infoMessage = (data.info != '') ? data.info : 'אין הערות';
                 }
@@ -545,7 +545,6 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
     var selectedDay = null;
     $scope.daySelected = function (event, date) {
         event.preventDefault(); // prevent the select to happen
-        if (isUploading) exit();
         selectedDay = date;
         loadDayInfo();
         $scope.xinfo = (event.x - 42.5) + "px";
@@ -556,92 +555,16 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
     $scope.infoSelected = function () {
         if ($scope.dayInfo.attach) {
             var url = domain + 'attachments.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD');
-            window.open(url, '_system');
+            window.open(url, '_system', 'location=no');
+        } else if (eventsColors[$scope.dayInfo.status] == 'red') {
+            var url = domain + 'upload.html#/' + dataShare.get().id + '/' + selectedDay.format('YYYY-MM-DD');
+            window.open(url, '_system', 'location=no');
+            $scope.closeInfo();
         }
     };
 
     $scope.closeInfo = function () {
         $scope.infoShow = false;
-    };
-
-    var isUploading = false;
-    var uploadPhoto = function (imageURI) {
-        if (isUploading) exit();
-
-        isUploading = true;
-        $scope.addAttach = false;
-        $scope.infoMessage = 'מעלה: 0%';
-
-        var options = new FileUploadOptions();
-        options.fileKey = "fileToUpload";
-
-        var params = new Object();
-        params.filename = selectedDay.format('YYYYMMDD') + dataShare.get().id;
-        options.params = params;
-
-        var ft = new FileTransfer();
-        ft.onprogress = function(event) {
-            if (progressEvent.lengthComputable) {
-                var progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-                $scope.infoMessage = 'מעלה: ' + progress + '%';
-            }
-        };
-
-        ft.upload(imageURI, encodeURI("http://online-files.co.il/upload_attachment.php"),
-            function (r) {
-                $timeout(function () {
-                    $http.jsonp(domain + 'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD') + '&attach=&oper=1')
-                        .success(function (data) {
-                            loadDayInfo();
-                        });
-                    isUploading = false;
-                });
-            }, function () { }, options);
-    };
-
-    $scope.uploadFile = function () {
-        navigator.camera.getPicture(uploadPhoto,
-            function () { },
-            {
-                quality: 50,
-                destinationType: navigator.camera.DestinationType.FILE_URI,
-                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-            }
-        );
-
-    };
-
-    $scope.uploadFiles = function (file, errFiles) {
-        if (file) {
-            isUploading = true;
-            $scope.addAttach = false;
-            $scope.infoMessage = 'מעלה: 0%';
-
-            file.upload = Upload.upload({
-                url: 'http://online-files.co.il/upload_attachment.php',
-                method: 'POST',
-                sendFieldsAs: 'form',
-                data: {fileToUpload: file, filename: selectedDay.format('YYYYMMDD') + dataShare.get().id}
-            });
-            file.upload.then(
-                function (response) {
-                    $timeout(function () {
-                        $http.jsonp(domain + 'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD') + '&attach=&oper=1')
-                            .success(function (data) {
-                                loadDayInfo();
-                            });
-                        isUploading = false;
-                    });
-                },
-                function (response) {
-                    file.result = response.data;
-                },
-                function (evt) {
-                    var progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-                    $scope.infoMessage = 'מעלה: ' + progress + '%';
-                }
-            );
-        }
     };
 
     $scope.deleteAttachment = function () {
