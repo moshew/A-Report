@@ -204,7 +204,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
         $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK')
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (data.ver <= 1.2) {
+                if (data.ver <= 1.4) {
                     path=(admin)?'reportAdmin':null;
                     dataShare.changePage(data, path);
                 } else {
