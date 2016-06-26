@@ -877,3 +877,66 @@ div{
     padding-bottom:2px;
     display: inline-block;
 }
+
+.users_label {
+     width:20%;
+     text-align: left;
+     margin-left: 10px;
+     margin-top: 20px;
+}
+
+.users_label.cb {
+    width: 30%;
+    vertical-align: bottom;
+    text-align: right;
+    margin-right: 10px;
+    margin-left: 95px;
+
+}
+.users_text {
+    width:60%;
+    text-alignt: right;
+    margin-left: 40px;
+}
+
+input[type="checkbox"]{
+    width: 20px; /*Desired width*/
+    height: 20px; /*Desired height*/
+}
+
+.users-candidates {
+    margin: 10px;
+    padding-top: 10px;
+    border-width: 1px;
+    border-color: #1d6c96;
+    border-style: solid none none none;
+    margin-right: 15px;
+    height:340px;
+    overflow-y: auto;
+
+}
+
+.users-candidate {
+    text-align: right;
+    float: right;
+    width:115px;
+}
+
+.users_delLabel{
+    margin-right:10px;
+    vertical-align: top;
+}
+
+.messages_label {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    width:80%;
+    text-align: right;
+}
+
+.messages_text {
+    width:80%;
+    text-alignt: right;
+    resize: none;
+}
+

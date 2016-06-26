@@ -1,19 +1,30 @@
 ﻿// script.js
-var domain = 'http://mx.isra-net.co.il/~moridimt/';
-//var domain = 'http://a-report.co.il/';
+//var domain = 'http://mx.isra-net.co.il/~moridimt/';
+var domain = 'http://a-report.co.il/';
 /*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
 }, false);
 */
 
-// create the module and name it app
-// also include ngRoute for all our routing needs
-moment.locale("he");
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
 
 app.run(function($http, dataShare) {
-    $http.jsonp(domain+'login.php?callback=JSON_CALLBACK').success(function (data) { dataShare.set(data); });
+    $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
+        .success(function (data) {
+            dataShare.set(data);
+
+            try {
+                if (data.id>0) {
+                    window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
+                        {googleProjectNumber: "682594015864"},
+                        dataShare.notificationOpenedCallback);
+                    window.plugins.OneSignal.enableInAppAlertNotification(true);
+                    window.plugins.OneSignal.sendTag("id", data.id);
+                }
+            }
+            catch (err) {}
+        });
 });
 
 
@@ -74,7 +85,17 @@ app.config(function ($routeProvider) {
         .when('/reportAdmin', {
             templateUrl: 'pages/reportAdmin.html',
             controller: 'adminController'
-        });
+        })
+
+        .when('/users', {
+            templateUrl: 'pages/users.html',
+            controller: 'adminController'
+        })
+
+        .when('/messages', {
+            templateUrl: 'pages/messages.html',
+            controller: 'adminController'
+        })
 
 });
 
@@ -239,14 +260,6 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
             dataShare.setLoading(true);
             $http.jsonp(domain+'send_code.php?callback=JSON_CALLBACK&p_id=' + $scope.value)
             .success(function (data) {
-                try {
-                    window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
-                        {googleProjectNumber: "682594015864"},
-                        dataShare.notificationOpenedCallback);
-                    window.plugins.OneSignal.enableInAppAlertNotification(true);
-                    window.plugins.OneSignal.sendTag("phone", $scope.value);
-                }
-                catch (err) {}
                 dataShare.setLoading(false);
                 $scope.sendCodeScreen = true;
                 $scope.loginCodeResponse = (data.status) ? 'found' : 'not-found';
@@ -288,8 +301,6 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     $scope.reportPage='main';
     $scope.info_image = 'report_info';
 
-    //$scope.status_labels = ['נוכח', 'חופש', 'מחלה', 'חו"ל', '\'מחוץ ליח', 'קורס', 'מיוחדת', 'הצהרה', '\'יום ד', 'מחלת ילד', 'לידה', 'אחר'];
-    //$scope.status_label = $scope.status_labels[dataShare.get().status];
     $scope.myStyle = [null,null,null,null,null,null,null,null,null,null,null,null];
 
     if ('report' in dataShare.get()) {
@@ -580,19 +591,77 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
     var switchEnable = true;
 
     $scope.qr_op = 'status';
-
     $scope.switchOp = function (id) {
         if (switchEnable) {
             switchEnable = false;
-            $timeout(function () { switchEnable = true; }, 500);
+            $timeout(function () {
+                switchEnable = true;
+            }, 500);
             dataShare.setLoading(true)
-            $http.jsonp(domain + 'lock.php?callback=JSON_CALLBACK&op='+!dataShare.get().lock + '&id=' + dataShare.get().id)
+            $http.jsonp(domain + 'lock.php?callback=JSON_CALLBACK&op=' + !dataShare.get().lock + '&id=' + dataShare.get().id)
                 .success(function (data) {
                     dataShare.setLoading(false);
                     dataShare.set(data);
                 });
         }
     };
+
+    $scope.toggleSelection = function toggleSelection(phone) {
+        var idx = $scope.selection.indexOf(phone);
+        if (idx > -1) $scope.selection.splice(idx, 1);
+        else $scope.selection.push(phone);
+    };
+
+    var refresh = function () {
+        $scope.user_name = '';
+        $scope.user_phone = '';
+        $scope.user_isManager = false;
+        $scope.selection = [];
+    };
+    refresh();
+    $scope.editUsers = function () {
+        var newUser = '';
+        var deletedPhones = '';
+        if ($scope.user_name != '' && $scope.user_phone != '') {
+            newUser = '&name=' + $scope.user_name + '&phone=' + $scope.user_phone + '&manager=' + $scope.user_isManager;
+        }
+        if ($scope.selection.length > 0) {
+            deletedPhones = '&deleted=';
+            for (index = 0; index < $scope.selection.length; ++index) deletedPhones += $scope.selection[index] + ';';
+        }
+
+        if (newUser != '' || deletedPhones != '') {
+            dataShare.setLoading(true);
+            $http.jsonp(domain + 'users.php?callback=JSON_CALLBACK&' + newUser + deletedPhones)
+                .success(function (data) {
+                    dataShare.setLoading(false);
+                    dataShare.set(data);
+                    refresh();
+                });
+        }
+    };
+
+    $scope.systemMessage = dataShare.get().message;
+    $scope.editMessage = function () {
+        if ($scope.systemMessage != '') {
+            dataShare.setLoading(true);
+            $http.jsonp(domain + 'message.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&op=new&msg=' + encodeURIComponent($scope.systemMessage))
+                .success(function (data) {
+                    dataShare.setLoading(false);
+                    dataShare.set(data);
+                });
+        }
+    };
+
+    $scope.resetReaders = function () {
+        dataShare.setLoading(true);
+        $http.jsonp(domain + 'message.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&op=reset')
+            .success(function (data) {
+                dataShare.setLoading(false);
+                dataShare.set(data);
+            });
+    }
+
 });
 
 angular.module('app').config(function ($mdDateLocaleProvider) {
