@@ -30,7 +30,7 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5719178">
+            <state vertical-scroll-proportion="1.2226027">
               <caret line="54" column="16" selection-start-line="54" selection-start-column="3" selection-end-line="54" selection-end-column="16" />
               <folding />
             </state>
@@ -286,12 +286,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00170" summary="update">
-      <created>1464544510529</created>
-      <option name="number" value="00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1464544510529</updated>
     </task>
     <task id="LOCAL-00171" summary="update">
       <created>1464586711449</created>
@@ -581,7 +575,13 @@
       <option name="project" value="LOCAL" />
       <updated>1466960840519</updated>
     </task>
-    <option name="localTasksCounter" value="219" />
+    <task id="LOCAL-00219" summary="update">
+      <created>1466962870200</created>
+      <option name="number" value="00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1466962870201</updated>
+    </task>
+    <option name="localTasksCounter" value="220" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1000,7 +1000,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5719178">
+        <state vertical-scroll-proportion="1.2226027">
           <caret line="54" column="16" selection-start-line="54" selection-start-column="3" selection-end-line="54" selection-end-column="16" />
           <folding />
         </state>
