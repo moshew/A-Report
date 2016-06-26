@@ -92,8 +92,8 @@ app.config(function ($routeProvider) {
             controller: 'adminController'
         })
 
-        .when('/messages', {
-            templateUrl: 'pages/messages.html',
+        .when('/messageAdmin', {
+            templateUrl: 'pages/messageAdmin.html',
             controller: 'adminController'
         })
 
