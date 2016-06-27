@@ -356,6 +356,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         if (reportSent) return;
         else reportSent = true;
 
+        if (info==null) info='';
         if (status>=0) $scope.myStyle[status] = { 'background-color': '#80be40' };
 
         dataShare.setLoading(true);
@@ -370,6 +371,8 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     };
 
     var futureReport = function (status, info) {
+        if (info==null) info='';
+
         var start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
         var end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
         dataShare.setLoading(true);
