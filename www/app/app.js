@@ -1,6 +1,6 @@
 ﻿// script.js
-//var domain = 'http://mx.isra-net.co.il/~moridimt/';
-var domain = 'http://a-report.co.il/';
+var domain = 'http://mx.isra-net.co.il/~moridimt/';
+//var domain = 'http://a-report.co.il/';
 /*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
@@ -600,7 +600,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
                 switchEnable = true;
             }, 500);
             dataShare.setLoading(true)
-            $http.jsonp(domain + 'lock.php?callback=JSON_CALLBACK&op=' + !dataShare.get().lock + '&id=' + dataShare.get().id)
+            $http.jsonp(domain + 'lock.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&op=' + !dataShare.get().lock)
                 .success(function (data) {
                     dataShare.setLoading(false);
                     dataShare.set(data);
@@ -634,7 +634,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
 
         if (newUser != '' || deletedPhones != '') {
             dataShare.setLoading(true);
-            $http.jsonp(domain + 'users.php?callback=JSON_CALLBACK&' + newUser + deletedPhones)
+            $http.jsonp(domain + 'users.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + newUser + deletedPhones)
                 .success(function (data) {
                     dataShare.setLoading(false);
                     dataShare.set(data);
