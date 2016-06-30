@@ -295,6 +295,7 @@ app.controller('messageController', function ($scope, $http, $location, $timeout
 });
 
 app.controller('statusController', function ($scope, $http, $location, dataShare, $timeout) {
+
     $scope.dataShare = dataShare;
     if (dataShare.get()==null || dataShare.get().id==null) $location.path('');
 
@@ -311,6 +312,18 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
             }, 5 * 1000);
         }, 250);
     }
+
+    try {
+        if (data.id!='') {
+            window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
+                {googleProjectNumber: "682594015864"},
+                dataShare.notificationOpenedCallback);
+            window.plugins.OneSignal.enableInAppAlertNotification(true);
+            window.plugins.OneSignal.sendTag("id", data.id);
+        }
+    }
+    catch (err) {}
+
 
     $scope.keyEvent = function(keyEvent, info) {
         if (keyEvent.which === 13) $scope.InfoPopupCB(info);
