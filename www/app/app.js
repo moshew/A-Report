@@ -199,15 +199,6 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
     $scope.i_width = window.innerWidth;
     $scope.i_height = window.innerHeight;
 
-    try {
-        window.plugins.OneSignal.getIds(function (ids) {
-            $scope.test_id = ids.userId;
-            $scope.test_token = ids.pushToken;
-        });
-    }
-    catch (err) {}
-
-
     $scope.enter = function (admin) {
         dataShare.setLoading(true);
         $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK')
