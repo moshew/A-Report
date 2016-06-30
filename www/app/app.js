@@ -15,7 +15,7 @@ app.run(function($http, dataShare) {
             dataShare.set(data);
 
             try {
-                if (data.get().id!='') {
+                if (data.id!='') {
                     window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
                         {googleProjectNumber: "682594015864"},
                         dataShare.notificationOpenedCallback);
