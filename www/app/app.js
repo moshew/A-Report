@@ -252,7 +252,7 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
                 dataShare.setLoading(false);
                 refresh();
                 if (data.id != -1) {
-                    window.localStorage.setItem("id", data.id);
+                    //window.localStorage.setItem("id", data.id);
                     dataShare.changePage(data);
                 }
             });
