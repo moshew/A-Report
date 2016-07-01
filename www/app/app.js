@@ -1,28 +1,28 @@
 ﻿// script.js
 var domain = 'http://mx.isra-net.co.il/~moridimt/';
 //var domain = 'http://a-report.co.il/';
-
+/*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
 }, false);
-
+*/
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
 
-app.run(function($http, dataShare) {
+app.run(function($http, $timeout, dataShare) {
     var id = window.localStorage.getItem("id");
     $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id=' + id)
         .success(function (data) {
             dataShare.set(data);
             if (id != null) {
-                try {
-                    window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c",
-                        {googleProjectNumber: "656959786426"},
-                        dataShare.notificationOpenedCallback);
-                    window.plugins.OneSignal.sendTag("id", id);
-                    window.plugins.OneSignal.enableInAppAlertNotification(true);
-                }
-                catch (err) {
-                }
+                $timeout(function () {
+                    try {
+                        window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c", {googleProjectNumber: "656959786426"}, dataShare.notificationOpenedCallback);
+                        window.plugins.OneSignal.sendTag("id", id);
+                        window.plugins.OneSignal.enableInAppAlertNotification(true);
+                    }
+                    catch (err) {
+                    }
+                }, 5 * 1000);
             }
         });
 });
