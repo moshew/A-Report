@@ -22,7 +22,7 @@ app.run(function($http, $timeout, dataShare) {
                     }
                     catch (err) {
                     }
-                }, 5 * 1000);
+                }, 2 * 1000);
             }
         });
 });
