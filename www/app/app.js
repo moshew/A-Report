@@ -15,15 +15,17 @@ app.run(function($http, dataShare) {
         .success(function (data) {
             dataShare.set(data);
             if (id != null) {
-                try {
-                    window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c",
-                        {googleProjectNumber: "656959786426"},
-                        dataShare.notificationOpenedCallback);
-                    window.plugins.OneSignal.enableInAppAlertNotification(true);
-                    window.plugins.OneSignal.sendTag("id", id);
-                }
-                catch (err) {
-                }
+                $timeout(function () {
+                    try {
+                        window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c",
+                            {googleProjectNumber: "656959786426"},
+                            dataShare.notificationOpenedCallback);
+                        window.plugins.OneSignal.enableInAppAlertNotification(true);
+                        window.plugins.OneSignal.sendTag("id", id);
+                    }
+                    catch (err) {
+                    }
+                }, 10 * 1000);
             }
         });
 });
