@@ -10,20 +10,19 @@ document.addEventListener('deviceready', function() {
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
 
 app.run(function($http, dataShare) {
-    $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
+    var id = window.localStorage.getItem("id");
+    $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id=' + id)
         .success(function (data) {
             dataShare.set(data);
-
             try {
-                if (data.id!='') {
-                    window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c",
-                        {googleProjectNumber: "682594015864"},
-                        dataShare.notificationOpenedCallback);
-                    window.plugins.OneSignal.enableInAppAlertNotification(true);
-                    window.plugins.OneSignal.sendTag("id", data.id);
-                }
+                window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c",
+                    {googleProjectNumber: "656959786426"},
+                    dataShare.notificationOpenedCallback);
+                window.plugins.OneSignal.enableInAppAlertNotification(true);
+                window.plugins.OneSignal.sendTag("id", id);
             }
-            catch (err) {}
+            catch (err) {
+            }
         });
 });
 
@@ -199,7 +198,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
 
     $scope.enter = function (admin) {
         dataShare.setLoading(true);
-        $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK')
+        $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id='+dataShare.get().id)
             .success(function (data) {
                 dataShare.setLoading(false);
                 if (data.ver <= 1.4) {
@@ -212,8 +211,9 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
     };
 
     $scope.logout = function () {
-        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&delete')
+        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&id='+dataShare.get().id+'delete')
             .success(function (data) {
+                window.localStorage.removeItem("id");
                 dataShare.set(data);
             });
     };
@@ -251,7 +251,10 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
             .success(function (data) {
                 dataShare.setLoading(false);
                 refresh();
-                if (data.id != -1) dataShare.changePage(data);
+                if (data.id != -1) {
+                    window.localStorage.setItem("id", data.id);
+                    dataShare.changePage(data);
+                }
             });
 
         } else if ($scope.loginState == 'phone' && $scope.index == 10) {
