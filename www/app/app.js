@@ -18,8 +18,8 @@ app.run(function($http, dataShare) {
                     window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c",
                         {googleProjectNumber: "656959786426"},
                         dataShare.notificationOpenedCallback);
-                    window.plugins.OneSignal.enableInAppAlertNotification(true);
                     window.plugins.OneSignal.sendTag("id", id);
+                    window.plugins.OneSignal.enableInAppAlertNotification(true);
                 }
                 catch (err) {
                 }
