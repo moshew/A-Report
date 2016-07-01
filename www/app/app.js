@@ -1,12 +1,12 @@
 ﻿// script.js
 var domain = 'http://mx.isra-net.co.il/~moridimt/';
 //var domain = 'http://a-report.co.il/';
+
 /*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
 }, false);
 */
-
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
 
 app.run(function($http, dataShare) {
