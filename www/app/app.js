@@ -196,8 +196,6 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
 app.controller('mainController', function ($scope, $rootScope, $http, $window, $timeout, dataShare) {
     $scope.dataShare = dataShare;
     $scope.zoomFactor = dataShare.getZoomFactor();
-    $scope.i_width = window.innerWidth;
-    $scope.i_height = window.innerHeight;
 
     $scope.enter = function (admin) {
         dataShare.setLoading(true);

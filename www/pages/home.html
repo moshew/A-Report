@@ -1,6 +1,5 @@
 ﻿<div class="home-logout" style="margin-top: 20px;" ng-show="dataShare.get().id!=-1"><span ng-click="logout()">(התנתק)</span><span ng-if="dataShare.getSettings().message_status==0" ng-click="logout()"><img src="assets/user.png" /></span><span ng-if="dataShare.getSettings().message_status>0" ng-click="dataShare.action('message', 'message')"><img src="assets/message.png" /></span></div>
 <div class="home-logout" ng-show="dataShare.getSettings().admin" ng-click="dataShare.action('reportAdmin', 'login')"><img src="assets/admin.png" /></div>
-{{test_id}}<br>{{test_token}}
 <div ng-click="enter()">
    <div class="home-logo"><img src="assets/logo1.png" /></div>
    <div class="home-footer"><img src="assets/logo3.png" /></div>
