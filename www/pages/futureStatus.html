@@ -7,4 +7,4 @@
     <div class="futureReport-dates" dir="rtl" ng-repeat="task in dataShare.get().future_tasks"><div class="futureReport-date"><img class="statusList-userImg" width="30" ng-src="assets/report/{{task.status}}.png" />{{ task.date_str }}<span style="margin-right:10px;font-size: 12px">{{task.info}}</span><div ng-if="editMode" class="futureReport-delete" ng-click="cancelTask(task.id)"><img src="assets/delete-user.png" /></div></div></div>
 </div>
 <div ng-include="'pages/footer1.html'"></div>
-<div ng-include="'pages/loader.html'" />
+<div ng-include="'pages/loader.html'"></div>
