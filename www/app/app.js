@@ -14,14 +14,16 @@ app.run(function($http, dataShare) {
     $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id=' + id)
         .success(function (data) {
             dataShare.set(data);
-            try {
-                window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c",
-                    {googleProjectNumber: "656959786426"},
-                    dataShare.notificationOpenedCallback);
-                window.plugins.OneSignal.enableInAppAlertNotification(true);
-                window.plugins.OneSignal.sendTag("id", id);
-            }
-            catch (err) {
+            if (id != null) {
+                try {
+                    window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c",
+                        {googleProjectNumber: "656959786426"},
+                        dataShare.notificationOpenedCallback);
+                    window.plugins.OneSignal.enableInAppAlertNotification(true);
+                    window.plugins.OneSignal.sendTag("id", id);
+                }
+                catch (err) {
+                }
             }
         });
 });
@@ -252,7 +254,7 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
                 dataShare.setLoading(false);
                 refresh();
                 if (data.id != -1) {
-                    //window.localStorage.setItem("id", data.id);
+                    window.localStorage.setItem("id", data.id);
                     dataShare.changePage(data);
                 }
             });
