@@ -2,31 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/icon-57-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/icon-57.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/icon-72-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/icon-72.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/icon/android/icon-36-ldpi.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/icon/android/icon-48-mdpi.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/icon/android/icon-72-hdpi.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/icon/android/icon-96-xhdpi.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/icon/ios/icon-57-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/icon/ios/icon-57.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/icon/ios/icon-72-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/icon/ios/icon-72.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/android/Thumbs.db" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/android/screen-hdpi-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/android/screen-ldpi-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/android/screen-mdpi-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/android/screen-xhdpi-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/ios/screen-ipad-portrait-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/ios/screen-ipad-portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/ios/screen-iphone-portrait-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/ios/screen-iphone-portrait-568h-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/ios/screen-iphone-portrait-667h-2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/res/screen/ios/screen-iphone-portrait.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58258927">
-              <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
+            <state vertical-scroll-proportion="-16.153847">
+              <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -71,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.711538">
-              <caret line="63" column="22" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.17586207">
+              <caret line="9" column="70" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -85,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/www/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-18.961538">
-              <caret line="29" column="25" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="25" />
+              <caret line="29" column="23" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -209,10 +187,10 @@
         <option value="$PROJECT_DIR$/www/pages/statusList.html" />
         <option value="$PROJECT_DIR$/www/pages/users.html" />
         <option value="$PROJECT_DIR$/www/pages/footer1.html" />
-        <option value="$PROJECT_DIR$/www/css/style.css" />
-        <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/www/index.html" />
+        <option value="$PROJECT_DIR$/www/css/style.css" />
       </list>
     </option>
   </component>
@@ -285,42 +263,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="A-Report" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="A-Report" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="A-Report" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="A-Report" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="www" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -438,18 +380,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00211" summary="update">
-      <created>1466946237756</created>
-      <option name="number" value="00211" />
-      <option name="project" value="LOCAL" />
-      <updated>1466946237756</updated>
-    </task>
-    <task id="LOCAL-00212" summary="update">
-      <created>1466952025813</created>
-      <option name="number" value="00212" />
-      <option name="project" value="LOCAL" />
-      <updated>1466952025817</updated>
     </task>
     <task id="LOCAL-00213" summary="update">
       <created>1466952829065</created>
@@ -733,7 +663,19 @@
       <option name="project" value="LOCAL" />
       <updated>1467414265506</updated>
     </task>
-    <option name="localTasksCounter" value="260" />
+    <task id="LOCAL-00260" summary="update">
+      <created>1467414550043</created>
+      <option name="number" value="00260" />
+      <option name="project" value="LOCAL" />
+      <updated>1467414550043</updated>
+    </task>
+    <task id="LOCAL-00261" summary="update">
+      <created>1467414575046</created>
+      <option name="number" value="00261" />
+      <option name="project" value="LOCAL" />
+      <updated>1467414575046</updated>
+    </task>
+    <option name="localTasksCounter" value="262" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -749,7 +691,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17708333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17708333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.49583334" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31012657" sideWeight="0.49166667" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2278481" sideWeight="0.51666665" order="10" side_tool="true" content_ui="tabs" />
@@ -1142,18 +1084,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/css/style.css">
+    <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.711538">
-          <caret line="63" column="22" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.961538">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="25" />
+        <state vertical-scroll-proportion="-16.153847">
+          <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
           <folding />
         </state>
       </provider>
@@ -1166,10 +1100,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
+    <entry file="file://$PROJECT_DIR$/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58258927">
-          <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
+        <state vertical-scroll-proportion="-18.961538">
+          <caret line="29" column="23" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17586207">
+          <caret line="9" column="70" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
           <folding />
         </state>
       </provider>
