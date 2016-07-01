@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="il.co.a-report" version="1.5">
-  <name>דוח סגולה</name>
+  <name>A-Report</name>
   <description>A-Report by click</description>
   <author href="http://a-report.co.il" email="support@a-report.co.il">A-Report Team</author>
   <content src="index.html"/>
@@ -19,10 +19,12 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
+  <!--
   <preference name="android-build-tool" value="gradle" />
   <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
   <plugin name="org.apache.cordova.inappbrowser" spec="0.6.0" source="pgb" />
   <gap:plugin name="onesignal-cordova-plugin" source="npm" />
+  -->
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
