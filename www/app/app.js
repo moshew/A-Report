@@ -13,24 +13,7 @@ app.run(function($http, $timeout, dataShare) {
     $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id=' + id)
         .success(function (data) {
             dataShare.set(data);
-            if (id != null) {
-                $timeout(function () {
-                    try {
-                        window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c", {googleProjectNumber: "656959786426", autoRegister: false}, dataShare.notificationOpenedCallback);
-                        window.plugins.OneSignal.enableInAppAlertNotification(true);
-                        window.plugins.OneSignal.registerForPushNotifications();
-                        $timeout(function () {
-                            try {
-                                window.plugins.OneSignal.sendTag("id", id);
-                            }
-                            catch (err) {
-                            }
-                        }, 1000);
-                    }
-                    catch (err) {
-                    }
-                }, 1000);
-            }
+            dataShare.register();
         });
 });
 
@@ -140,6 +123,22 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
 
     service.getZoomFactor = function() {
         return Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
+    }
+
+    service.register = function() {
+        if (this.data.id != '-1') {
+            $timeout(function () {
+                try {
+                    window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c", {googleProjectNumber: "656959786426"}, service.notificationOpenedCallback);
+                    window.plugins.OneSignal.enableInAppAlertNotification(true);
+                    $timeout(function () {
+                        try {
+                            window.plugins.OneSignal.sendTag("id", this.data.id);
+                        } catch (err) { }
+                    }, 1000);
+                } catch (err) { }
+            }, 1000);
+        }
     }
 
     service.changePage = function (data, path) {
@@ -469,6 +468,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 app.controller('statusListController', function ($scope, $http, $location, dataShare) {
     $scope.dataShare = dataShare;
     if (dataShare.get()==null) $location.path('');
+    $scope.search_url = domain+'get_users.php?id='+dataShare.get().id+'&s=';
 
     $scope.removeUser = function (user) {
         $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + dataShare.get().id+'&user='+user)
