@@ -25,7 +25,7 @@ app.run(function($http, $timeout, dataShare) {
                             }
                             catch (err) {
                             }
-                        }, 1000);
+                        }, 0);
                     }
                     catch (err) {
                     }

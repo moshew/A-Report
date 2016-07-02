@@ -42,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.51227677">
-              <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+              <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -396,12 +396,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00221" summary="update">
-      <created>1467061959468</created>
-      <option name="number" value="00221" />
-      <option name="project" value="LOCAL" />
-      <updated>1467061959468</updated>
-    </task>
     <task id="LOCAL-00222" summary="update">
       <created>1467062139251</created>
       <option name="number" value="00222" />
@@ -690,7 +684,13 @@
       <option name="project" value="LOCAL" />
       <updated>1467418497272</updated>
     </task>
-    <option name="localTasksCounter" value="270" />
+    <task id="LOCAL-00270" summary="update">
+      <created>1467452282568</created>
+      <option name="number" value="00270" />
+      <option name="project" value="LOCAL" />
+      <updated>1467452282568</updated>
+    </task>
+    <option name="localTasksCounter" value="271" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1126,7 +1126,7 @@
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.51227677">
-          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
           <folding />
         </state>
       </provider>
