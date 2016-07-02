@@ -25,11 +25,11 @@ app.run(function($http, $timeout, dataShare) {
                             }
                             catch (err) {
                             }
-                        }, 0);
+                        }, 500);
                     }
                     catch (err) {
                     }
-                }, 2 * 1000);
+                }, 1500);
             }
         });
 });
