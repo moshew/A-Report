@@ -29,7 +29,7 @@ app.run(function($http, $timeout, dataShare) {
                     }
                     catch (err) {
                     }
-                }, 1500);
+                }, 1000);
             }
         });
 });
