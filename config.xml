@@ -19,6 +19,7 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
+  <preference name="phonegap-version" value="cli-5.2.0" />
   <preference name="android-build-tool" value="gradle" />
   <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
   <plugin name="org.apache.cordova.inappbrowser" spec="0.6.0" source="pgb" />
