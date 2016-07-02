@@ -19,8 +19,13 @@ app.run(function($http, $timeout, dataShare) {
                         window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c", {googleProjectNumber: "656959786426", autoRegister: false}, dataShare.notificationOpenedCallback);
                         window.plugins.OneSignal.enableInAppAlertNotification(true);
                         window.plugins.OneSignal.registerForPushNotifications();
-                        window.plugins.OneSignal.sendTag("id", id);
-                        window.plugins.OneSignal.sendTag("id", id);
+                        $timeout(function () {
+                            try {
+                                window.plugins.OneSignal.sendTag("id", id);
+                            }
+                            catch (err) {
+                            }
+                        }, 1000);
                     }
                     catch (err) {
                     }
@@ -316,18 +321,6 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
             }, 5 * 1000);
         }, 250);
     }
-
-    try {
-        if (data.id!='') {
-            window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
-                {googleProjectNumber: "682594015864"},
-                dataShare.notificationOpenedCallback);
-            window.plugins.OneSignal.enableInAppAlertNotification(true);
-            window.plugins.OneSignal.sendTag("id", data.id);
-        }
-    }
-    catch (err) {}
-
 
     $scope.keyEvent = function(keyEvent, info) {
         if (keyEvent.which === 13) $scope.InfoPopupCB(info);
