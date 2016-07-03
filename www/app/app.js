@@ -119,11 +119,11 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
 
     service.setSettings = function(key1, val1) {
         this.settings[key1] = val1;
-    }
+    };
 
     service.getZoomFactor = function() {
         return Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
-    }
+    };
 
     service.register = function() {
         if (this.data.id != -1) {
@@ -131,9 +131,10 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
                 try {
                     window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c", {googleProjectNumber: "656959786426"}, service.notificationOpenedCallback);
                     window.plugins.OneSignal.enableInAppAlertNotification(true);
+                    window.plugins.OneSignal.sendTag("id", this.data.id);
                     $timeout(function () {
                         try {
-                            window.plugins.OneSignal.sendTag("id", this.data.id);
+
                         } catch (err) {
                         }
                     }, 1000);
@@ -142,7 +143,10 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
                 }
             }, 1000);
         }
-    }
+    };
+
+    service.notificationOpenedCallback = function(jsonData) {
+    };
 
     service.changePage = function (data, path) {
         this.mainPage = false;
@@ -176,9 +180,6 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
             if (oper=='main') service.changePage(data);
             else service.changePage(data, oper);
         });
-    };
-
-    service.notificationOpenedCallback = function(jsonData) {
     };
 
     var _loading = false;
