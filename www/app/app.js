@@ -8,7 +8,7 @@ document.addEventListener('deviceready', function() {
 */
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
 
-app.run(function($http, $timeout, dataShare) {
+app.run(function($http, dataShare) {
     var id = window.localStorage.getItem("id");
     $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id=' + id)
         .success(function (data) {
@@ -264,6 +264,7 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
                 if (data.id != -1) {
                     window.localStorage.setItem("id", data.id);
                     dataShare.changePage(data);
+                    dataShare.register();
                 }
             });
 
