@@ -126,7 +126,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
     }
 
     service.register = function() {
-        if (this.data.id != '-1') {
+        if (this.data.id != -1) {
             $timeout(function () {
                 try {
                     window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c", {googleProjectNumber: "656959786426"}, service.notificationOpenedCallback);
@@ -211,7 +211,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
         $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id='+dataShare.get().id)
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (data.ver <= 1.4) {
+                if (data.ver <= 1.5) {
                     path=(admin)?'reportAdmin':null;
                     dataShare.changePage(data, path);
                 } else {
