@@ -134,9 +134,12 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
                     $timeout(function () {
                         try {
                             window.plugins.OneSignal.sendTag("id", this.data.id);
-                        } catch (err) { }
+                        } catch (err) {
+                        }
                     }, 1000);
-                } catch (err) { }
+                } catch (err)
+                {
+                }
             }, 1000);
         }
     }
