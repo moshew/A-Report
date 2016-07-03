@@ -132,9 +132,9 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
                     window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c", {googleProjectNumber: "656959786426"}, service.notificationOpenedCallback);
                     window.plugins.OneSignal.enableInAppAlertNotification(true);
                     $timeout(function () {
-                        try { window.plugins.OneSignal.sendTag("id", "test"); }
+                        try { window.plugins.OneSignal.sendTag("id", service.data.id); }
                         catch (err) { }
-                    }, 1000);
+                    }, 1500);
                 }
                 catch (err) { }
             }, 1000);
