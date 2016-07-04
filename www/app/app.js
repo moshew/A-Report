@@ -602,8 +602,11 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
 app.controller('adminController', function ($scope, $http, $timeout, dataShare) {
     $scope.dataShare = dataShare;
     var switchEnable = true;
+    var qr_url_base = domain + 'qrcode.php?op=';
+    var index = 0;
 
-    $scope.qr_op = 'status';
+    $scope.qr_url = qr_url_base + index;
+
     $scope.switchOp = function (id) {
         if (switchEnable) {
             switchEnable = false;
@@ -625,12 +628,20 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         else $scope.selection.push(phone);
     };
 
+
+    $scope.changeQR = function() {
+        if (index==2) index = 0;
+        else index += 1;
+        $scope.qr_url = qr_url_base + index;
+    };
+
     var refresh = function () {
         $scope.user_name = '';
         $scope.user_phone = '';
         $scope.user_isManager = false;
         $scope.selection = [];
     };
+
     refresh();
     $scope.editUsers = function () {
         var newUser = '';
