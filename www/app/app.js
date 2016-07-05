@@ -340,13 +340,27 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         else dayReport(statusSelected);
     };
 
-    $scope.cancelReport = function() {
-        dayReport(-1);
+    $scope.cancelReport = function(isSingle) {
+        if (isSingle) dayReport(-1);
+        else {
+            phone = dataShare.get()["phone"];
+            if (phone!=null) dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
+            else dataShare.action('futureStatus', 'future_tasks');
+        }
+    };
+
+    $scope.addNewTask = function() {
+        phone = dataShare.get()["phone"];
+        if (phone!=null) dataShare.action('futureReport', 'report_as', {phone: phone});
+         else dataShare.action('futureReport', 'login');
     };
 
     $scope.cancelTask = function(taskId) {
         dataShare.setLoading(true);
-        $http.jsonp(domain+'future_tasks.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&task_id=' + taskId + '&oper=-1')
+
+        phone = dataShare.get()["phone"];
+        base_url = (phone!=null)?'future_tasks_as.php?phone='+phone+'&':'future_tasks.php?';
+        $http.jsonp(domain+base_url+'callback=JSON_CALLBACK&id=' + dataShare.get().id + '&task_id=' + taskId + '&oper=-1')
             .success(function (data) {
                 dataShare.setLoading(false);
                 dataShare.set(data);
@@ -386,14 +400,18 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         var start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
         var end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
         dataShare.setLoading(true);
-        $http.jsonp(domain+'future_tasks.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + status + '&info='+info)
+        phone = dataShare.get()["phone"];
+        base_url = (phone!=null)?'future_tasks_as.php?phone='+phone+'&':'future_tasks.php?';
+        $http.jsonp(domain+base_url+'callback=JSON_CALLBACK&id=' + dataShare.get().id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + status + '&info='+info)
             .success(function (data) {
                 dataShare.setLoading(false);
                 if (data.status=='duplicated') {
                     $scope.info_image = 'report_error';
                     $scope.report_infoMsg = true;
+                } else {
+                    if (phone != null) dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
+                    else dataShare.action('futureStatus', 'future_tasks');
                 }
-                else dataShare.action('futureStatus', 'future_tasks');
             });
     };
 
@@ -488,10 +506,17 @@ app.controller('statusListController', function ($scope, $http, $location, dataS
         }
     };
 
-    $scope.report = function(name, phone) {
+    $scope.report = function(phone) {
         if (dataShare.getSettings()['manager']) {
-            dataShare.action('report', 'report_as', {name: name, phone: phone});
+            dataShare.action('report', 'report_as', {phone: phone});
         }
+    }
+
+    $scope.report2 = function(phone) {
+        if (dataShare.getSettings()['admin']) {
+            dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
+        }
+        else if (dataShare.getSettings()['manager']) $scope.repor(phone);
     }
 });
 
@@ -634,6 +659,16 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         else index += 1;
         $scope.qr_url = qr_url_base + index;
     };
+
+    var changeQR2 = function() {
+        if (index==2) index = 0;
+        else index += 1;
+        $scope.qr_url2 = qr_url_base + index;
+        $timeout(function () {
+            changeQR2();
+        }, parseInt(dataShare.getSettings().message_status));
+    }
+    changeQR2();
 
     var refresh = function () {
         $scope.user_name = '';

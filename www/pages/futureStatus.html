@@ -1,6 +1,6 @@
-﻿<div class="futureReport-header">דיווח עתידי
+﻿<div class="futureReport-header">{{dataShare.get().title}}
     <div class="futureReport-leftOpt" ng-click="editMode=!editMode">{{(editMode)?"סיים":"ערוך"}}</div>
-    <div class="futureReport-rightOpt"><div ng-show="!editMode" ng-click="dataShare.action('futureReport', 'login')">+</div></div>
+    <div class="futureReport-rightOpt"><div ng-show="!editMode" ng-click="addNewTask()">+</div></div>
 </div><br />
 <div dir="rtl" style="margin-top:50px;font-size: 150%;" ng-if="dataShare.get().future_tasks.length==0">אין דיווחים עתידיים במערכת!</div>
 <div class="statusList-info" ng-cloak>
