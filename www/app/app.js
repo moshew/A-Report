@@ -481,7 +481,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
                 $scope.report_dates.start_day = $scope.report_dates.end_day = null;
             }
         }
-    }
+    };
 
     $scope.calanderBack = function() {
         if ($scope.report_dates.start_day!=null) {
@@ -494,7 +494,6 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
             $scope.showCalander=false;
         }
     }
-
 });
 
 app.controller('statusListController', function ($scope, $http, $timeout, $location, dataShare) {
@@ -545,15 +544,12 @@ app.controller('statusListController', function ($scope, $http, $timeout, $locat
                     $scope.errorInfo = data.status.info;
                     $scope.errorMsg = true;
                 }
-
             });
-    }
+    };
 
     $scope.errorMsgClose = function() {
         $scope.errorMsg = false;
     }
-
-
 });
 
 app.controller('permissionsController', function ($scope, $http, $timeout, dataShare) {
