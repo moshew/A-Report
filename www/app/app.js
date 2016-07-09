@@ -77,11 +77,6 @@ app.config(function ($routeProvider) {
             controller: 'adminController'
         })
 
-        .when('/approval', {
-            templateUrl: 'pages/approval.html',
-            controller: 'adminController'
-        })
-
         .when('/users', {
             templateUrl: 'pages/users.html',
             controller: 'adminController'
@@ -310,7 +305,7 @@ app.controller('messageController', function ($scope, $http, $location, $timeout
 
 app.controller('statusController', function ($scope, $http, $location, dataShare, $timeout) {
     $scope.dataShare = dataShare;
-    $scope.reportOptions = false;
+    $scope.optionsShow = false;
     if (dataShare.get()==null || dataShare.get().id==null) $location.path('');
 
     $scope.reportPage='main';
@@ -331,28 +326,27 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         if (keyEvent.which === 13) $scope.InfoPopupCB(info);
     };
 
-    $scope.reportOthers = function () {
-        dataShare.setLoading(true);
-        $http.jsonp(domain+'report_others.php?callback=JSON_CALLBACK')
-            .success(function (data) {
-                $scope.reportOptions = data;
-                dataShare.setLoading(false);
-                $scope.reportOptions = true;
-            });
+    $scope.return = function () {
+        $scope.optionsShow = false;
     };
 
     var isFuture = false;
     var statusSelected = 0;
-    $scope.report = function (status, info) {
+    $scope.report = function (status) {
         if (status==null) isFuture=true;
         else statusSelected = status;
 
-        if (statusSelected==4 || info) {
+        var infoNeeded = (statusSelected<=10)?false:$scope.reportOptions[statusSelected].info;
+        if (statusSelected==4 || infoNeeded) {
             $scope.info_image = (statusSelected == 4) ? 'report_info' : 'report_info2';
             $scope.report_infoMsg = true;
         }
-        else if (isFuture) futureReport(statusSelected);
-        else dayReport(statusSelected);
+        else {
+            var info = '';
+            if (statusSelected>10) info = $scope.reportOptions[statusSelected].title;
+            if (isFuture) futureReport(statusSelected, info);
+            else dayReport(statusSelected, info);
+        }
     };
 
     $scope.cancelReport = function(isSingle) {
@@ -362,6 +356,26 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
             if (phone!=null) dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
             else dataShare.action('futureStatus', 'future_tasks');
         }
+    };
+
+    $scope.reportOthers = function (future) {
+        isFuture = future;
+        dataShare.setLoading(true);
+        $http.jsonp(domain+'report_options.php?callback=JSON_CALLBACK')
+            .success(function (data) {
+                $scope.reportOptions = data;
+                dataShare.setLoading(false);
+                $scope.optionsShow = true;
+            });
+    };
+
+    $scope.reportOption = function (status) {
+
+        if (isFuture) {
+            $scope.optionsShow = false;
+            $scope.changeFutureStatus(status);
+        }
+        else $scope.report(status);
     };
 
     $scope.addNewTask = function() {
@@ -384,6 +398,8 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
     $scope.InfoPopupCB = function (info) {
         if (info!=null) {
+            //$scope.report_infoMsg = false;
+            if (statusSelected>10) info = $scope.reportOptions[statusSelected].title + ': ' + info;
             if (isFuture) futureReport(statusSelected, info);
             else dayReport(statusSelected, info);
         }
@@ -447,8 +463,10 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
     $scope.report2BtnStyle = [{ 'background-color': '#80be40' }, null, null, null, null, null, null, null, null, null, null, null];
     $scope.changeFutureStatus = function (status) {
-        $scope.report2BtnStyle[statusSelected] = { 'background-color': '#234a7d' };
-        $scope.report2BtnStyle[status] = { 'background-color': '#80be40' };
+        var prevStatus = (statusSelected<=10)?statusSelected:11;
+        var currStatus = (status<=10)?status:11;
+        $scope.report2BtnStyle[prevStatus] = { 'background-color': '#234a7d' };
+        $scope.report2BtnStyle[currStatus] = { 'background-color': '#80be40' };
         statusSelected = status;
     };
 
@@ -538,7 +556,7 @@ app.controller('statusListController', function ($scope, $http, $timeout, $locat
     };
 
     $scope.approve = function() {
-        $http.jsonp(domain + 'approve.php?callback=JSON_CALLBACK&id=' + dataShare.get().id)
+        $http.jsonp(domain + 'approvals.php?callback=JSON_CALLBACK&id=' + dataShare.get().id)
             .success(function (data) {
                 if (data.status.code=='success') {
                     $scope.successMsg = true;
@@ -592,9 +610,10 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
     var historyCallback = function (data) {
         $scope.highlightDays = [];
         for (var i = 0; i < data.reported.length; i++) {
+            var status = (data.reported[i].status<=10)?data.reported[i].status:11;
             $scope.highlightDays.push({
                 date: data.reported[i].day,
-                css: eventsColors[data.reported[i].status],
+                css: eventsColors[status],
                 selectable: false,
                 title: ''
             });
@@ -615,6 +634,7 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
     var loadDayInfo = function () {
         $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD'))
             .success(function (data) {
+                data.status = (data.status<=10)?data.status:11;
                 $scope.infoBg = eventsColors[data.status];
                 $scope.dayInfo = data;
                 $scope.addAttach = false;
@@ -663,6 +683,7 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
 
 app.controller('adminController', function ($scope, $http, $timeout, dataShare) {
     $scope.dataShare = dataShare;
+    $scope.approvalShow = false;
     var switchEnable = true;
     var qr_url_base = domain + 'qrcode.php?op=';
     var index = 0;
@@ -706,11 +727,21 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         }, parseInt(dataShare.getSettings().message_status));
     };
     changeQR2();
-/*
-    $scope.getApproval = function() {
 
+    $scope.showApprovals = function() {
+        dataShare.setLoading(true);
+        $http.jsonp(domain+'approvals.php?callback=JSON_CALLBACK&op=get&id='+dataShare.get().id)
+            .success(function (data) {
+                $scope.approvalUsers = data;
+                dataShare.setLoading(false);
+                $scope.approvalShow = true;
+            });
     };
-  */
+
+    $scope.return = function() {
+        $scope.approvalShow = false;
+    }
+
 
     var refresh = function () {
         $scope.user_name = '';
