@@ -47,11 +47,6 @@ app.config(function ($routeProvider) {
             controller: 'statusController'
         })
 
-        .when('/reportOthers', {
-            templateUrl: 'pages/reportOthers.html',
-            controller: 'statusController'
-        })
-
         .when('/statusList', {
             templateUrl: 'pages/statusList.html',
             controller: 'statusListController'
@@ -314,8 +309,8 @@ app.controller('messageController', function ($scope, $http, $location, $timeout
 });
 
 app.controller('statusController', function ($scope, $http, $location, dataShare, $timeout) {
-
     $scope.dataShare = dataShare;
+    $scope.reportOptions = false;
     if (dataShare.get()==null || dataShare.get().id==null) $location.path('');
 
     $scope.reportPage='main';
@@ -337,8 +332,13 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     };
 
     $scope.reportOthers = function () {
-        phone = dataShare.get()["phone"];
-        dataShare.action('reportOthers', 'report_others', {phone: phone});
+        dataShare.setLoading(true);
+        $http.jsonp(domain+'report_others.php?callback=JSON_CALLBACK')
+            .success(function (data) {
+                $scope.reportOptions = data;
+                dataShare.setLoading(false);
+                $scope.reportOptions = true;
+            });
     };
 
     var isFuture = false;
