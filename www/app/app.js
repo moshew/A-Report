@@ -1,33 +1,22 @@
 ﻿// script.js
-//var domain = 'http://areport-myfirsttestapp.rhcloud.com/';
-var domain = 'http://a-report.co.il/';
-moment.locale('he');
-
+var domain = 'http://mx.isra-net.co.il/~moridimt/';
+//var domain = 'http://a-report.co.il/';
+/*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
 }, false);
-
-// create the module and name it app
-// also include ngRoute for all our routing needs
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker']);
-
-/*
-app.run(function() {
-    //FastClick.attach(document.body);
-
-    function notificationOpenedCallback(jsonData) {
-        console.log('didReceiveRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
-    };
-
-    window.plugins.OneSignal.init("b329644d-2d8d-44cf-98cb-3dbe7a788610",
-        {googleProjectNumber: "682594015864"},
-        notificationOpenedCallback);
-
-    // Show an alert box if a notification comes in when the user is in your app.
-    window.plugins.OneSignal.enableInAppAlertNotification(true);
-
-});
 */
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
+
+app.run(function($http, dataShare) {
+    var id = window.localStorage.getItem("id");
+    $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id=' + id)
+        .success(function (data) {
+            dataShare.set(data);
+            dataShare.register();
+        });
+});
+
 
 // configure our routes
 app.config(function ($routeProvider) {
@@ -43,14 +32,19 @@ app.config(function ($routeProvider) {
             controller: 'loginController'
         })
 
+        .when('/message', {
+            templateUrl: 'pages/message.html',
+            controller: 'messageController'
+        })
+
         .when('/status', {
             templateUrl: 'pages/status.html',
             controller: 'statusController'
         })
 
         .when('/report', {
-            templateUrl: 'pages/home1.html',
-            controller: 'main1Controller'
+            templateUrl: 'pages/report.html',
+            controller: 'statusController'
         })
 
         .when('/statusList', {
@@ -58,9 +52,9 @@ app.config(function ($routeProvider) {
             controller: 'statusListController'
         })
 
-        .when('/reportOpt', {
-            templateUrl: 'pages/reportOpt.html',
-            controller: 'statusController'
+        .when('/permissions', {
+            templateUrl: 'pages/permissions.html',
+            controller: 'permissionsController'
         })
 
         .when('/futureReport', {
@@ -71,9 +65,32 @@ app.config(function ($routeProvider) {
         .when('/futureStatus', {
             templateUrl: 'pages/futureStatus.html',
             controller: 'statusController'
-        });
+        })
 
+        .when('/tracking', {
+            templateUrl: 'pages/tracking.html',
+            controller: 'trackingController'
+        })
 
+        .when('/reportAdmin', {
+            templateUrl: 'pages/reportAdmin.html',
+            controller: 'adminController'
+        })
+
+        .when('/approval', {
+            templateUrl: 'pages/approval.html',
+            controller: 'adminController'
+        })
+
+        .when('/users', {
+            templateUrl: 'pages/users.html',
+            controller: 'adminController'
+        })
+
+        .when('/messageAdmin', {
+            templateUrl: 'pages/messageAdmin.html',
+            controller: 'adminController'
+        })
 
 });
 
@@ -90,8 +107,8 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
     var service = {};
     var pagePromise = null;
     service.data = null;
-    service.settings = false;
-    service.test1 = null;
+    service.settings = null;
+    service.reportedPhone = null;
 
     service.set = function (data) {
         this.data = data;
@@ -105,14 +122,32 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         return this.settings;
     };
 
-    service.setContacts = function (data) {
-        this.test1 = data;
-    };
-    service.getContacts = function () {
-        //return "Hello";
-        return this.test1;
+    service.setSettings = function(key1, val1) {
+        this.settings[key1] = val1;
     };
 
+    service.getZoomFactor = function() {
+        return Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
+    };
+
+    service.register = function() {
+        if (this.data.id != -1) {
+            $timeout(function () {
+                try {
+                    window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c", {googleProjectNumber: "656959786426"}, service.notificationOpenedCallback);
+                    window.plugins.OneSignal.enableInAppAlertNotification(true);
+                    $timeout(function () {
+                        try { window.plugins.OneSignal.sendTag("id", service.data.id); }
+                        catch (err) { }
+                    }, 1500);
+                }
+                catch (err) { }
+            }, 1000);
+        }
+    };
+
+    service.notificationOpenedCallback = function(jsonData) {
+    };
 
     service.changePage = function (data, path) {
         this.mainPage = false;
@@ -120,10 +155,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         if (path == null) {
             if (data.id == -1) path = 'login';
             else {
-                if (data.hasOwnProperty('futurePage')) {
-                    if (data.status == -1) path = 'futureReport';
-                    else path = 'futureStatus';
-                }
+                if (this.settings.message_status==2) this.action('message', 'message');
                 else {
                     this.mainPage = true;
                     if (data.status == -1) path = 'report';
@@ -139,13 +171,14 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         }, 5 * 60 * 1000);
     };
 
-    service.action = function (oper, page) {
-        url = domain + page + '.php?callback=JSON_CALLBACK&id=' + this.get().id;
+    service.action = function (oper, page, params) {
+        params = (params==null)?'':'&'+Object.keys(params).map(function(k) { return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]) }).join('&');
+        url = domain + page + '.php?callback=JSON_CALLBACK&id=' + this.get().id + params;
         service.setLoading(true);
         $http.jsonp(url)
         .success(function (data) {
             service.setLoading(false);
-            if (oper=='main' || oper=='future') service.changePage(data);
+            if (oper=='main') service.changePage(data);
             else service.changePage(data, oper);
         });
     };
@@ -173,52 +206,16 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
 
 app.controller('mainController', function ($scope, $rootScope, $http, $window, $timeout, dataShare) {
     $scope.dataShare = dataShare;
-    $scope.zoom_factor = Math.min(window.innerWidth/3.75, window.innerHeight/6.67);
-    /*$scope.zoom_factor = window.innerHeight/6.67;*/
-    $scope.i_width = window.innerWidth;
-    $scope.i_height = window.innerHeight;
+    $scope.zoomFactor = dataShare.getZoomFactor();
 
-    var options = new ContactFindOptions();
-    options.filter = "";
-    options.multiple = true;
-    var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-
-
-    navigator.contacts.find(fields, function (contacts) {
-        var test2 = new Array();
-        for (i = 0; i < contacts.length; i++) {
-            try {
-                for (j = 0; j < contacts[i].phoneNumbers.length; j++) {
-
-                    var phone = contacts[i].phoneNumbers[j].value;
-                    phone = phone.replace(/\+972/g, '0');
-                    phone = phone.replace(/\s/g, '');
-                    phone = phone.replace(/\(|\)|\-/g, '');
-                    phone = phone.split('-').join('');
-                    test2.push({phone: phone, name: contacts[i].name.formatted});
-                }
-            } catch (err) {
-            }
-        }
-        dataShare.setContacts(test2);
-        $scope.$apply();
-    }, function (contactError) {
-    }, options);
-
-    if (dataShare.get()==null) {
-        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
-            .success(function (data) {
-                dataShare.set(data);
-            });
-    }
-
-    $scope.enter = function () {
+    $scope.enter = function (admin) {
         dataShare.setLoading(true);
-        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK')
+        $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id='+dataShare.get().id)
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (data.ver == 1.0) {
-                    dataShare.changePage(data);
+                if (data.ver <= 1.5) {
+                    path=(admin)?'reportAdmin':null;
+                    dataShare.changePage(data, path);
                 } else {
                     $scope.versionUpdate = true;
                 }
@@ -226,15 +223,12 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
     };
 
     $scope.logout = function () {
-        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&delete')
+        $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&id='+dataShare.get().id+'delete')
             .success(function (data) {
-                dataShare.changePage(data, '');
+                window.localStorage.removeItem("id");
+                dataShare.set(data);
             });
     };
-});
-
-app.controller('main1Controller', function ($scope, dataShare) {
-    $scope.dataShare = dataShare;
 });
 
 app.controller('loginController', function ($scope, $http, $mdDialog, dataShare) {
@@ -269,7 +263,11 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
             .success(function (data) {
                 dataShare.setLoading(false);
                 refresh();
-                if (data.id != -1) dataShare.changePage(data);
+                if (data.id != -1) {
+                    window.localStorage.setItem("id", data.id);
+                    dataShare.changePage(data);
+                    dataShare.register();
+                }
             });
 
         } else if ($scope.loginState == 'phone' && $scope.index == 10) {
@@ -296,45 +294,135 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
     };
 });
 
-app.controller('statusController', function ($scope, $http, dataShare) {
+app.controller('messageController', function ($scope, $http, $location, $timeout, dataShare) {
     $scope.dataShare = dataShare;
-    $scope.reportPage='main';
-    $scope.reportSent = false;
+    if (dataShare.get()==null) $location.path('');
 
-    $scope.status_labels = ['נוכח', 'חופש', 'מחלה', 'חו"ל', '\'מחוץ ליח', 'קורס', 'מיוחדת', 'הצהרה', '\'יום ד', 'מחלת ילד', 'לידה', 'אחר'];
-    $scope.status_label = $scope.status_labels[dataShare.get().status];
+    $scope.confirm = function () {
+        dataShare.setLoading(true);
+        $http.jsonp(domain + 'message.php?callback=JSON_CALLBACK&op=confirm&id=' + dataShare.get().id)
+            .success(function (data) {
+                dataShare.setLoading(false);
+                dataShare.action('main', 'login');
+            });
+    };
+});
+
+app.controller('statusController', function ($scope, $http, $location, dataShare, $timeout) {
+
+    $scope.dataShare = dataShare;
+    if (dataShare.get()==null || dataShare.get().id==null) $location.path('');
+
+    $scope.reportPage='main';
+    $scope.info_image = 'report_info';
+
     $scope.myStyle = [null,null,null,null,null,null,null,null,null,null,null,null];
 
+    if ('report' in dataShare.get()) {
+        $timeout(function () {
+            $scope.status_savedMsg = true;
+            $timeout(function () {
+                $scope.status_savedMsg = false;
+            }, 5 * 1000);
+        }, 250);
+    }
 
-    $scope.report = function (status) {
-        //if (reportSent && status >= -1) return;
-        //else if (reportSent && status == -1) reportSent = true;
-        if ($scope.reportSent) return;
-        $scope.reportSent = true;
-
-        if (status>0) {
-            $scope.myStyle[status] = { 'background-color': '#80be40' };
-        }
-        dataShare.setLoading(true);
-        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + dataShare.get().day + '&oper=' + status)
-        .success(function (data) {
-            dataShare.setLoading(false);
-            //$http.put(domain+'report_notification.php');
-            dataShare.changePage(data);
-        });
+    $scope.keyEvent = function(keyEvent, info) {
+        if (keyEvent.which === 13) $scope.InfoPopupCB(info);
     };
 
-    $scope.futureReport = function (cancel) {
-        if (cancel) future_status = -1;
+    var isFuture = false;
+    var statusSelected = 0;
+    $scope.report = function (status) {
+        if (status==null) isFuture=true;
+        else statusSelected = status;
+
+        if (statusSelected==4 || statusSelected==11) {
+            $scope.info_image = (statusSelected == 4) ? 'report_info' : 'report_info2';
+            $scope.report_infoMsg = true;
+        }
+        else if (isFuture) futureReport(statusSelected);
+        else dayReport(statusSelected);
+    };
+
+    $scope.cancelReport = function(isSingle) {
+        if (isSingle) dayReport(-1);
+        else {
+            phone = dataShare.get()["phone"];
+            if (phone!=null) dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
+            else dataShare.action('futureStatus', 'future_tasks');
+        }
+    };
+
+    $scope.addNewTask = function() {
+        phone = dataShare.get()["phone"];
+        if (phone!=null) dataShare.action('futureReport', 'report_as', {phone: phone});
+         else dataShare.action('futureReport', 'login');
+    };
+
+    $scope.cancelTask = function(taskId) {
+        dataShare.setLoading(true);
+
+        phone = dataShare.get()["phone"];
+        base_url = (phone!=null)?'future_tasks_as.php?phone='+phone+'&':'future_tasks.php?';
+        $http.jsonp(domain+base_url+'callback=JSON_CALLBACK&id=' + dataShare.get().id + '&task_id=' + taskId + '&oper=-1')
+            .success(function (data) {
+                dataShare.setLoading(false);
+                dataShare.set(data);
+            });
+    };
+
+    $scope.InfoPopupCB = function (info) {
+        if (info!=null) {
+            if (isFuture) futureReport(statusSelected, info);
+            else dayReport(statusSelected, info);
+        }
+    };
+
+
+
+    var reportSent = false;
+    var dayReport = function (status, info) {
+        if (reportSent) return;
+        else reportSent = true;
+
+        if (info==null) info='';
+        if (status>=0) $scope.myStyle[status] = { 'background-color': '#80be40' };
+
+        dataShare.setLoading(true);
+        phone = dataShare.get()["phone"];
+        phoneParam = (phone!=null)?'&phone='+phone:'';
+        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&oper=' + status + '&info='+info + phoneParam)
+            .success(function (data) {
+                dataShare.setLoading(false);
+                if (phone!=null) dataShare.action('statusList', 'notifications');
+                else dataShare.changePage(data);
+            });
+    };
+
+    var futureReport = function (status, info) {
+        if (info==null) info='';
+
         var start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
         var end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
         dataShare.setLoading(true);
-        $http.jsonp(domain+'future_report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + future_status)
+        phone = dataShare.get()["phone"];
+        base_url = (phone!=null)?'future_tasks_as.php?phone='+phone+'&':'future_tasks.php?';
+        $http.jsonp(domain+base_url+'callback=JSON_CALLBACK&id=' + dataShare.get().id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + status + '&info='+info)
             .success(function (data) {
                 dataShare.setLoading(false);
-                //$http.put(domain+'report_notification.php');
-                dataShare.changePage(data);
+                if (data.status.code=='success') {
+                    if (phone != null) dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
+                    else dataShare.action('futureStatus', 'future_tasks');
+                } else {
+                    $scope.errorInfo = data.status.info;
+                    $scope.errorMsg = true;
+                }
             });
+    };
+
+    $scope.errorMsgClose = function (info) {
+        $scope.errorMsg = false;
     };
 
     $scope.today = new Date(dataShare.get().day);
@@ -349,12 +437,11 @@ app.controller('statusController', function ($scope, $http, dataShare) {
             $scope.report_dates.end_day = $scope.report_dates.start_day;
     };
 
-    var future_status = 1;
-    $scope.report2BtnStyle = [null, { 'background-color': '#80be40' }, null, null, null, null, null, null, null, null, null, null];
+    $scope.report2BtnStyle = [{ 'background-color': '#80be40' }, null, null, null, null, null, null, null, null, null, null, null];
     $scope.changeFutureStatus = function (status) {
-        $scope.report2BtnStyle[future_status] = { 'background-color': '#234a7d' };
+        $scope.report2BtnStyle[statusSelected] = { 'background-color': '#234a7d' };
         $scope.report2BtnStyle[status] = { 'background-color': '#80be40' };
-        future_status = status;
+        statusSelected = status;
     };
 
     $scope.highlightDays = [{date: moment($scope.report_dates.start_day), css: 'picker-selected', selectable: true,title: ''}];
@@ -405,26 +492,273 @@ app.controller('statusController', function ($scope, $http, dataShare) {
         }
     }
 
-
 });
 
-app.controller('statusListController', function ($scope, $http, dataShare) {
+app.controller('statusListController', function ($scope, $http, $timeout, $location, dataShare) {
     $scope.dataShare = dataShare;
+    if (dataShare.get()==null) $location.path('');
+    $scope.search_url = domain+'get_users.php?id='+dataShare.get().id+'&s=';
+    $scope.errorMsg = false;
 
     $scope.removeUser = function (user) {
         $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + dataShare.get().id+'&user='+user)
             .success(function (data) {
                 dataShare.set(data);
             });
-    }
+    };
 
     $scope.addUser = function (user) {
-        $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + dataShare.get().id + '&user=' + user.originalObject.name)
+        if (user!=null) {
+            $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + dataShare.get().id + '&user=' + user.originalObject.name)
+                .success(function (data) {
+                    dataShare.set(data);
+                    $scope.$broadcast('angucomplete-alt:clearInput', 'statusList-AddUser');
+                });
+        }
+    };
+
+    $scope.report = function(phone) {
+        if (dataShare.getSettings().admin || dataShare.getSettings().manager) {
+            dataShare.action('report', 'report_as', {phone: phone});
+        }
+    };
+
+    $scope.report2 = function(phone) {
+        if (dataShare.getSettings().admin) {
+            dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
+        }
+        else if (dataShare.getSettings()['manager']) $scope.report(phone);
+    };
+
+    $scope.approve = function() {
+        $http.jsonp(domain + 'approve.php?callback=JSON_CALLBACK&id=' + dataShare.get().id)
             .success(function (data) {
-                dataShare.set(data);
-                $scope.$broadcast('angucomplete-alt:clearInput', 'settings-AddUser');
+                if (data.status.code=='success') {
+                    $scope.successMsg = true;
+                    $timeout(function () {
+                        $scope.successMsg = false;
+                    }, 1500);
+                } else {
+                    $scope.errorInfo = data.status.info;
+                    $scope.errorMsg = true;
+                }
+
             });
     }
+
+    $scope.errorMsgClose = function() {
+        $scope.errorMsg = false;
+    }
+
+
+});
+
+app.controller('permissionsController', function ($scope, $http, $timeout, dataShare) {
+    $scope.dataShare = dataShare;
+    var switchEnable = true;
+    var permissions = {};
+
+    dataShare.setSettings('permission_request', 0);
+
+    $scope.switchPermission = function (user) {
+        if (switchEnable) {
+            switchEnable = false;
+            $timeout(function () { switchEnable = true; }, 500);
+            user.status = !user.status;
+            if (user.nId in permissions) delete permissions[user.nId];
+            else permissions[user.nId] = user.status;
+        }
+    };
+
+    $scope.closePermissions = function (save) {
+        if (save) {
+            for (nId in permissions) {
+                $http.jsonp(domain + 'permissions.php?callback=JSON_CALLBACK&op=change&id=' + dataShare.get().id + '&nId=' + nId + '&status=' + permissions[nId]).success(function (data) { });
+            }
+        }
+        dataShare.action('statusList', 'notifications');
+    };
+});
+
+app.controller('trackingController', function ($scope, $http, $timeout, dataShare) {
+    $scope.dataShare = dataShare;
+    $scope.dayInfo = null;
+
+    var eventsColors = ['green', 'purple', 'red', 'purple', 'green', 'green', 'purple', 'red', 'red', 'red', 'purple', 'orange', 'regular'];
+    var historyCallback = function (data) {
+        $scope.highlightDays = [];
+        for (var i = 0; i < data.reported.length; i++) {
+            $scope.highlightDays.push({
+                date: data.reported[i].day,
+                css: eventsColors[data.reported[i].status],
+                selectable: false,
+                title: ''
+            });
+        }
+    };
+
+    $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id).success(historyCallback);
+
+    var wp = null;
+    $scope.logMonthChanged = function (newMonth, oldMonth) {
+        $scope.infoShow = false;
+        $timeout.cancel(wp);
+        wp = $timeout(function () {
+            $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&month=' + newMonth.format('YYYY-MM')).success(historyCallback);
+        }, 350);
+    };
+
+    var loadDayInfo = function () {
+        $http.jsonp(domain + 'history.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD'))
+            .success(function (data) {
+                $scope.infoBg = eventsColors[data.status];
+                $scope.dayInfo = data;
+                $scope.addAttach = false;
+                $scope.infoMessage = '';
+                if (eventsColors[data.status] == 'red') {
+                    if (data.attach) $scope.infoMessage = 'הצג אישור';
+                    else $scope.infoMessage = '[צרף אישור]';
+                } else {
+                    $scope.infoMessage = (data.info != '') ? data.info : 'אין הערות';
+                }
+            });
+    }
+
+    var selectedDay = null;
+    $scope.daySelected = function (event, date) {
+        event.preventDefault(); // prevent the select to happen
+        selectedDay = date;
+        loadDayInfo();
+        $scope.xinfo = (event.x - 42.5) + "px";
+        $scope.yinfo = (event.y - 42.5) + "px";
+        $scope.infoShow = true;
+    };
+
+    $scope.infoSelected = function () {
+        if ($scope.dayInfo.attach) {
+            var url = domain + 'attachments.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD');
+            window.open(url, '_system', 'location=no');
+        } else if (eventsColors[$scope.dayInfo.status] == 'red') {
+            var url = domain + 'upload.html#/' + dataShare.get().id + '/' + selectedDay.format('YYYY-MM-DD');
+            window.open(url, '_system', 'location=no');
+            $scope.closeInfo();
+        }
+    };
+
+    $scope.closeInfo = function () {
+        $scope.infoShow = false;
+    };
+
+    $scope.deleteAttachment = function () {
+        $http.jsonp(domain + 'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + selectedDay.format('YYYY-MM-DD') + '&attach=&oper=0')
+            .success(function (data) {
+                loadDayInfo();
+            });
+    }
+});
+
+app.controller('adminController', function ($scope, $http, $timeout, dataShare) {
+    $scope.dataShare = dataShare;
+    var switchEnable = true;
+    var qr_url_base = domain + 'qrcode.php?op=';
+    var index = 0;
+
+    $scope.qr_url = qr_url_base + index;
+
+    $scope.switchOp = function (id) {
+        if (switchEnable) {
+            switchEnable = false;
+            $timeout(function () {
+                switchEnable = true;
+            }, 500);
+            dataShare.setLoading(true)
+            $http.jsonp(domain + 'lock.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&op=' + !dataShare.get().lock)
+                .success(function (data) {
+                    dataShare.setLoading(false);
+                    dataShare.set(data);
+                });
+        }
+    };
+
+    $scope.toggleSelection = function (phone) {
+        var idx = $scope.selection.indexOf(phone);
+        if (idx > -1) $scope.selection.splice(idx, 1);
+        else $scope.selection.push(phone);
+    };
+
+
+    $scope.changeQR = function() {
+        if (index==2) index = 0;
+        else index += 1;
+        $scope.qr_url = qr_url_base + index;
+    };
+
+    var changeQR2 = function() {
+        if (index==2) index = 0;
+        else index += 1;
+        $scope.qr_url2 = qr_url_base + index;
+        $timeout(function () {
+            changeQR2();
+        }, parseInt(dataShare.getSettings().message_status));
+    };
+    changeQR2();
+/*
+    $scope.getApproval = function() {
+
+    };
+  */
+
+    var refresh = function () {
+        $scope.user_name = '';
+        $scope.user_phone = '';
+        $scope.user_isManager = false;
+        $scope.selection = [];
+    };
+
+    refresh();
+    $scope.editUsers = function () {
+        var newUser = '';
+        var deletedPhones = '';
+        if ($scope.user_name != '' && $scope.user_phone != '') {
+            newUser = '&name=' + $scope.user_name + '&phone=' + $scope.user_phone + '&manager=' + $scope.user_isManager;
+        }
+        if ($scope.selection.length > 0) {
+            deletedPhones = '&deleted=';
+            for (index = 0; index < $scope.selection.length; ++index) deletedPhones += $scope.selection[index] + ';';
+        }
+
+        if (newUser != '' || deletedPhones != '') {
+            dataShare.setLoading(true);
+            $http.jsonp(domain + 'users.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + newUser + deletedPhones)
+                .success(function (data) {
+                    dataShare.setLoading(false);
+                    dataShare.set(data);
+                    refresh();
+                });
+        }
+    };
+
+    $scope.systemMessage = dataShare.get().message;
+    $scope.editMessage = function () {
+        if ($scope.systemMessage != '') {
+            dataShare.setLoading(true);
+            $http.jsonp(domain + 'message.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&op=new&msg=' + encodeURIComponent($scope.systemMessage))
+                .success(function (data) {
+                    dataShare.setLoading(false);
+                    dataShare.set(data);
+                });
+        }
+    };
+
+    $scope.resetReaders = function () {
+        dataShare.setLoading(true);
+        $http.jsonp(domain + 'message.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&op=reset')
+            .success(function (data) {
+                dataShare.setLoading(false);
+                dataShare.set(data);
+            });
+    }
+
 });
 
 angular.module('app').config(function ($mdDateLocaleProvider) {

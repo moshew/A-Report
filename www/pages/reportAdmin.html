@@ -1,0 +1,12 @@
+﻿<div ng-cloak class="statusList-header">הפקת דוח
+<div class="statusList-leftOpt"></div>
+<div class="statusList-rightOpt" ng-click="dataShare.action('approval', 'approve', {op: 'getApproval'})">אישורים</div>
+</div><br />
+<div class="reportAdmin-setting">
+    <div class="reportAdmin_switch" ng-click="switchOp(0)"><label ng-class="{'yesno-switch': true, 'on': !dataShare.get().lock}">&nbsp;</label></div>
+    <div class="reportAdmin_op">מצב דיווח</div>
+</div>
+<img ng-if="dataShare.getSettings().message_status==0" ng-click="changeQR()" ng-src="{{qr_url}}" />
+<img ng-if="dataShare.getSettings().message_status!=0" ng-src="{{qr_url2}}" />
+<div ng-include="'pages/footer2.html'"></div>
+<div ng-include="'pages/loader.html'"></div>
