@@ -1,0 +1,9 @@
+﻿<div class="popupMsg" ng-show="errorMsg || successMsg"></div>
+<div class="popupMsg_infoMsg" ng-show="errorMsg">
+    <img src="assets/error_message.png" />
+    <div class="errorMsg_info" ng-show="errorMsg"><span id="middle_line">{{errorInfo}}</span></div>
+    <div class="popupMsg_closeBtn" ng-show="errorMsg" ng-click="errorMsgClose()"><img src="assets/continue.png" /></div>
+</div>
+<div class="popupMsg_infoMsg" ng-show="successMsg">
+    <img src="assets/success_message.png" />
+</div>

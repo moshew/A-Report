@@ -1,6 +1,6 @@
 ﻿// script.js
-//var domain = 'http://mx.isra-net.co.il/~moridimt/';
-var domain = 'http://a-report.co.il/';
+var domain = 'http://mx.isra-net.co.il/~moridimt/';
+//var domain = 'http://a-report.co.il/';
 /*
 document.addEventListener('deviceready', function() {
     angular.bootstrap(document, ['app']);
@@ -74,6 +74,11 @@ app.config(function ($routeProvider) {
 
         .when('/reportAdmin', {
             templateUrl: 'pages/reportAdmin.html',
+            controller: 'adminController'
+        })
+
+        .when('/approval', {
+            templateUrl: 'pages/approval.html',
             controller: 'adminController'
         })
 
@@ -327,7 +332,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     };
 
     var isFuture = false;
-    var statusSelected = 1;
+    var statusSelected = 0;
     $scope.report = function (status) {
         if (status==null) isFuture=true;
         else statusSelected = status;
@@ -368,12 +373,13 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     };
 
     $scope.InfoPopupCB = function (info) {
-        if ($scope.info_image=='report_error') $scope.report_infoMsg = false;
-        else if (info!=null) {
+        if (info!=null) {
             if (isFuture) futureReport(statusSelected, info);
             else dayReport(statusSelected, info);
         }
     };
+
+
 
     var reportSent = false;
     var dayReport = function (status, info) {
@@ -386,7 +392,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         dataShare.setLoading(true);
         phone = dataShare.get()["phone"];
         phoneParam = (phone!=null)?'&phone='+phone:'';
-        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&day=' + dataShare.get().day + '&oper=' + status + '&info='+info + phoneParam)
+        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&oper=' + status + '&info='+info + phoneParam)
             .success(function (data) {
                 dataShare.setLoading(false);
                 if (phone!=null) dataShare.action('statusList', 'notifications');
@@ -405,14 +411,18 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         $http.jsonp(domain+base_url+'callback=JSON_CALLBACK&id=' + dataShare.get().id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + status + '&info='+info)
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (data.status=='duplicated') {
-                    $scope.info_image = 'report_error';
-                    $scope.report_infoMsg = true;
-                } else {
+                if (data.status.code=='success') {
                     if (phone != null) dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
                     else dataShare.action('futureStatus', 'future_tasks');
+                } else {
+                    $scope.errorInfo = data.status.info;
+                    $scope.errorMsg = true;
                 }
             });
+    };
+
+    $scope.errorMsgClose = function (info) {
+        $scope.errorMsg = false;
     };
 
     $scope.today = new Date(dataShare.get().day);
@@ -427,7 +437,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
             $scope.report_dates.end_day = $scope.report_dates.start_day;
     };
 
-    $scope.report2BtnStyle = [null, { 'background-color': '#80be40' }, null, null, null, null, null, null, null, null, null, null];
+    $scope.report2BtnStyle = [{ 'background-color': '#80be40' }, null, null, null, null, null, null, null, null, null, null, null];
     $scope.changeFutureStatus = function (status) {
         $scope.report2BtnStyle[statusSelected] = { 'background-color': '#234a7d' };
         $scope.report2BtnStyle[status] = { 'background-color': '#80be40' };
@@ -484,10 +494,11 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
 });
 
-app.controller('statusListController', function ($scope, $http, $location, dataShare) {
+app.controller('statusListController', function ($scope, $http, $timeout, $location, dataShare) {
     $scope.dataShare = dataShare;
     if (dataShare.get()==null) $location.path('');
     $scope.search_url = domain+'get_users.php?id='+dataShare.get().id+'&s=';
+    $scope.errorMsg = false;
 
     $scope.removeUser = function (user) {
         $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + dataShare.get().id+'&user='+user)
@@ -507,17 +518,39 @@ app.controller('statusListController', function ($scope, $http, $location, dataS
     };
 
     $scope.report = function(phone) {
-        if (dataShare.getSettings()['manager']) {
+        if (dataShare.getSettings().admin || dataShare.getSettings().manager) {
             dataShare.action('report', 'report_as', {phone: phone});
         }
-    }
+    };
 
     $scope.report2 = function(phone) {
-        if (dataShare.getSettings()['admin']) {
+        if (dataShare.getSettings().admin) {
             dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
         }
-        else if (dataShare.getSettings()['manager']) $scope.repor(phone);
+        else if (dataShare.getSettings()['manager']) $scope.report(phone);
+    };
+
+    $scope.approve = function() {
+        $http.jsonp(domain + 'approve.php?callback=JSON_CALLBACK&id=' + dataShare.get().id)
+            .success(function (data) {
+                if (data.status.code=='success') {
+                    $scope.successMsg = true;
+                    $timeout(function () {
+                        $scope.successMsg = false;
+                    }, 1500);
+                } else {
+                    $scope.errorInfo = data.status.info;
+                    $scope.errorMsg = true;
+                }
+
+            });
     }
+
+    $scope.errorMsgClose = function() {
+        $scope.errorMsg = false;
+    }
+
+
 });
 
 app.controller('permissionsController', function ($scope, $http, $timeout, dataShare) {
@@ -647,7 +680,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         }
     };
 
-    $scope.toggleSelection = function toggleSelection(phone) {
+    $scope.toggleSelection = function (phone) {
         var idx = $scope.selection.indexOf(phone);
         if (idx > -1) $scope.selection.splice(idx, 1);
         else $scope.selection.push(phone);
@@ -667,8 +700,13 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         $timeout(function () {
             changeQR2();
         }, parseInt(dataShare.getSettings().message_status));
-    }
+    };
     changeQR2();
+/*
+    $scope.getApproval = function() {
+
+    };
+  */
 
     var refresh = function () {
         $scope.user_name = '';

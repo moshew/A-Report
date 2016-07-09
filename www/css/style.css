@@ -260,6 +260,7 @@ div{
     width: 85%;
     height: 40px;
     margin: 20px;
+    padding: 6px;
     border-radius: 5px;
     border-width: 1px;
     border-style: solid;
@@ -317,8 +318,8 @@ div{
     border-color: #00aeef;
     display: inline-block;
 }
-.report_popup {
-    position:fixed;
+.popupMsg {
+    position:absolute;
     top:0;
     bottom: 0;
     width:100%;
@@ -329,43 +330,40 @@ div{
     transition: linear 0.3s;
 }
 
-.report_infoMsg {
-    position: fixed;
+.popupMsg_infoMsg {
+    position: absolute;
     top: 100px;
     right: 50%;
     margin-right: -146px;
     -webkit-transition: linear 0.4s;
     transition: linear 0.4s;
 }
-
-.report_infoMsg.ng-hide {
-    top: -230px;
+.popupMsg_infoMsg.ng-hide {
+    top: -225px;
 }
-
-.report_infoInput {
-    position: fixed;
-    top: 215px;
-    right: 50%;
-    margin-right: -112px;
-    width:235px;
-    height: 35px;
-    border-radius: 5px;
-    border-width: 1px;
-    border-color: #2a6496;
-    padding-right: 10px;
-    color: white;
-    font-size: 150%;
-    background: #4b688e;
+.errorMsg_info {
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    margin: 15px;
+    width: 255px;
+    height: 55px;
+    line-height: 55px;
+    font-size: 120%;
+    color: red;
     -webkit-transition: linear 0.4s;
     transition: linear 0.4s;
 }
-.report_infoInput.ng-hide {
-    top: -115px;
+
+#middle_line {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
 }
 
-.report_infoBtn {
-    position: fixed;
-    top: 250px;
+.popupMsg_closeBtn {
+    position: absolute;
+    top: 150px;
     right: 50%;
     margin-right: 20px;
     border-radius: 5px;
@@ -381,8 +379,22 @@ div{
     transition: linear 0.4s;
 }
 
-.report_infoBtn.ng-hide {
-    top: -80px;
+.report_infoInput {
+    position: absolute;
+    top: 115px;
+    right: 50%;
+    margin-right: -112px;
+    width:235px;
+    height: 35px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #2a6496;
+    padding-right: 10px;
+    color: white;
+    font-size: 150%;
+    background: #4b688e;
+    -webkit-transition: linear 0.4s;
+    transition: linear 0.4s;
 }
 
 .status {
@@ -474,6 +486,10 @@ div{
     border-width: 1px;
     border-color: #1d6c96;
     border-style: none none solid none;
+}
+
+.statusList-confirnBtn {
+    text-align: center;
 }
 
 .statusList-userImg {
