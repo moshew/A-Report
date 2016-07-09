@@ -384,8 +384,6 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         }
     };
 
-
-
     var reportSent = false;
     var dayReport = function (status, info) {
         if (reportSent) return;
