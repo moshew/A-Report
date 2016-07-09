@@ -47,6 +47,11 @@ app.config(function ($routeProvider) {
             controller: 'statusController'
         })
 
+        .when('/reportOthers', {
+            templateUrl: 'pages/reportOthers.html',
+            controller: 'statusController'
+        })
+
         .when('/statusList', {
             templateUrl: 'pages/statusList.html',
             controller: 'statusListController'
