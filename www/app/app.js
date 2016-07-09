@@ -336,6 +336,11 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         if (keyEvent.which === 13) $scope.InfoPopupCB(info);
     };
 
+    $scope.reportOthers = function () {
+        phone = dataShare.get()["phone"];
+        dataShare.action('reportOthers', 'report_others', {phone: phone});
+    };
+
     var isFuture = false;
     var statusSelected = 0;
     $scope.report = function (status, info) {
