@@ -330,6 +330,15 @@ div{
     transition: linear 0.3s;
 }
 
+.reportOthers-page {
+    position:absolute;
+    top:0;
+    bottom: 0;
+    width:100%;
+    background:#234a7d;
+    z-index:0;
+}
+
 .popupMsg_infoMsg {
     position: absolute;
     top: 100px;

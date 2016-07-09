@@ -309,8 +309,8 @@ app.controller('messageController', function ($scope, $http, $location, $timeout
 });
 
 app.controller('statusController', function ($scope, $http, $location, dataShare, $timeout) {
-
     $scope.dataShare = dataShare;
+    $scope.reportOptions = false;
     if (dataShare.get()==null || dataShare.get().id==null) $location.path('');
 
     $scope.reportPage='main';
@@ -331,13 +331,23 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         if (keyEvent.which === 13) $scope.InfoPopupCB(info);
     };
 
+    $scope.reportOthers = function () {
+        dataShare.setLoading(true);
+        $http.jsonp(domain+'report_others.php?callback=JSON_CALLBACK')
+            .success(function (data) {
+                $scope.reportOptions = data;
+                dataShare.setLoading(false);
+                $scope.reportOptions = true;
+            });
+    };
+
     var isFuture = false;
     var statusSelected = 0;
-    $scope.report = function (status) {
+    $scope.report = function (status, info) {
         if (status==null) isFuture=true;
         else statusSelected = status;
 
-        if (statusSelected==4 || statusSelected==11) {
+        if (statusSelected==4 || info) {
             $scope.info_image = (statusSelected == 4) ? 'report_info' : 'report_info2';
             $scope.report_infoMsg = true;
         }
@@ -378,8 +388,6 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
             else dayReport(statusSelected, info);
         }
     };
-
-
 
     var reportSent = false;
     var dayReport = function (status, info) {
@@ -478,7 +486,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
                 $scope.report_dates.start_day = $scope.report_dates.end_day = null;
             }
         }
-    }
+    };
 
     $scope.calanderBack = function() {
         if ($scope.report_dates.start_day!=null) {
@@ -491,7 +499,6 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
             $scope.showCalander=false;
         }
     }
-
 });
 
 app.controller('statusListController', function ($scope, $http, $timeout, $location, dataShare) {
@@ -542,15 +549,12 @@ app.controller('statusListController', function ($scope, $http, $timeout, $locat
                     $scope.errorInfo = data.status.info;
                     $scope.errorMsg = true;
                 }
-
             });
-    }
+    };
 
     $scope.errorMsgClose = function() {
         $scope.errorMsg = false;
     }
-
-
 });
 
 app.controller('permissionsController', function ($scope, $http, $timeout, dataShare) {
