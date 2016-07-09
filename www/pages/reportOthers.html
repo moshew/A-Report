@@ -3,7 +3,7 @@
     <div class="statusList-rightOpt"></div>
 </div><br />
 <div class="statusList-info" ng-cloak>
-    <div class="statusList-users" dir="rtl" ng-repeat="option in dataShare.get().options"><div class="statusList-user" ng-click="report(option.id)">{{ option.title }}</div></div>
+    <div class="statusList-users" dir="rtl" ng-repeat="option in dataShare.get().options"><div class="statusList-user" ng-click="report(option.id, option.info)">{{ option.title }}</div></div>
 </div>
 <div ng-include="'pages/reportInfo.html'"></div>
 <div ng-include="'pages/footer1.html'"></div>

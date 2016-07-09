@@ -338,11 +338,11 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
     var isFuture = false;
     var statusSelected = 0;
-    $scope.report = function (status) {
+    $scope.report = function (status, info) {
         if (status==null) isFuture=true;
         else statusSelected = status;
 
-        if (statusSelected==4 || statusSelected==11) {
+        if (statusSelected==4 || info) {
             $scope.info_image = (statusSelected == 4) ? 'report_info' : 'report_info2';
             $scope.report_infoMsg = true;
         }
