@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/pages/approvals.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/pages/approval.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/www/pages/futureStatus2.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/futureReport.html" afterPath="$PROJECT_DIR$/www/pages/futureReport.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/futureStatus.html" afterPath="$PROJECT_DIR$/www/pages/futureStatus.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/report.html" afterPath="$PROJECT_DIR$/www/pages/report.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/reportAdmin.html" afterPath="$PROJECT_DIR$/www/pages/reportAdmin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/reportOthers.html" afterPath="$PROJECT_DIR$/www/pages/reportOthers.html" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.653847">
-              <caret line="400" column="14" selection-start-line="400" selection-start-column="14" selection-end-line="400" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.58370537">
+              <caret line="400" column="12" selection-start-line="400" selection-start-column="12" selection-end-line="400" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -56,31 +49,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trackingInfo.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pages/trackingInfo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2692308">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tracking.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pages/tracking.html">
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.65384614">
-              <caret line="1" column="62" selection-start-line="1" selection-start-column="62" selection-end-line="1" selection-end-column="62" />
+              <caret line="1" column="116" selection-start-line="1" selection-start-column="116" selection-end-line="1" selection-end-column="116" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reportAdmin.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/pages/reportAdmin.html">
+      <file leaf-file-name="users.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/pages/users.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9615384">
-              <caret line="3" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="1" column="45" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -90,7 +73,17 @@
         <entry file="file://$PROJECT_DIR$/www/pages/approvals.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-1.9615384">
-              <caret line="3" column="57" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="57" />
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="trackingInfo.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/pages/trackingInfo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.2692308">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -116,10 +109,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="futureStatus.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="futureStatus.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/pages/futureStatus.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11383928">
+            <state vertical-scroll-proportion="-3.9230769">
               <caret line="6" column="225" selection-start-line="6" selection-start-column="225" selection-end-line="6" selection-end-column="225" />
               <folding />
             </state>
@@ -175,7 +168,6 @@
         <option value="$PROJECT_DIR$/www/pages/home.html" />
         <option value="$PROJECT_DIR$/www/index.html" />
         <option value="$PROJECT_DIR$/www/upload.html" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$USER_HOME$/Downloads/UnreportedAlert1.php" />
         <option value="$USER_HOME$/Downloads/UnreportedAlert.php" />
         <option value="$USER_HOME$/Downloads/report_state.php" />
@@ -194,8 +186,9 @@
         <option value="$PROJECT_DIR$/www/pages/reportOthers.html" />
         <option value="$PROJECT_DIR$/www/pages/report.html" />
         <option value="$PROJECT_DIR$/www/pages/futureStatus.html" />
-        <option value="$PROJECT_DIR$/www/app/app.js" />
         <option value="$PROJECT_DIR$/www/pages/futureReport.html" />
+        <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/www/app/app.js" />
       </list>
     </option>
   </component>
@@ -425,12 +418,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00247" summary="update">
-      <created>1467410270517</created>
-      <option name="number" value="00247" />
-      <option name="project" value="LOCAL" />
-      <updated>1467410270517</updated>
     </task>
     <task id="LOCAL-00248" summary="update">
       <created>1467410524496</created>
@@ -720,7 +707,13 @@
       <option name="project" value="LOCAL" />
       <updated>1468085406689</updated>
     </task>
-    <option name="localTasksCounter" value="296" />
+    <task id="LOCAL-00296" summary="update">
+      <created>1468092563089</created>
+      <option name="number" value="00296" />
+      <option name="project" value="LOCAL" />
+      <updated>1468092563089</updated>
+    </task>
+    <option name="localTasksCounter" value="297" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -736,7 +729,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1765625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.49583334" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31012657" sideWeight="0.49166667" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2278481" sideWeight="0.51666665" order="10" side_tool="true" content_ui="tabs" />
@@ -957,13 +950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="1" column="118" selection-start-line="1" selection-start-column="118" selection-end-line="1" selection-end-column="118" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/message.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03794643">
@@ -975,13 +961,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="53" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/users.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="45" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1038,14 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/pages/approvals.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="3" column="57" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/reportAdmin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.9615384">
@@ -1094,14 +1065,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.653847">
-          <caret line="400" column="14" selection-start-line="400" selection-start-column="14" selection-end-line="400" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/futureReport.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077">
@@ -1112,8 +1075,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/pages/futureStatus.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11383928">
+        <state vertical-scroll-proportion="-3.9230769">
           <caret line="6" column="225" selection-start-line="6" selection-start-column="225" selection-end-line="6" selection-end-column="225" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="1" column="116" selection-start-line="1" selection-start-column="116" selection-end-line="1" selection-end-column="116" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/users.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="1" column="45" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/pages/approvals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9615384">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58370537">
+          <caret line="400" column="12" selection-start-line="400" selection-start-column="12" selection-end-line="400" selection-end-column="12" />
           <folding />
         </state>
       </provider>

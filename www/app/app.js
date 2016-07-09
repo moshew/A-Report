@@ -208,7 +208,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
         $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id='+dataShare.get().id)
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (data.ver <= 1.5) {
+                if (data.ver <= 2.0) {
                     path=(admin)?'reportAdmin':null;
                     dataShare.changePage(data, path);
                 } else {
@@ -398,7 +398,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
     $scope.InfoPopupCB = function (info) {
         if (info!=null) {
-            //$scope.report_infoMsg = false;
+            $scope.report_infoMsg = false;
             if (statusSelected>10) info = $scope.reportOptions[statusSelected].title + ': ' + info;
             if (isFuture) futureReport(statusSelected, info);
             else dayReport(statusSelected, info);
