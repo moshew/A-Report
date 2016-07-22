@@ -1,11 +1,6 @@
 ﻿// script.js
-//var domain = 'http://mx.isra-net.co.il/~moridimt/';
 var domain = 'http://a-report.co.il/';
-/*
-document.addEventListener('deviceready', function() {
-    angular.bootstrap(document, ['app']);
-}, false);
-*/
+
 var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomplete-alt', 'multipleDatePicker', 'ngMobile']);
 
 app.run(function($http, dataShare) {
@@ -685,10 +680,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
     $scope.dataShare = dataShare;
     $scope.approvalShow = false;
     var switchEnable = true;
-    var qr_url_base = domain + 'qrcode.php?op=';
-    var index = 0;
-
-    $scope.qr_url = qr_url_base + index;
+    var qr_url_base = domain + 'qrcode.php?id='+dataShare.get().id+'&op=';
 
     $scope.switchOp = function (id) {
         if (switchEnable) {
@@ -696,7 +688,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
             $timeout(function () {
                 switchEnable = true;
             }, 500);
-            dataShare.setLoading(true)
+            dataShare.setLoading(true);
             $http.jsonp(domain + 'lock.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&op=' + !dataShare.get().lock)
                 .success(function (data) {
                     dataShare.setLoading(false);
@@ -711,22 +703,16 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         else $scope.selection.push(phone);
     };
 
-
-    $scope.changeQR = function() {
+    var index = 0;
+    var changeQR = function() {
         if (index==2) index = 0;
         else index += 1;
         $scope.qr_url = qr_url_base + index;
-    };
-
-    var changeQR2 = function() {
-        if (index==2) index = 0;
-        else index += 1;
-        $scope.qr_url2 = qr_url_base + index;
         $timeout(function () {
-            changeQR2();
-        }, parseInt(dataShare.getSettings().message_status));
+            changeQR();
+        }, 2000);
     };
-    changeQR2();
+    changeQR();
 
     $scope.showApprovals = function() {
         dataShare.setLoading(true);
