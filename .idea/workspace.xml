@@ -28,21 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.346153">
+            <state vertical-scroll-proportion="0.90178573">
               <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4224852">
-              <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+            <state vertical-scroll-proportion="-0.22077923">
+              <caret line="1" column="118" selection-start-line="1" selection-start-column="118" selection-end-line="1" selection-end-column="118" />
               <folding />
             </state>
           </provider>
@@ -350,12 +350,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00262" summary="update">
-      <created>1467415187627</created>
-      <option name="number" value="00262" />
-      <option name="project" value="LOCAL" />
-      <updated>1467415187627</updated>
-    </task>
     <task id="LOCAL-00263" summary="update">
       <created>1467415300594</created>
       <option name="number" value="00263" />
@@ -644,7 +638,13 @@
       <option name="project" value="LOCAL" />
       <updated>1484950312689</updated>
     </task>
-    <option name="localTasksCounter" value="311" />
+    <task id="LOCAL-00311" summary="update">
+      <created>1484950555614</created>
+      <option name="number" value="00311" />
+      <option name="project" value="LOCAL" />
+      <updated>1484950555614</updated>
+    </task>
+    <option name="localTasksCounter" value="312" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1034,18 +1034,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+    <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.346153">
-          <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.22077923">
+          <caret line="1" column="118" selection-start-line="1" selection-start-column="118" selection-end-line="1" selection-end-column="118" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4224852">
-          <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.90178573">
+          <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
           <folding />
         </state>
       </provider>
