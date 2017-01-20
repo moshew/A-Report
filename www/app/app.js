@@ -82,7 +82,7 @@ app.config(function ($routeProvider) {
             controller: 'adminController'
         })
 
-        .when('/forms', {
+        .when('/formsUsers', {
             templateUrl: 'pages/forms.html',
             controller: 'adminController'
         })
@@ -149,15 +149,9 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         this.mainPage = false;
         this.set(data);
         if (path == null) {
-            if (data.id == -1) path = 'login';
-            else {
-                if (this.settings.message_status==2) this.action('message', 'message');
-                else {
-                    this.mainPage = true;
-                    if (data.status == -1) path = 'report';
-                    else path = 'status';
-                }
-            }
+            this.mainPage = true;
+            if (data.status == -1) path = 'report';
+            else path = 'status';
         }
         else if (path=='reportAdmin') this.mainPage = true;
         $location.path(path);
@@ -178,6 +172,9 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
             if (oper=='main') service.changePage(data);
             else service.changePage(data, oper);
         })
+        .error(function (data) {
+            service.setLoading(false);
+        });
     };
 
     var _loading = false;
@@ -210,13 +207,34 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
         $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id='+dataShare.get().id)
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (data.ver <= 2.0) {
-                    path=(admin)?'reportAdmin':null;
-                    dataShare.changePage(data, path);
-                } else {
-                    $scope.versionUpdate = true;
-                }
+                if (data.ver <= 3.0) {
+                    if (data.id == -1) dataShare.changePage(data, 'login');
+                    else {
+                        if (data.settings.forms_request) wait(10, data, admin);
+                        else goHomepage(data, admin);
+                    }
+                } else $scope.versionUpdate = true;
+            })
+            .error(function (data) {
+                dataShare.setLoading(false);
             });
+    };
+
+    var wait = function(sec, data, admin) {
+        if (sec>0) {
+            $scope.secsToWait = sec;
+            $timeout(function () {
+                wait(sec - 1, data, admin);
+            }, 1000);
+        } else goHomepage(data, admin)
+    };
+
+    var goHomepage = function(data, admin) {
+        if (data.settings.message_status==2) dataShare.action('message', 'message');
+        else {
+            path = (admin) ? 'reportAdmin' : null;
+            dataShare.changePage(data, path);
+        }
     };
 
     $scope.logout = function () {
@@ -733,7 +751,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
 
     $scope.return = function() {
         $scope.approvalShow = false;
-    }
+    };
 
 
     var refresh = function () {

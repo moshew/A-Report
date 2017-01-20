@@ -227,6 +227,11 @@ div{
     z-index:20;
 }
 
+.popupScreen.no-opacity {
+    background:#234a7d;
+    opacity:1;
+}
+
 .centered.loginResult
 {
     margin-top: -160px;
@@ -266,6 +271,24 @@ div{
     border-color: white;
     background: #ef3a28;
     display: inline-block;
+}
+
+.formMSg-circle {
+    background: #ef3a28;
+    border-radius: 50%;
+    margin: 0px 9px 12px 9px;
+    margin-bottom: 20px;
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    display: inline-block;
+    -webkit-transition: background 0.3s; /* For Safari 3.1 to 6.0 */
+    transition: background 0.3s;
+    text-align: center;
+    font-size: 135%;
 }
 
 .report-back {

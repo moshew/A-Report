@@ -7,4 +7,8 @@
 <div ng-show="!dataShare.loading && versionUpdate" class="popupScreen">
     <img src="assets/home_version.png" />
 </div>
+<div ng-show="!dataShare.loading && secsToWait>0" class="popupScreen no-opacity">
+    <img src="assets/forms_msg.png" />
+    <div class="formMSg-circle">{{secsToWait}}</div>
+</div>
 <div ng-include="'pages/loader.html'"></div>
