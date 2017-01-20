@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/screen/ios/screen-iphone-portrait-667h-2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/screen/ios/screen-iphone-portrait-736h-2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/splash.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/splash.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/screen/ios/screen-iphone-portrait-667h-2x.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/screen/ios/screen-iphone-portrait-763h-2x.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/screen/splash.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
     </list>
@@ -41,8 +48,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7183432">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3964497">
+              <caret line="37" column="87" selection-start-line="37" selection-start-column="87" selection-end-line="37" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -277,6 +284,10 @@
               <option name="myItemId" value="screen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ios" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -293,10 +304,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="screen" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ios" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -330,15 +337,15 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Moshe\Documents\PhoneGap\A-Report" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Moshe\Documents\PhoneGap\A-Report\www\pages" />
       <recent name="C:\Users\Waisman\Documents\GitHub\A-Report\www\pages" />
       <recent name="C:\Users\Moshe\Documents\PhoneGap\A-Report\www" />
       <recent name="C:\Users\Moshe\Downloads" />
       <recent name="C:\Users\Moshe\Documents\PhoneGap\A-Report\www\css" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Moshe\Documents\PhoneGap\A-Report" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
@@ -417,12 +424,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00272" summary="update">
-      <created>1467452561200</created>
-      <option name="number" value="00272" />
-      <option name="project" value="LOCAL" />
-      <updated>1467452561200</updated>
     </task>
     <task id="LOCAL-00273" summary="update">
       <created>1467452635633</created>
@@ -712,7 +713,13 @@
       <option name="project" value="LOCAL" />
       <updated>1484954622658</updated>
     </task>
-    <option name="localTasksCounter" value="321" />
+    <task id="LOCAL-00321" summary="update">
+      <created>1484954716356</created>
+      <option name="number" value="00321" />
+      <option name="project" value="LOCAL" />
+      <updated>1484954716356</updated>
+    </task>
+    <option name="localTasksCounter" value="322" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1112,8 +1119,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7183432">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3964497">
+          <caret line="37" column="87" selection-start-line="37" selection-start-column="87" selection-end-line="37" selection-end-column="87" />
           <folding />
         </state>
       </provider>
