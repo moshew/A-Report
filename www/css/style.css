@@ -252,7 +252,7 @@ div{
     padding-right: 20px;
     padding-left: 20px;
     white-space: pre-line;
-    height:510px;
+    height:500px;
     overflow-y: auto;
 }
 
@@ -260,7 +260,6 @@ div{
     width: 85%;
     height: 40px;
     margin: 20px;
-    padding: 6px;
     border-radius: 5px;
     border-width: 1px;
     border-style: solid;
