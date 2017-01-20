@@ -37,12 +37,11 @@
   <icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72"/>
   <icon src="res/icon/ios/icon-57-2x.png" gap:platform="ios" width="114" height="114"/>
   <icon src="res/icon/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144"/>
-  <splash src="splash.png" />
   <platform name="android">
-    <splash src="res/screen/android/screen-ldpi-portrait.png" qualifier="port-ldpi"/>
-    <splash src="res/screen/android/screen-mdpi-portrait.png" qualifier="port-mdpi"/>
-    <splash src="res/screen/android/screen-hdpi-portrait.png" qualifier="port-hdpi"/>
-    <splash src="res/screen/android/screen-xhdpi-portrait.png" qualifier="port-xhdpi"/>
+    <splash src="res/screen/android/screen-ldpi-portrait.png" density="port-ldpi"/>
+    <splash src="res/screen/android/screen-mdpi-portrait.png" density="port-mdpi"/>
+    <splash src="res/screen/android/screen-hdpi-portrait.png" density="port-hdpi"/>
+    <splash src="res/screen/android/screen-xhdpi-portrait.png" density="port-xhdpi"/>
   </platform>
   <platform name="ios">
     <splash src="res/screen/ios/screen-iphone-portrait.png" width="320" height="480"/>
