@@ -8,6 +8,6 @@
     <label class="users_label">טלפון:</label><input class="users_text" type="text" ng-model="user_phone"><br>
     <input  type="checkbox" ng-model="user_isManager"><label class="users_label cb" >הרשאות ניהול</label>
 </div>
-<div class="users-candidates"><div class="users-candidate" dir="rtl" ng-repeat="candidate in dataShare.get().del_candidates" ng-click="toggleSelection(candidate.phone)"><input type="checkbox" value="{{candidate.phone}}" ng-checked="selection.indexOf(candidate.phone) > -1"><span class="users_delLabel">{{candidate.name}}</span></div></div>
+<div class="users-candidates upline"><div class="users-candidate" dir="rtl" ng-repeat="candidate in dataShare.get().del_candidates" ng-click="toggleSelection(candidate.phone)"><input type="checkbox" value="{{candidate.phone}}" ng-checked="selection.indexOf(candidate.phone) > -1"><span class="users_delLabel">{{candidate.name}}</span></div></div>
 <div ng-include="'pages/footer2.html'"></div>
 <div ng-include="'pages/loader.html'"></div>

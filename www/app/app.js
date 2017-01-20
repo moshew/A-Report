@@ -82,6 +82,12 @@ app.config(function ($routeProvider) {
             controller: 'adminController'
         })
 
+        .when('/forms', {
+            templateUrl: 'pages/forms.html',
+            controller: 'adminController'
+        })
+
+
 });
 
 app.config(function ($mdThemingProvider) {
@@ -153,6 +159,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
                 }
             }
         }
+        else if (path=='reportAdmin') this.mainPage = true;
         $location.path(path);
         $timeout.cancel(pagePromise);
         pagePromise = $timeout(function () {
@@ -170,7 +177,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
             service.setLoading(false);
             if (oper=='main') service.changePage(data);
             else service.changePage(data, oper);
-        });
+        })
     };
 
     var _loading = false;
@@ -758,6 +765,25 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
                 });
         }
     };
+
+    $scope.deleteFormsRequests = function () {
+        var deletedPhones = '';
+        if ($scope.selection.length > 0) {
+            deletedPhones = '&deleted=';
+            for (index = 0; index < $scope.selection.length; ++index) deletedPhones += $scope.selection[index] + ';';
+        }
+
+        if (deletedPhones != '') {
+            dataShare.setLoading(true);
+            $http.jsonp(domain + 'forms.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + deletedPhones)
+                .success(function (data) {
+                    dataShare.setLoading(false);
+                    dataShare.set(data);
+                    refresh();
+                });
+        }
+    }
+
 
     $scope.systemMessage = dataShare.get().message;
     $scope.editMessage = function () {

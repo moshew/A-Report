@@ -935,13 +935,16 @@ input[type="checkbox"]{
 .users-candidates {
     margin: 10px;
     padding-top: 10px;
-    border-width: 1px;
-    border-color: #1d6c96;
-    border-style: solid none none none;
     margin-right: 15px;
     height:340px;
     overflow-y: auto;
 
+}
+
+.users-candidates.upline {
+    border-width: 1px;
+    border-color: #1d6c96;
+    border-style: solid none none none;
 }
 
 .users-candidate {
