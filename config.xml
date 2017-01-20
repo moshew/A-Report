@@ -48,8 +48,9 @@
     <splash src="res/screen/ios/screen-iphone-portrait.png" width="320" height="480"/>
     <splash src="res/screen/ios/screen-iphone-portrait-2x.png" width="640" height="960"/>
     <splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" height="1136"/>
+    <splash src="res/screen/ios/screen-iphone-portrait-667h-2x.png" width="750" height="1134"/>
+    <splash src="res/screen/ios/screen-iphone-portrait-736h-2x.png" width="1242" height="2208"/>
     <splash src="res/screen/ios/screen-ipad-portrait.png" width="768" height="1024"/>
-    <splash src="res/screen/ios/screen-ipad-landscape.png" width="1024" height="768"/>
   </platform>
   <access origin="*"/>
   <plugin name="cordova-plugin-whitelist" version="1"/>
