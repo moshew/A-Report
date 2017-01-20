@@ -210,7 +210,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
                 if (data.ver <= 3.0) {
                     if (data.id == -1) dataShare.changePage(data, 'login');
                     else {
-                        if (data.settings.forms_request) wait(10, data, admin);
+                        if (data.settings.forms_request) wait(5, data, admin);
                         else goHomepage(data, admin);
                     }
                 } else $scope.versionUpdate = true;
