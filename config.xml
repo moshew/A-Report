@@ -21,7 +21,8 @@
   <preference name="android-installLocation" value="auto"/>
   <preference name="phonegap-version" value="cli-6.3.0" />
   <preference name="android-build-tool" value="gradle" />
-  <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
+  <gap:plugin name = "org.apache.cordova.splashscreen" />
+  <!--<plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />-->
   <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
   <!--
   <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="pgb" />
