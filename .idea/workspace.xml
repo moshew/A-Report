@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/screen/ios/screen-iphone-portrait-667h-2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/screen/ios/screen-iphone-portrait-736h-2x.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/splash.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/splash.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/screen/ios/screen-iphone-portrait-667h-2x.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/screen/ios/screen-iphone-portrait-763h-2x.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/res/screen/splash.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
     </list>
@@ -48,8 +41,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3964497">
-              <caret line="37" column="87" selection-start-line="37" selection-start-column="87" selection-end-line="37" selection-end-column="87" />
+            <state vertical-scroll-proportion="0.4224852">
+              <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -425,12 +418,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00273" summary="update">
-      <created>1467452635633</created>
-      <option name="number" value="00273" />
-      <option name="project" value="LOCAL" />
-      <updated>1467452635633</updated>
-    </task>
     <task id="LOCAL-00274" summary="update">
       <created>1467452808671</created>
       <option name="number" value="00274" />
@@ -719,7 +706,13 @@
       <option name="project" value="LOCAL" />
       <updated>1484954716356</updated>
     </task>
-    <option name="localTasksCounter" value="322" />
+    <task id="LOCAL-00322" summary="update">
+      <created>1484955341253</created>
+      <option name="number" value="00322" />
+      <option name="project" value="LOCAL" />
+      <updated>1484955341253</updated>
+    </task>
+    <option name="localTasksCounter" value="323" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1119,8 +1112,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3964497">
-          <caret line="37" column="87" selection-start-line="37" selection-start-column="87" selection-end-line="37" selection-end-column="87" />
+        <state vertical-scroll-proportion="0.4224852">
+          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
           <folding />
         </state>
       </provider>
