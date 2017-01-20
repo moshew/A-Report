@@ -41,8 +41,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48284024">
-              <caret line="24" column="84" selection-start-line="24" selection-start-column="84" selection-end-line="24" selection-end-column="84" />
+            <state vertical-scroll-proportion="0.5029586">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -350,12 +350,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00260" summary="update">
-      <created>1467414550043</created>
-      <option name="number" value="00260" />
-      <option name="project" value="LOCAL" />
-      <updated>1467414550043</updated>
-    </task>
     <task id="LOCAL-00261" summary="update">
       <created>1467414575046</created>
       <option name="number" value="00261" />
@@ -644,7 +638,13 @@
       <option name="project" value="LOCAL" />
       <updated>1484949670566</updated>
     </task>
-    <option name="localTasksCounter" value="309" />
+    <task id="LOCAL-00309" summary="update">
+      <created>1484950237670</created>
+      <option name="number" value="00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1484950237670</updated>
+    </task>
+    <option name="localTasksCounter" value="310" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1044,8 +1044,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48284024">
-          <caret line="24" column="84" selection-start-line="24" selection-start-column="84" selection-end-line="24" selection-end-column="84" />
+        <state vertical-scroll-proportion="0.5029586">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
