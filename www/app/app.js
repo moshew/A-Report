@@ -5,7 +5,9 @@ var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ngMaterial', 'angucomp
 
 app.run(function($http, dataShare) {
     var id = window.localStorage.getItem("id");
-    $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id=' + id)
+    var url =  domain + 'login.php?callback=JSON_CALLBACK';
+    if (id!=null) url += '&id=' + id;
+    $http.jsonp(url)
         .success(function (data) {
             dataShare.set(data);
             dataShare.register();
