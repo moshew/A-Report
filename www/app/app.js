@@ -211,6 +211,9 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
                 } else {
                     $scope.versionUpdate = true;
                 }
+            })
+            .error(function (data) {
+                dataShare.setLoading(false);
             });
     };
 
