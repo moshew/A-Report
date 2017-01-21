@@ -21,12 +21,8 @@
   <preference name="android-installLocation" value="auto"/>
   <preference name="phonegap-version" value="cli-6.3.0" />
   <preference name="android-build-tool" value="gradle" />
-  <!--<plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />-->
+  <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
   <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
-  <plugin name="org.apache.cordova.splashscreen" spec="1.0.0" source="npm" />
-  <!--
-<plugin name="org.apache.cordova.inappbrowser" spec="0.6.0" source="pgb" />
--->
   <gap:plugin name="onesignal-cordova-plugin" source="npm" />
   <icon src="icon.png"/>
   <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
@@ -37,17 +33,19 @@
   <icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72"/>
   <icon src="res/icon/ios/icon-57-2x.png" gap:platform="ios" width="114" height="114"/>
   <icon src="res/icon/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144"/>
-  <gap:splash src="splash.png" />
-  <gap:splash src="res/screen/android/screen-ldpi-portrait.png" gap:platform="android" gap:qualifier="port-ldpi"/>
-  <gap:splash src="res/screen/android/screen-mdpi-portrait.png" gap:platform="android" gap:qualifier="port-mdpi"/>
-  <gap:splash src="res/screen/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi"/>
-  <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xhdpi"/>
-  <gap:splash src="res/screen/ios/screen-iphone-portrait.png" gap:platform="ios" width="320" height="480"/>
-  <gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios" width="640" height="960"/>
-  <gap:splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios" width="640" height="1136"/>
-  <gap:splash src="res/screen/ios/screen-iphone-portrait-667h-2x.png" gap:platform="ios" width="750" height="1134"/>
-  <gap:splash src="res/screen/ios/screen-iphone-portrait-736h-2x.png" gap:platform="ios" width="1242" height="2208"/>
-  <gap:splash src="res/screen/ios/screen-ipad-portrait.png" gap:platform="ios" width="768" height="1024"/>
+  <splash src="splash.png" />
+  <splash src="res/screen/android/screen-ldpi-portrait.png" gap:platform="android" gap:qualifier="port-ldpi"/>
+  <splash src="res/screen/android/screen-mdpi-portrait.png" gap:platform="android" gap:qualifier="port-mdpi"/>
+  <splash src="res/screen/android/screen-hdpi-portrait.png" gap:platform="android" gap:qualifier="port-hdpi"/>
+  <splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xhdpi"/>
+  <platform name="ios">
+    <splash src="res/screen/ios/screen-iphone-portrait.png" width="320" height="480"/>
+    <splash src="res/screen/ios/screen-iphone-portrait-2x.png" width="640" height="960"/>
+    <splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" height="1136"/>
+    <splash src="res/screen/ios/screen-iphone-portrait-667h-2x.png" width="750" height="1134"/>
+    <splash src="res/screen/ios/screen-iphone-portrait-736h-2x.png" width="1242" height="2208"/>
+    <splash src="res/screen/ios/screen-ipad-portrait.png" width="768" height="1024"/>
+  </platform>
   <access origin="*"/>
   <plugin name="cordova-plugin-whitelist" version="1"/>
   <allow-intent href="http://*/*"/>
