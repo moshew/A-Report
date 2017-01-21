@@ -25,8 +25,8 @@
   <plugin name="cordova-plugin-inappbrowser" source="npm" spec="~1.3.0"/>
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
   <gap:plugin name="onesignal-cordova-plugin" source="npm" />
-  <icon src="icon.png"/>
-  <splash src="splash.png"/>
+  <icon src="res/icon.png"/>
+  <splash src="res/splash.png"/>
   <platform name="android">
     <icon src="res/icon/android/icon-36-ldpi.png" density="ldpi"/>
     <icon src="res/icon/android/icon-48-mdpi.png" density="mdpi"/>
