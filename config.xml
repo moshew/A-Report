@@ -21,26 +21,33 @@
   <preference name="android-installLocation" value="auto"/>
   <preference name="phonegap-version" value="cli-6.3.0" />
   <preference name="android-build-tool" value="gradle" />
-  <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
-  <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
+  <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
+  <plugin name="cordova-plugin-inappbrowser" source="npm" spec="~1.3.0" />
   <gap:plugin name="onesignal-cordova-plugin" source="npm" />
-  <icon src="icon.png"/>
-  <icon src="res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
-  <icon src="res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
-  <icon src="res/icon/android/icon-72-hdpi.png" gap:platform="android" gap:qualifier="hdpi"/>
-  <icon src="res/icon/android/icon-96-xhdpi.png" gap:platform="android" gap:qualifier="xhdpi"/>
-  <icon src="res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57"/>
-  <icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72"/>
-  <icon src="res/icon/ios/icon-57-2x.png" gap:platform="ios" width="114" height="114"/>
-  <icon src="res/icon/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144"/>
   <platform name="android">
-    <splash src="res/screen/android/screen-ldpi-portrait.png" gap:qualifier="port-ldpi"/>
-    <splash src="res/screen/android/screen-mdpi-portrait.png" gap:qualifier="port-mdpi"/>
-    <splash src="res/screen/android/screen-hdpi-portrait.png" gap:qualifier="port-hdpi"/>
-    <splash src="res/screen/android/screen-xhdpi-portrait.png" gap:qualifier="port-xhdpi"/>
+    <icon src="res/icon/android/icon-36-ldpi.png" density="ldpi"/>
+    <icon src="res/icon/android/icon-48-mdpi.png" density="mdpi"/>
+    <icon src="res/icon/android/icon-72-hdpi.png" density="hdpi"/>
+    <icon src="res/icon/android/icon-96-xhdpi.png" density="xhdpi"/>
+    <splash src="res/screen/android/screen-ldpi-portrait.png" density="port-ldpi"/>
+    <splash src="res/screen/android/screen-mdpi-portrait.png" density="port-mdpi"/>
+    <splash src="res/screen/android/screen-hdpi-portrait.png" density="port-hdpi"/>
+    <splash src="res/screen/android/screen-xhdpi-portrait.png" density="port-xhdpi"/>
+  </platform>
+  <platform name="ios">
+      <icon height="57" platform="ios" src="res/icon/ios/icon.png" width="57" />
+      <icon height="114" platform="ios" src="res/icon/ios/icon@2x.png" width="114" />
+      <icon height="72" platform="ios" src="res/icon/ios/icon-72.png" width="72" />
+      <icon height="144" platform="ios" src="res/icon/ios/icon-72@2x.png" width="144" />
+      <splash height="1136" platform="ios" src="res/screen/ios/Default-568h@2x~iphone.png" width="640" />
+      <splash height="1334" platform="ios" src="res/screen/ios/Default-667h.png" width="750" />
+      <splash height="2208" platform="ios" src="res/screen/ios/Default-736h.png" width="1242" />
+      <splash height="2048" platform="ios" src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" />
+      <splash height="1024" platform="ios" src="res/screen/ios/Default-Portrait~ipad.png" width="768" />
+      <splash height="960" platform="ios" src="res/screen/ios/Default@2x~iphone.png" width="640" />
+      <splash height="480" platform="ios" src="res/screen/ios/Default~iphone.png" width="320" />
   </platform>
   <access origin="*"/>
-  <plugin name="cordova-plugin-whitelist" version="1"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
