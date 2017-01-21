@@ -82,12 +82,6 @@ app.config(function ($routeProvider) {
             controller: 'adminController'
         })
 
-        .when('/formsUsers', {
-            templateUrl: 'pages/forms.html',
-            controller: 'adminController'
-        })
-
-
 });
 
 app.config(function ($mdThemingProvider) {
@@ -149,11 +143,16 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         this.mainPage = false;
         this.set(data);
         if (path == null) {
-            this.mainPage = true;
-            if (data.status == -1) path = 'report';
-            else path = 'status';
+            if (data.id == -1) path = 'login';
+            else {
+                if (this.settings.message_status==2) this.action('message', 'message');
+                else {
+                    this.mainPage = true;
+                    if (data.status == -1) path = 'report';
+                    else path = 'status';
+                }
+            }
         }
-        else if (path=='reportAdmin') this.mainPage = true;
         $location.path(path);
         $timeout.cancel(pagePromise);
         pagePromise = $timeout(function () {
@@ -167,14 +166,11 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         url = domain + page + '.php?callback=JSON_CALLBACK&id=' + this.get().id + params;
         service.setLoading(true);
         $http.jsonp(url)
-        .success(function (data) {
-            service.setLoading(false);
-            if (oper=='main') service.changePage(data);
-            else service.changePage(data, oper);
-        })
-        .error(function (data) {
-            service.setLoading(false);
-        });
+            .success(function (data) {
+                service.setLoading(false);
+                if (oper=='main') service.changePage(data);
+                else service.changePage(data, oper);
+            });
     };
 
     var _loading = false;
@@ -207,34 +203,13 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
         $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id='+dataShare.get().id)
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (data.ver <= 3.0) {
-                    if (data.id == -1) dataShare.changePage(data, 'login');
-                    else {
-                        if (data.settings.forms_request) wait(5, data, admin);
-                        else goHomepage(data, admin);
-                    }
-                } else $scope.versionUpdate = true;
-            })
-            .error(function (data) {
-                dataShare.setLoading(false);
+                if (data.ver <= 2.0) {
+                    path=(admin)?'reportAdmin':null;
+                    dataShare.changePage(data, path);
+                } else {
+                    $scope.versionUpdate = true;
+                }
             });
-    };
-
-    var wait = function(sec, data, admin) {
-        if (sec>0) {
-            $scope.secsToWait = sec;
-            $timeout(function () {
-                wait(sec - 1, data, admin);
-            }, 1000);
-        } else goHomepage(data, admin)
-    };
-
-    var goHomepage = function(data, admin) {
-        if (data.settings.message_status==2) dataShare.action('message', 'message');
-        else {
-            path = (admin) ? 'reportAdmin' : null;
-            dataShare.changePage(data, path);
-        }
     };
 
     $scope.logout = function () {
@@ -275,24 +250,24 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
         if ($scope.loginState == 'code' && $scope.index == 5) {
             dataShare.setLoading(true);
             $http.jsonp(domain+'login.php?callback=JSON_CALLBACK&id=' + $scope.value)
-            .success(function (data) {
-                dataShare.setLoading(false);
-                refresh();
-                if (data.id != -1) {
-                    window.localStorage.setItem("id", data.id);
-                    dataShare.changePage(data);
-                    dataShare.register();
-                }
-            });
+                .success(function (data) {
+                    dataShare.setLoading(false);
+                    refresh();
+                    if (data.id != -1) {
+                        window.localStorage.setItem("id", data.id);
+                        dataShare.changePage(data);
+                        dataShare.register();
+                    }
+                });
 
         } else if ($scope.loginState == 'phone' && $scope.index == 10) {
             dataShare.setLoading(true);
             $http.jsonp(domain+'send_code.php?callback=JSON_CALLBACK&p_id=' + $scope.value)
-            .success(function (data) {
-                dataShare.setLoading(false);
-                $scope.sendCodeScreen = true;
-                $scope.loginCodeResponse = (data.status) ? 'found' : 'not-found';
-            });
+                .success(function (data) {
+                    dataShare.setLoading(false);
+                    $scope.sendCodeScreen = true;
+                    $scope.loginCodeResponse = (data.status) ? 'found' : 'not-found';
+                });
         }
     };
 
@@ -401,7 +376,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     $scope.addNewTask = function() {
         phone = dataShare.get()["phone"];
         if (phone!=null) dataShare.action('futureReport', 'report_as', {phone: phone});
-         else dataShare.action('futureReport', 'login');
+        else dataShare.action('futureReport', 'login');
     };
 
     $scope.cancelTask = function(taskId) {
@@ -751,7 +726,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
 
     $scope.return = function() {
         $scope.approvalShow = false;
-    };
+    }
 
 
     var refresh = function () {
@@ -783,25 +758,6 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
                 });
         }
     };
-
-    $scope.deleteFormsRequests = function () {
-        var deletedPhones = '';
-        if ($scope.selection.length > 0) {
-            deletedPhones = '&deleted=';
-            for (index = 0; index < $scope.selection.length; ++index) deletedPhones += $scope.selection[index] + ';';
-        }
-
-        if (deletedPhones != '') {
-            dataShare.setLoading(true);
-            $http.jsonp(domain + 'forms.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + deletedPhones)
-                .success(function (data) {
-                    dataShare.setLoading(false);
-                    dataShare.set(data);
-                    refresh();
-                });
-        }
-    }
-
 
     $scope.systemMessage = dataShare.get().message;
     $scope.editMessage = function () {
