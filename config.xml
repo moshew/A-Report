@@ -62,6 +62,7 @@
     <splash height="480" platform="ios" src="res/screen/ios/Default~iphone.png" width="320" />
   </platform>
   <access origin="*"/>
+  <plugin name="cordova-plugin-whitelist" version="1"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>

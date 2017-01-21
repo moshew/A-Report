@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,21 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42745537">
-              <caret line="217" column="6" selection-start-line="217" selection-start-column="6" selection-end-line="217" selection-end-column="6" />
+            <state vertical-scroll-proportion="-73.23077">
+              <caret line="220" column="26" selection-start-line="220" selection-start-column="20" selection-end-line="220" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4155843">
-              <caret line="17" column="64" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.6177515">
+              <caret line="64" column="55" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -186,8 +186,8 @@
         <option value="$PROJECT_DIR$/www/pages/formsMsg.html" />
         <option value="$PROJECT_DIR$/www/pages/home.html" />
         <option value="$PROJECT_DIR$/www/css/style.css" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/www/app/app.js" />
+        <option value="$PROJECT_DIR$/config.xml" />
       </list>
     </option>
   </component>
@@ -451,12 +451,6 @@
       <created>1453504354563</created>
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
-    </task>
-    <task id="LOCAL-00294" summary="update">
-      <created>1468085273772</created>
-      <option name="number" value="00294" />
-      <option name="project" value="LOCAL" />
-      <updated>1468085273772</updated>
     </task>
     <task id="LOCAL-00295" summary="update">
       <created>1468085406689</created>
@@ -746,7 +740,13 @@
       <option name="project" value="LOCAL" />
       <updated>1484988049562</updated>
     </task>
-    <option name="localTasksCounter" value="343" />
+    <task id="LOCAL-00343" summary="update">
+      <created>1484989153645</created>
+      <option name="number" value="00343" />
+      <option name="project" value="LOCAL" />
+      <updated>1484989153645</updated>
+    </task>
+    <option name="localTasksCounter" value="344" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1144,18 +1144,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
+    <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4155843">
-          <caret line="17" column="64" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
+        <state vertical-scroll-proportion="-73.23077">
+          <caret line="220" column="26" selection-start-line="220" selection-start-column="20" selection-end-line="220" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/app/app.js">
+    <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42745537">
-          <caret line="217" column="6" selection-start-line="217" selection-start-column="6" selection-end-line="217" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.6177515">
+          <caret line="64" column="55" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
           <folding />
         </state>
       </provider>
