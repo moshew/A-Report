@@ -418,12 +418,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00279" summary="update">
-      <created>1467569294775</created>
-      <option name="number" value="00279" />
-      <option name="project" value="LOCAL" />
-      <updated>1467569294775</updated>
-    </task>
     <task id="LOCAL-00280" summary="update">
       <created>1467569693750</created>
       <option name="number" value="00280" />
@@ -712,7 +706,13 @@
       <option name="project" value="LOCAL" />
       <updated>1484957648694</updated>
     </task>
-    <option name="localTasksCounter" value="328" />
+    <task id="LOCAL-00328" summary="update">
+      <created>1484957898008</created>
+      <option name="number" value="00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1484957898008</updated>
+    </task>
+    <option name="localTasksCounter" value="329" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -726,7 +726,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1924" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1750524" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.49583334" order="6" side_tool="false" content_ui="tabs" />
