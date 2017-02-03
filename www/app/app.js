@@ -104,7 +104,6 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
     var pagePromise = null;
     service.data = null;
     service.settings = null;
-    service.reportedPhone = null;
 
     service.set = function (data) {
         this.data = data;
@@ -372,8 +371,8 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     $scope.cancelReport = function(isSingle) {
         if (isSingle) dayReport(-1);
         else {
-            phone = dataShare.get()["phone"];
-            if (phone!=null) dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
+            u_id = dataShare.get()["u_id"];
+            if (u_id!=null) dataShare.action('futureStatus', 'future_tasks_as', {u_id: u_id});
             else dataShare.action('futureStatus', 'future_tasks');
         }
     };
@@ -399,16 +398,16 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     };
 
     $scope.addNewTask = function() {
-        phone = dataShare.get()["phone"];
-        if (phone!=null) dataShare.action('futureReport', 'report_as', {phone: phone});
+        u_id = dataShare.get()["u_id"];
+        if (u_id!=null) dataShare.action('futureReport', 'report_as', {u_id: u_id});
          else dataShare.action('futureReport', 'login');
     };
 
     $scope.cancelTask = function(taskId) {
         dataShare.setLoading(true);
 
-        phone = dataShare.get()["phone"];
-        base_url = (phone!=null)?'future_tasks_as.php?phone='+phone+'&':'future_tasks.php?';
+        u_id = dataShare.get()["u_id"];
+        base_url = (u_id!=null)?'future_tasks_as.php?u_id='+u_id+'&':'future_tasks.php?';
         $http.jsonp(domain+base_url+'callback=JSON_CALLBACK&id=' + dataShare.get().id + '&task_id=' + taskId + '&oper=-1')
             .success(function (data) {
                 dataShare.setLoading(false);
@@ -434,12 +433,12 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         if (status>=0) $scope.myStyle[status] = { 'background-color': '#80be40' };
 
         dataShare.setLoading(true);
-        phone = dataShare.get()["phone"];
-        phoneParam = (phone!=null)?'&phone='+phone:'';
-        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&oper=' + status + '&info='+info + phoneParam)
+        u_id = dataShare.get()["u_id"];
+        u_idParam = (u_id!=null)?'&u_id='+u_id:'';
+        $http.jsonp(domain+'report.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&oper=' + status + '&info='+info + u_idParam)
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (phone!=null) dataShare.action('statusList', 'notifications');
+                if (u_id!=null) dataShare.action('statusList', 'notifications');
                 else dataShare.changePage(data);
             });
     };
@@ -450,13 +449,13 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
         var start_day = moment($scope.report_dates.start_day).format('YYYY-MM-DD');
         var end_day   = moment($scope.report_dates.end_day).format('YYYY-MM-DD');
         dataShare.setLoading(true);
-        phone = dataShare.get()["phone"];
-        base_url = (phone!=null)?'future_tasks_as.php?phone='+phone+'&':'future_tasks.php?';
+        u_id = dataShare.get()["u_id"];
+        base_url = (u_id!=null)?'future_tasks_as.php?u_id='+u_id+'&':'future_tasks.php?';
         $http.jsonp(domain+base_url+'callback=JSON_CALLBACK&id=' + dataShare.get().id + '&start_day=' + start_day + '&end_day=' + end_day + '&oper=' + status + '&info='+info)
             .success(function (data) {
                 dataShare.setLoading(false);
                 if (data.status.code=='success') {
-                    if (phone != null) dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
+                    if (u_id != null) dataShare.action('futureStatus', 'future_tasks_as', {u_id: u_id});
                     else dataShare.action('futureStatus', 'future_tasks');
                 } else {
                     $scope.errorInfo = data.status.info;
@@ -562,17 +561,17 @@ app.controller('statusListController', function ($scope, $http, $timeout, $locat
         }
     };
 
-    $scope.report = function(phone) {
+    $scope.report = function(u_id) {
         if (dataShare.getSettings().admin || dataShare.getSettings().manager) {
-            dataShare.action('report', 'report_as', {phone: phone});
+            dataShare.action('report', 'report_as', {u_id: u_id});
         }
     };
 
-    $scope.report2 = function(phone) {
+    $scope.report2 = function(u_id) {
         if (dataShare.getSettings().admin) {
-            dataShare.action('futureStatus', 'future_tasks_as', {phone: phone});
+            dataShare.action('futureStatus', 'future_tasks_as', {u_id: u_id});
         }
-        else if (dataShare.getSettings()['manager']) $scope.report(phone);
+        else if (dataShare.getSettings()['manager']) $scope.report(u_id);
     };
 
     $scope.approve = function() {
@@ -722,10 +721,10 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         }
     };
 
-    $scope.toggleSelection = function (phone) {
-        var idx = $scope.selection.indexOf(phone);
+    $scope.toggleSelection = function (u_id) {
+        var idx = $scope.selection.indexOf(u_id);
         if (idx > -1) $scope.selection.splice(idx, 1);
-        else $scope.selection.push(phone);
+        else $scope.selection.push(u_id);
     };
 
     var index = 0;
@@ -764,18 +763,18 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
     refresh();
     $scope.editUsers = function () {
         var newUser = '';
-        var deletedPhones = '';
+        var deletedIds = '';
         if ($scope.user_name != '' && $scope.user_phone != '') {
             newUser = '&name=' + $scope.user_name + '&phone=' + $scope.user_phone + '&manager=' + $scope.user_isManager;
         }
         if ($scope.selection.length > 0) {
-            deletedPhones = '&deleted=';
-            for (index = 0; index < $scope.selection.length; ++index) deletedPhones += $scope.selection[index] + ';';
+            deletedIds = '&deleted=';
+            for (index = 0; index < $scope.selection.length; ++index) deletedIds += $scope.selection[index] + ';';
         }
 
-        if (newUser != '' || deletedPhones != '') {
+        if (newUser != '' || deletedIds != '') {
             dataShare.setLoading(true);
-            $http.jsonp(domain + 'users.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + newUser + deletedPhones)
+            $http.jsonp(domain + 'users.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + newUser + deletedIds)
                 .success(function (data) {
                     dataShare.setLoading(false);
                     dataShare.set(data);
@@ -785,15 +784,15 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
     };
 
     $scope.deleteFormsRequests = function () {
-        var deletedPhones = '';
+        var deletedIds = '';
         if ($scope.selection.length > 0) {
-            deletedPhones = '&deleted=';
-            for (index = 0; index < $scope.selection.length; ++index) deletedPhones += $scope.selection[index] + ';';
+            deletedIds = '&deleted=';
+            for (index = 0; index < $scope.selection.length; ++index) deletedIds += $scope.selection[index] + ';';
         }
 
-        if (deletedPhones != '') {
+        if (deletedIds != '') {
             dataShare.setLoading(true);
-            $http.jsonp(domain + 'forms.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + deletedPhones)
+            $http.jsonp(domain + 'forms.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + deletedIds)
                 .success(function (data) {
                     dataShare.setLoading(false);
                     dataShare.set(data);
