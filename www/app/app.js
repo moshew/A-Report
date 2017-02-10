@@ -545,7 +545,7 @@ app.controller('statusListController', function ($scope, $http, $timeout, $locat
     $scope.errorMsg = false;
 
     $scope.removeUser = function (user) {
-        $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + dataShare.get().id+'&user='+user)
+        $http.jsonp(domain+'notifications.php?callback=JSON_CALLBACK&op=del&id=' + dataShare.get().id+'&u_id='+user.u_id)
             .success(function (data) {
                 dataShare.set(data);
             });
@@ -553,7 +553,7 @@ app.controller('statusListController', function ($scope, $http, $timeout, $locat
 
     $scope.addUser = function (user) {
         if (user!=null) {
-            $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + dataShare.get().id + '&user=' + user.originalObject.name)
+            $http.jsonp(domain + 'notifications.php?callback=JSON_CALLBACK&op=req&id=' + dataShare.get().id + '&u_id=' + user.originalObject.u_id)
                 .success(function (data) {
                     dataShare.set(data);
                     $scope.$broadcast('angucomplete-alt:clearInput', 'statusList-AddUser');
