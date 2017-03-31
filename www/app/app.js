@@ -129,7 +129,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         if (this.data.id != -1) {
             $timeout(function () {
                 try {
-                    window.plugins.OneSignal.init("70874495-6a25-4a03-a337-f24d0ba3480c", {googleProjectNumber: "656959786426"}, service.notificationOpenedCallback);
+                    window.plugins.OneSignal.init("9e0291cd-9d82-4a5e-a5c7-a2ad63a89e27", {googleProjectNumber: "682594015864"}, service.notificationOpenedCallback);
                     window.plugins.OneSignal.enableInAppAlertNotification(true);
                     $timeout(function () {
                         try { window.plugins.OneSignal.sendTag("id", service.data.id); }
