@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -351,12 +349,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00309" summary="update">
-      <created>1484950237670</created>
-      <option name="number" value="00309" />
-      <option name="project" value="LOCAL" />
-      <updated>1484950237670</updated>
-    </task>
     <task id="LOCAL-00310" summary="update">
       <created>1484950312689</created>
       <option name="number" value="00310" />
@@ -645,7 +637,13 @@
       <option name="project" value="LOCAL" />
       <updated>1490940008585</updated>
     </task>
-    <option name="localTasksCounter" value="358" />
+    <task id="LOCAL-00358" summary="update">
+      <created>1490940414487</created>
+      <option name="number" value="00358" />
+      <option name="project" value="LOCAL" />
+      <updated>1490940414487</updated>
+    </task>
+    <option name="localTasksCounter" value="359" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
