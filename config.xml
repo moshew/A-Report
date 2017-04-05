@@ -20,12 +20,12 @@
   <preference name="DisableCursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
-  <preference name="phonegap-version" value="cli-6.3.0" />
+  <preference name="phonegap-version" value="cli-6.4.0" />
   <preference name="android-build-tool" value="gradle" />
   <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1"/>
   <plugin name="cordova-plugin-inappbrowser" source="npm" spec="~1.3.0"/>
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-  <gap:plugin name="onesignal-cordova-plugin" source="npm" />
+  <gap:plugin name="onesignal-cordova-plugin" spec="^2.0.10" source="npm" />
   <icon src="res/icon.png"/>
   <splash src="res/splash.png"/>
   <platform name="android">
