@@ -209,7 +209,7 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
         $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id='+dataShare.get().id)
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (data.ver <= 3.1) {
+                if (data.ver <= 3.2) {
                     if (data.id == -1) dataShare.changePage(data, 'login');
                     else {
                         if (data.settings.forms_request) wait(5, data, admin);
