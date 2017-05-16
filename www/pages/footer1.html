@@ -4,7 +4,7 @@
     <div class="footer-option" ng-click="dataShare.action('statusList', 'notifications')"><img ng-src="assets/footer/footer_status{{(dataShare.getSettings().permission_request)?'+':''}}.png" /></div>
     <div class="footer-option">
         <div ng-click="dataShare.action('main', 'login')"><img ng-show="!dataShare.mainPage" src="assets/footer/footer-home.png" /></div>
-        <div ng-click="dataShare.action('', 'login')"><img ng-show="dataShare.mainPage" src="assets/footer/footer_logout.png" /></div>
+        <div ng-click="dataShare.action('home', 'login')"><img ng-show="dataShare.mainPage" src="assets/footer/footer_logout.png" /></div>
     </div>
 </div>
 

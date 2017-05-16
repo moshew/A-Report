@@ -9,16 +9,32 @@ app.run(function($http, dataShare) {
         .success(function (data) {
             dataShare.set(data);
             dataShare.register();
+
+            if (data.ver <= 3.3) {
+                if (data.id == -1) dataShare.changePage(data, 'login');
+                else {
+                    dataShare.changePage(data);
+                }
+            } else dataShare.action('versionUpdate', 'login')
         });
 });
-
 
 // configure our routes
 app.config(function ($routeProvider) {
     $routeProvider
 
         .when('/', {
+            templateUrl: 'pages/start.html',
+            controller: 'mainController'
+        })
+
+        .when('/home', {
             templateUrl: 'pages/home.html',
+            controller: 'mainController'
+        })
+
+        .when('/versionUpdate', {
+            templateUrl: 'pages/versionUpdate.html',
             controller: 'mainController'
         })
 
@@ -86,8 +102,6 @@ app.config(function ($routeProvider) {
             templateUrl: 'pages/forms.html',
             controller: 'adminController'
         })
-
-
 });
 
 app.config(function ($mdThemingProvider) {
@@ -160,7 +174,7 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
         $timeout.cancel(pagePromise);
         pagePromise = $timeout(function () {
             this.mainPage = false;
-            $location.path('');
+            $location.path('home');
         }, 5 * 60 * 1000);
     };
 
@@ -191,11 +205,11 @@ app.factory('dataShare', function ($http, $location, $timeout, $window) {
             $timeout.cancel(wp);
             _loading = false;
         }
-    }
+    };
 
     service.getLoading = function () {
         return _loading;
-    }
+    };
 
     return service;
 });
@@ -206,29 +220,14 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
 
     $scope.enter = function (admin) {
         dataShare.setLoading(true);
-        $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id='+dataShare.get().id)
+        $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id=' + dataShare.get().id)
             .success(function (data) {
                 dataShare.setLoading(false);
-                if (data.ver <= 3.2) {
-                    if (data.id == -1) dataShare.changePage(data, 'login');
-                    else {
-                        if (data.settings.forms_request) wait(5, data, admin);
-                        else goHomepage(data, admin);
-                    }
-                } else $scope.versionUpdate = true;
+                goHomepage(data, admin);
             })
             .error(function (data) {
                 dataShare.setLoading(false);
             });
-    };
-
-    var wait = function(sec, data, admin) {
-        if (sec>0) {
-            $scope.secsToWait = sec;
-            $timeout(function () {
-                wait(sec - 1, data, admin);
-            }, 1000);
-        } else goHomepage(data, admin)
     };
 
     var goHomepage = function(data, admin) {
@@ -313,7 +312,10 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
 
 app.controller('messageController', function ($scope, $http, $location, $timeout, dataShare) {
     $scope.dataShare = dataShare;
-    if (dataShare.get()==null) $location.path('');
+    if (dataShare.get()==null) {
+        $location.path('');
+        return;
+    }
 
     $scope.confirm = function () {
         dataShare.setLoading(true);
@@ -328,7 +330,10 @@ app.controller('messageController', function ($scope, $http, $location, $timeout
 app.controller('statusController', function ($scope, $http, $location, dataShare, $timeout) {
     $scope.dataShare = dataShare;
     $scope.optionsShow = false;
-    if (dataShare.get()==null || dataShare.get().id==null) $location.path('');
+    if (dataShare.get()==null || dataShare.get().id==null) {
+        $location.path('');
+        return;
+    }
 
     $scope.reportPage='main';
     $scope.info_image = 'report_info';
@@ -543,7 +548,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
 app.controller('statusListController', function ($scope, $http, $timeout, $location, dataShare) {
     $scope.dataShare = dataShare;
-    if (dataShare.get()==null) $location.path('');
+    if (dataShare.get()==null) $location.path('home');
     $scope.search_url = domain+'get_users.php?id='+dataShare.get().id+'&s=';
     $scope.errorMsg = false;
 
