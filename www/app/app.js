@@ -711,9 +711,11 @@ app.controller('trackingController', function ($scope, $http, $timeout, dataShar
 app.controller('adminController', function ($scope, $http, $timeout, dataShare) {
     $scope.dataShare = dataShare;
     $scope.approvalShow = false;
+    $scope.todayReport = true;
     var switchEnable = true;
     var qr_url_base = domain + 'qrcode.php?id='+dataShare.get().id+'&op=';
 
+    /*
     $scope.switchOp = function (id) {
         if (switchEnable) {
             switchEnable = false;
@@ -734,6 +736,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         if (idx > -1) $scope.selection.splice(idx, 1);
         else $scope.selection.push(u_id);
     };
+    */
 
     var index = 0;
     var changeQR = function() {
@@ -758,6 +761,36 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
 
     $scope.return = function() {
         $scope.approvalShow = false;
+    };
+
+
+    $scope.reportByDate = function()
+    {
+        if ($scope.todayReport) {
+            $scope.reportCalanderShow = true;
+        } else {
+            qr_url_base = domain + 'qrcode.php?id='+dataShare.get().id+'&op=';
+            //changeQR();
+        }
+        $scope.todayReport = !$scope.todayReport;
+
+
+    }
+
+    $scope.dayReport = function(event, date) {
+        event.preventDefault(); // prevent the select to happen
+        qr_url_base = domain + 'qrcode.php?day='+date.format('YYYY-MM-DD')+'&id='+dataShare.get().id+'&op=';
+        //changeQR();
+        $scope.reportCalanderShow = false;
+    }
+
+    $scope.daySelected = function (event, date) {
+        event.preventDefault(); // prevent the select to happen
+        //selectedDay = date;
+        loadDayInfo();
+        $scope.xinfo = (event.x - 42.5) + "px";
+        $scope.yinfo = (event.y - 42.5) + "px";
+        $scope.infoShow = true;
     };
 
 
