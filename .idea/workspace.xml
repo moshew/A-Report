@@ -4,7 +4,6 @@
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/app.js" afterPath="$PROJECT_DIR$/www/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/pages/start.html" afterPath="$PROJECT_DIR$/www/pages/start.html" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +31,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72773975">
-              <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.69863015">
+              <caret line="618" column="83" selection-start-line="618" selection-start-column="83" selection-end-line="618" selection-end-column="83" />
               <folding />
             </state>
           </provider>
@@ -333,12 +332,6 @@
       <option name="number" value="Default" />
       <updated>1453504354563</updated>
     </task>
-    <task id="LOCAL-00318" summary="update">
-      <created>1484954315641</created>
-      <option name="number" value="00318" />
-      <option name="project" value="LOCAL" />
-      <updated>1484954315641</updated>
-    </task>
     <task id="LOCAL-00319" summary="update">
       <created>1484954383276</created>
       <option name="number" value="00319" />
@@ -627,7 +620,13 @@
       <option name="project" value="LOCAL" />
       <updated>1494960303002</updated>
     </task>
-    <option name="localTasksCounter" value="367" />
+    <task id="LOCAL-00367" summary="update">
+      <created>1494960929787</created>
+      <option name="number" value="00367" />
+      <option name="project" value="LOCAL" />
+      <updated>1494960929787</updated>
+    </task>
+    <option name="localTasksCounter" value="368" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1036,8 +1035,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72773975">
-          <caret line="232" column="0" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.69863015">
+          <caret line="618" column="83" selection-start-line="618" selection-start-column="83" selection-end-line="618" selection-end-column="83" />
           <folding />
         </state>
       </provider>

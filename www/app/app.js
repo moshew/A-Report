@@ -304,10 +304,7 @@ app.controller('loginController', function ($scope, $http, $mdDialog, dataShare)
 
 app.controller('messageController', function ($scope, $http, $location, $timeout, dataShare) {
     $scope.dataShare = dataShare;
-    if (dataShare.get()==null) {
-        $location.path('');
-        return;
-    }
+    if (dataShare.get()==null) { $location.path(''); return; }
 
     $scope.confirm = function () {
         dataShare.setLoading(true);
@@ -322,10 +319,7 @@ app.controller('messageController', function ($scope, $http, $location, $timeout
 app.controller('statusController', function ($scope, $http, $location, dataShare, $timeout) {
     $scope.dataShare = dataShare;
     $scope.optionsShow = false;
-    if (dataShare.get()==null || dataShare.get().id==null) {
-        $location.path('');
-        return;
-    }
+    if (dataShare.get()==null) { $location.path(''); return; }
 
     $scope.reportPage='main';
     $scope.info_image = 'report_info';
@@ -540,7 +534,8 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
 
 app.controller('statusListController', function ($scope, $http, $timeout, $location, dataShare) {
     $scope.dataShare = dataShare;
-    if (dataShare.get()==null) $location.path('home');
+    if (dataShare.get()==null) { $location.path(''); return; }
+
     $scope.search_url = domain+'get_users.php?id='+dataShare.get().id+'&s=';
     $scope.errorMsg = false;
 
@@ -621,8 +616,10 @@ app.controller('permissionsController', function ($scope, $http, $timeout, dataS
     };
 });
 
-app.controller('trackingController', function ($scope, $http, $timeout, dataShare) {
+app.controller('trackingController', function ($scope, $http, $timeout, $location, dataShare) {
     $scope.dataShare = dataShare;
+    if (dataShare.get()==null) { $location.path(''); return; }
+
     $scope.dayInfo = null;
 
     var eventsColors = ['green', 'purple', 'red', 'purple', 'green', 'green', 'purple', 'red', 'red', 'red', 'purple', 'orange', 'regular'];
