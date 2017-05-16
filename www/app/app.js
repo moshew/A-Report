@@ -12,9 +12,8 @@ app.run(function($http, dataShare) {
 
             if (data.ver <= 3.3) {
                 if (data.id == -1) dataShare.changePage(data, 'login');
-                else {
-                    dataShare.changePage(data);
-                }
+                else if (data.settings.message_status==2) dataShare.action('message', 'message');
+                else dataShare.changePage(data);
             } else dataShare.action('versionUpdate', 'login')
         });
 });
@@ -223,19 +222,12 @@ app.controller('mainController', function ($scope, $rootScope, $http, $window, $
         $http.jsonp(domain + 'login.php?callback=JSON_CALLBACK&id=' + dataShare.get().id)
             .success(function (data) {
                 dataShare.setLoading(false);
-                goHomepage(data, admin);
+                path = (admin) ? 'reportAdmin' : null;
+                dataShare.changePage(data, path);
             })
             .error(function (data) {
                 dataShare.setLoading(false);
             });
-    };
-
-    var goHomepage = function(data, admin) {
-        if (data.settings.message_status==2) dataShare.action('message', 'message');
-        else {
-            path = (admin) ? 'reportAdmin' : null;
-            dataShare.changePage(data, path);
-        }
     };
 
     $scope.logout = function () {
@@ -715,29 +707,6 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
     var switchEnable = true;
     var qr_url_base = domain + 'qrcode.php?id='+dataShare.get().id+'&op=';
 
-    /*
-    $scope.switchOp = function (id) {
-        if (switchEnable) {
-            switchEnable = false;
-            $timeout(function () {
-                switchEnable = true;
-            }, 500);
-            dataShare.setLoading(true);
-            $http.jsonp(domain + 'lock.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&op=' + !dataShare.get().lock)
-                .success(function (data) {
-                    dataShare.setLoading(false);
-                    dataShare.set(data);
-                });
-        }
-    };
-
-    $scope.toggleSelection = function (u_id) {
-        var idx = $scope.selection.indexOf(u_id);
-        if (idx > -1) $scope.selection.splice(idx, 1);
-        else $scope.selection.push(u_id);
-    };
-    */
-
     var index = 0;
     var changeQR = function() {
         if (index==2) index = 0;
@@ -763,7 +732,6 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         $scope.approvalShow = false;
     };
 
-
     $scope.reportByDate = function()
     {
         if ($scope.todayReport) {
@@ -780,10 +748,10 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
     $scope.dayReport = function(event, date) {
         event.preventDefault(); // prevent the select to happen
         qr_url_base = domain + 'qrcode.php?day='+date.format('YYYY-MM-DD')+'&id='+dataShare.get().id+'&op=';
-        //changeQR();
         $scope.reportCalanderShow = false;
     }
 
+    /*
     $scope.daySelected = function (event, date) {
         event.preventDefault(); // prevent the select to happen
         //selectedDay = date;
@@ -792,7 +760,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         $scope.yinfo = (event.y - 42.5) + "px";
         $scope.infoShow = true;
     };
-
+    */
 
     var refresh = function () {
         $scope.user_name = '';
