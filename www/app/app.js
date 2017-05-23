@@ -704,6 +704,21 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
     var switchEnable = true;
     var qr_url_base = domain + 'qrcode.php?id='+dataShare.get().id+'&op=';
 
+    $scope.switchOp = function (id) {
+        if (switchEnable) {
+            switchEnable = false;
+            $timeout(function () {
+                switchEnable = true;
+            }, 500);
+            dataShare.setLoading(true);
+            $http.jsonp(domain + 'lock.php?callback=JSON_CALLBACK&id=' + dataShare.get().id + '&op=' + !dataShare.get().lock)
+                .success(function (data) {
+                    dataShare.setLoading(false);
+                    dataShare.set(data);
+                });
+        }
+    };
+
     var index = 0;
     var changeQR = function() {
         if (index==2) index = 0;
