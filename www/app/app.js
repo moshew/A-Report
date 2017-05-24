@@ -10,7 +10,7 @@ app.run(function($http, dataShare) {
             dataShare.set(data);
             dataShare.register();
 
-            if (data.ver <= 3.51) {
+            if (data.ver <= 3.52) {
                 if (data.id == -1) dataShare.changePage(data, 'login');
                 else if (data.settings.message_status==2) dataShare.action('message', 'message');
                 else dataShare.changePage(data);
@@ -717,6 +717,12 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
                     dataShare.set(data);
                 });
         }
+    };
+
+    $scope.toggleSelection = function (u_id) {
+        var idx = $scope.selection.indexOf(u_id);
+        if (idx > -1) $scope.selection.splice(idx, 1);
+        else $scope.selection.push(u_id);
     };
 
     var index = 0;
