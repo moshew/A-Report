@@ -10,7 +10,7 @@ app.run(function($http, dataShare) {
             dataShare.set(data);
             dataShare.register();
 
-            if (data.ver <= 3.52) {
+            if (data.ver <= 3.53) {
                 if (data.id == -1) dataShare.changePage(data, 'login');
                 else if (data.settings.message_status==2) dataShare.action('message', 'message');
                 else dataShare.changePage(data);
