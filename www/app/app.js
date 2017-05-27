@@ -702,7 +702,6 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
     $scope.approvalShow = false;
     $scope.todayReport = true;
     var switchEnable = true;
-    var qr_url_base = domain + 'qrcode.php?id='+dataShare.get().id+'&op=';
 
     $scope.switchOp = function (id) {
         if (switchEnable) {
@@ -725,14 +724,29 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         else $scope.selection.push(u_id);
     };
 
-    var index = 0;
-    var changeQR = function() {
-        if (index==2) index = 0;
+    //var qrlen = 0;
+    //var index = 0;
+    var pagePromise = null;
+    var qrLoop = function() {
+        if (index==qrlen-1) index = 0;
         else index += 1;
         $scope.qr_url = qr_url_base + index;
-        $timeout(function () {
-            changeQR();
-        }, 2000);
+        pagePromise = $timeout(function () {
+            qrLoop();
+        }, 4000);
+    };
+
+    var changeQR = function(day) {
+        if (day==null) day='';
+        $scope.qr_url = 'assets/status_none.png';
+        qr_url_base = domain + 'get_qr.php?id='+dataShare.get().id+day+'&op=';
+        $http.jsonp(qr_url_base+'qrlen&callback=JSON_CALLBACK')
+            .success(function (data) {
+                qrlen=data.len;
+                index=-1;
+                $timeout.cancel(pagePromise);
+                qrLoop();
+            });
     };
     changeQR();
 
@@ -752,22 +766,17 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
 
     $scope.reportByDate = function()
     {
-        if ($scope.todayReport) {
-            $scope.reportCalanderShow = true;
-        } else {
-            qr_url_base = domain + 'qrcode.php?id='+dataShare.get().id+'&op=';
-            //changeQR();
-        }
+        if ($scope.todayReport) $scope.reportCalanderShow = true;
+        else changeQR();
+
         $scope.todayReport = !$scope.todayReport;
-
-
-    }
+    };
 
     $scope.dayReport = function(event, date) {
         event.preventDefault(); // prevent the select to happen
-        qr_url_base = domain + 'qrcode.php?day='+date.format('YYYY-MM-DD')+'&id='+dataShare.get().id+'&op=';
+        changeQR('&day='+date.format('YYYY-MM-DD'));
         $scope.reportCalanderShow = false;
-    }
+    };
 
     /*
     $scope.daySelected = function (event, date) {

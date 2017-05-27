@@ -16,7 +16,9 @@
   <preference name="exit-on-suspend" value="false"/>
   <preference name="ShowSplashScreenSpinner" value="false" />
   <preference name="FadeSplashScreen" value="true" />
+  <preference name="FadeSplashScreenDuration" value="500" />
   <!--<preference name="AutoHideSplashScreen " value="true"/>-->
+  <preference name="DisallowOverscroll" value="true" />
   <preference name="DisableCursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
