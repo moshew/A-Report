@@ -172,10 +172,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
@@ -284,14 +284,7 @@
       <option name="presentableId" value="Default" />
       <updated>1453504354563</updated>
       <workItem from="1498469696257" duration="368000" />
-      <workItem from="1498470338405" duration="510000" />
-    </task>
-    <task id="LOCAL-00331" summary="update">
-      <created>1484961643674</created>
-      <option name="number" value="00331" />
-      <option name="presentableId" value="LOCAL-00331" />
-      <option name="project" value="LOCAL" />
-      <updated>1484961643674</updated>
+      <workItem from="1498470338405" duration="577000" />
     </task>
     <task id="LOCAL-00332" summary="update">
       <created>1484985708861</created>
@@ -629,11 +622,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498470636170</updated>
     </task>
-    <option name="localTasksCounter" value="380" />
+    <task id="LOCAL-00380" summary="update">
+      <created>1498470859847</created>
+      <option name="number" value="00380" />
+      <option name="presentableId" value="LOCAL-00380" />
+      <option name="project" value="LOCAL" />
+      <updated>1498470859847</updated>
+    </task>
+    <option name="localTasksCounter" value="381" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="878000" />
+    <option name="totallyTimeSpent" value="945000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
