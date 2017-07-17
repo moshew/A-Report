@@ -24,7 +24,7 @@
         </angucomplete-alt>
     </div>
     <div class="statusList-users" dir="rtl" ng-repeat="user in dataShare.get().reported"><div class="statusList-user"><span ng-click="report(user.u_id)"><img class="statusList-userImg" width="30" ng-src="assets/report/{{(user.status<=10 || user.status>=99)?user.status:11}}.png" /></span><span ng-click="report2(user.u_id)">{{ user.name }}<span style="margin-right:10px;font-size: 12px">{{user.info}}</span></span><div ng-if="editMode" class="statusList-delete" ng-click="removeUser(user)"><img src="assets/delete-user.png" /></div></div></div>
-    <div class="statusList-users" dir="rtl" ng-repeat="user in dataShare.get().waiting"><div class="statusList-user"><div class="statusList-status"><img class="statusList-userImg" width="30" src="assets/report/97.png" />{{ user.name }}<span style="margin-right:10px;font-size: 12px">ממתין לאישור...</span><div ng-if="editMode" class="statusList-delete" ng-click="removeUser(user)"><img src="assets/delete-user.png" /></div></div></div></div>
+    <div class="statusList-users" dir="rtl" ng-repeat="user in dataShare.get().waiting"><div class="statusList-user"><div class="statusList-status"><img class="statusList-userImg" width="30" src="assets/report/97.png" />{{ user }}<span style="margin-right:10px;font-size: 12px">ממתין לאישור...</span><div ng-if="editMode" class="statusList-delete" ng-click="removeUser(user)"><img src="assets/delete-user.png" /></div></div></div></div>
     <div class="statusList-confirnBtn"><div ng-if='dataShare.getSettings().manager' class="message-btn" ng-click="approve()"><img src="assets/reports_confirm.png" /></div></div>
 </div>
 <div ng-include="'pages/errorMsg.html'"></div>
