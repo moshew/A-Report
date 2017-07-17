@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e21ad8a3-b907-4791-806f-ac400b59a261" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
     </list>
     <ignored path="A-Report.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,8 +69,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="116" lean-forward="false" selection-start-line="1" selection-start-column="116" selection-end-line="1" selection-end-column="116" />
+            <state relative-caret-position="629">
+              <caret line="37" column="52" lean-forward="false" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -360,14 +359,7 @@
       <workItem from="1498473220815" duration="6000" />
       <workItem from="1498926921163" duration="13000" />
       <workItem from="1499523026041" duration="18000" />
-      <workItem from="1500314469292" duration="1347000" />
-    </task>
-    <task id="LOCAL-00338" summary="update">
-      <created>1484986754069</created>
-      <option name="number" value="00338" />
-      <option name="presentableId" value="LOCAL-00338" />
-      <option name="project" value="LOCAL" />
-      <updated>1484986754069</updated>
+      <workItem from="1500314469292" duration="1366000" />
     </task>
     <task id="LOCAL-00339" summary="update">
       <created>1484986854123</created>
@@ -705,11 +697,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500316100034</updated>
     </task>
-    <option name="localTasksCounter" value="387" />
+    <task id="LOCAL-00387" summary="update">
+      <created>1500316131006</created>
+      <option name="number" value="00387" />
+      <option name="presentableId" value="LOCAL-00387" />
+      <option name="project" value="LOCAL" />
+      <updated>1500316131006</updated>
+    </task>
+    <option name="localTasksCounter" value="388" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2471000" />
+    <option name="totallyTimeSpent" value="2490000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -1114,8 +1113,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="116" lean-forward="false" selection-start-line="1" selection-start-column="116" selection-end-line="1" selection-end-column="116" />
+        <state relative-caret-position="629">
+          <caret line="37" column="52" lean-forward="false" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
           <folding />
         </state>
       </provider>
