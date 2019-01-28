@@ -1,0 +1,11 @@
+﻿<div ng-cloak class="ca-sitesheader">התרעות
+	<div class="statusList-rightOpt" ng-click="dataShare.changePage()"><</div>
+	<div class="statusList-leftOpt" ng-click=""></div>
+</div><br />
+<div class="ca-notifications">
+	<div class="ca-notificationsitem" ng-repeat="notification in dataShare.get().notifications">
+		<img class="ca-notificationsitemimg" width="30" ng-src="assets/warning.png" />{{ notification.header }}
+		<div class="ca-notificationsiteml2">{{ notification.subtitle }}</div>
+	</div>
+</div>
+<div ng-include="'pages/loader.html'"></div>

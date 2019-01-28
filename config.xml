@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="il.co.a-report" version="3.61">
-  <name>דוח סגולה</name>
-  <description>A-Report by click</description>
-  <author href="http://a-report.co.il" email="support@a-report.co.il">A-Report Team</author>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="tk.ikafe" version="0.5">
+  <name>קופי ענן</name>
+  <description>Monitoring and Managemnt of Coffeemakers on the Cloud</description>
+  <author href="http://ikafe.tk" email="support@ikafe.tk">SMSC - Smart Management Solutions on the Cloud</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="portrait"/>
   <preference name="target-device" value="universal"/>
   <preference name="fullscreen" value="false"/>
-  <preference name="webviewbounce" value="true"/>
+  <preference name="webviewbounce" value="false"/>
   <preference name="prerendered-icon" value="true"/>
   <preference name="stay-in-webview" value="false"/>
   <preference name="ios-statusbarstyle" value="black-opaque"/>
@@ -20,14 +20,14 @@
   <!--<preference name="AutoHideSplashScreen " value="true"/>-->
   <preference name="DisallowOverscroll" value="true" />
   <preference name="DisableCursor" value="false"/>
-  <preference name="android-minSdkVersion" value="14"/>
+  <preference name="android-minSdkVersion" value="19"/>
   <preference name="android-installLocation" value="auto"/>
-  <preference name="phonegap-version" value="cli-6.4.0" />
+  <preference name="phonegap-version" value="cli-6.5.0" />
   <preference name="android-build-tool" value="gradle" />
   <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1"/>
   <plugin name="cordova-plugin-inappbrowser" source="npm" spec="~1.3.0"/>
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-  <gap:plugin name="onesignal-cordova-plugin" spec="^2.0.10" source="npm" />
+  <!--<gap:plugin name="onesignal-cordova-plugin" spec="^2.0.10" source="npm" />-->
   <icon src="res/icon.png"/>
   <splash src="res/splash.png"/>
   <platform name="android">

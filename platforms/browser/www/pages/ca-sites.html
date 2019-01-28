@@ -1,0 +1,8 @@
+<div class="ca-sitesheader">אתרים
+	<div class="statusList-rightOpt" ng-click="dataShare.changePage()"><</div>
+	<div class="statusList-leftOpt" ng-click=""></div>
+</div><br />
+<div class="statusList-info" ng-cloak>
+    <div class="ca-siteslistitem" dir="rtl" ng-repeat="site in dataShare.get().sites"><div class="statusList-user"><span ng-click="dataShare.action('site', 'ca-site', {sid: site.id})">{{ site.title }}<span style="margin-right:10px;font-size: 12px">{{user.info}}</span></span></div></div>
+</div>
+<div ng-include="'pages/loader.html'"></div>

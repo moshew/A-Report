@@ -1,0 +1,9 @@
+﻿<div class="popupMsg" ng-show="errorMsg"></div>
+<div class="popupMsg_infoMsg" ng-show="errorMsg">
+    <div class="ca-sitestockupdate">
+		<div class="ca-sitestockupdatetitle">עידכון מלאי (בק"ג):</div>
+		<div class="ca-sitestockupdateval" dir="ltr"><input type="number" ng-model="stockupdateinp.val" min=-100 max=20 required></div>
+		<div class="ca-sitestockupdatebtn" ng-click="siteStockUpdateCB(false)">בטל</div>
+		<div class="ca-sitestockupdatebtn" ng-click="siteStockUpdateCB(true)">אשר</div>
+	</div>
+</div>

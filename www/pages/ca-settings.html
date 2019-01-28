@@ -1,0 +1,14 @@
+﻿<div ng-cloak class="ca-sitesheader">הגדרות
+    <div class="statusList-leftOpt" ng-click="closePermissions(true)">שמור</div>
+    <div class="statusList-rightOpt"ng-click="closePermissions(false)"><</div>
+</div><br />
+    <div class="statusList-info">
+        <div class="statusList-users" ng-repeat="setting in settings">
+            <div class="statusList-user">
+                <div class="ca-settingsswitch" ng-click="switchSetting(setting)"><label ng-class="{'yesno-switch': true, 'on': setting.status}">&nbsp;</label></div>
+                <div class="ca-settingsitem">{{setting.title}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include="'pages/loader.html'"></div>

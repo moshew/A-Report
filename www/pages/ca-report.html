@@ -1,0 +1,8 @@
+<div class="ca-reportheader">{{reports[dataShare.get().rid].title}}
+	<div class="statusList-rightOpt" ng-click="dataShare.action('reports')"><</div>
+	<div class="statusList-leftOpt" ng-click=""></div>
+</div><br />
+<div class="statusList-info" ng-cloak>
+    <div class="ca_reportitem" ng-repeat="result in dataShare.get().results"><div class="statusList-user">{{ result.title }}<div class="ca-reportitemval">{{ result.val }}</div></div></div>
+</div>
+<div ng-include="'pages/loader.html'"></div>
