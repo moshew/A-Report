@@ -468,7 +468,7 @@ div{
     width:98%;
     margin-bottom: 10px;
     text-align:center;
-    font-size:185%;
+    font-size:175%;
     background: #4b688e;
     display: inline-block;
 }
@@ -517,6 +517,10 @@ div{
     border-width: 1px;
     border-color: #1d6c96;
     border-style: none none solid none;
+}
+
+.statusList-user.color {
+    color: red;
 }
 
 .statusList-confirnBtn {
@@ -937,6 +941,7 @@ div{
 }
 
 .users_label.cb {
+	margin-top: 5px;
     width: 30%;
     vertical-align: bottom;
     text-align: right;
@@ -993,4 +998,3 @@ input[type="checkbox"]{
     text-alignt: right;
     resize: none;
 }
-

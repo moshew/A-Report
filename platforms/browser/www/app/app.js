@@ -792,7 +792,8 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
     var refresh = function () {
         $scope.user_name = '';
         $scope.user_phone = '';
-        $scope.user_isManager = false;
+        $scope.user_isApprove = false;
+		$scope.user_isManager = false;
         $scope.selection = [];
     };
 
@@ -801,7 +802,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         var newUser = '';
         var deletedIds = '';
         if ($scope.user_name != '' && $scope.user_phone != '') {
-            newUser = '&name=' + $scope.user_name + '&phone=' + $scope.user_phone + '&manager=' + $scope.user_isManager;
+            newUser = '&name=' + $scope.user_name + '&phone=' + $scope.user_phone + '$approve=' + $scope.user_isApprove + '&manager=' + $scope.user_isManager;
         }
         if ($scope.selection.length > 0) {
             deletedIds = '&deleted=';
