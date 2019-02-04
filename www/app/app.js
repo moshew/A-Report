@@ -344,7 +344,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
     };
 
     var isFuture = false;
-    var statusSelected = 0;
+    var statusSelected = 1;
     $scope.report = function (status) {
         if (status==null) isFuture=true;
         else statusSelected = status;
@@ -474,7 +474,7 @@ app.controller('statusController', function ($scope, $http, $location, dataShare
             $scope.report_dates.end_day = $scope.report_dates.start_day;
     };
 
-    $scope.report2BtnStyle = [{ 'background-color': '#80be40' }, null, null, null, null, null, null, null, null, null, null, null];
+    $scope.report2BtnStyle = [{'opacity': '0.5' }, { 'background-color': '#80be40' }, null, null, null, null, null, null, null, null, null, null];
     $scope.changeFutureStatus = function (status) {
         var prevStatus = (statusSelected<=10)?statusSelected:11;
         var currStatus = (status<=10)?status:11;
