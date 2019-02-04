@@ -1,0 +1,14 @@
+﻿<div class="home-logout" style="margin-top: 20px;" ng-show="dataShare.get().id.length==16"><span ng-click="logout()">(התנתק)</span><span ng-if="dataShare.getSettings().message_status==0" ng-click="logout()"><img src="assets/user.png" /></span><span ng-if="dataShare.getSettings().message_status>0" ng-click="dataShare.action('message', 'message')"><img src="assets/message.png" /></span></div>
+<div class="home-logout" ng-show="dataShare.getSettings().admin" ng-click="dataShare.action('reportAdmin', 'login')"><img src="assets/admin.png" /></div>
+<div ng-click="enter()">
+   <div class="home-logo"><img src="assets/logo1.png" /></div>
+   <div class="home-footer"><img src="assets/logo3.png" /></div>
+</div>
+<div ng-show="!dataShare.loading && versionUpdate" class="popupScreen">
+    <img src="assets/home_version.png" />
+</div>
+<div ng-show="!dataShare.loading && secsToWait>0" class="popupScreen no-opacity">
+    <img src="assets/forms_msg.png" />
+    <div class="formMSg-circle">{{secsToWait}}</div>
+</div>
+<div ng-include="'pages/loader.html'"></div>

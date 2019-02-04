@@ -1,0 +1,7 @@
+﻿<div dir="rtl" class="tracking-info" ng-class="{green:infoBg=='green', red:infoBg=='red', purple: infoBg=='purple', orange:infoBg=='orange', regular: infoBg=='regular'}" ng-style="{top: yinfo, left: xinfo, zoom:100/dataShare.getZoomFactor()}" ng-show="infoShow" ng-click="">
+    <img class="tracking-statusImage" ng-show="infoShow" ng-click="infoSelected()" src="assets/report/t{{dayInfo.status}}.png">
+    <img class="tracking-closeBtn" src="assets/status_delete.png" ng-click="closeInfo()" />
+    <div class="tracking-statusInfo" ng-show="infoShow" ng-click="infoSelected()">{{infoMessage}}</div>
+    <div class="tracking-statusInfo" ng-show="infoShow && infoMessage=='הצג אישור'" ng-click="deleteAttachment()">[ מחק ]</div>
+    </div>
+</div>
