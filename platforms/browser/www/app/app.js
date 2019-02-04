@@ -10,7 +10,7 @@ app.run(function($http, dataShare) {
             dataShare.set(data);
             dataShare.register();
 
-            if (data.ver <= 3.7) {
+            if (data.ver <= 3.71) {
                 if (data.id == -1) dataShare.changePage(data, 'login');
                 else if (data.settings.message_status==2) dataShare.action('message', 'message');
                 else dataShare.changePage(data);
@@ -802,7 +802,7 @@ app.controller('adminController', function ($scope, $http, $timeout, dataShare) 
         var newUser = '';
         var deletedIds = '';
         if ($scope.user_name != '' && $scope.user_phone != '') {
-            newUser = '&name=' + $scope.user_name + '&phone=' + $scope.user_phone + '$approve=' + $scope.user_isApprove + '&manager=' + $scope.user_isManager;
+            newUser = '&name=' + $scope.user_name + '&phone=' + $scope.user_phone + '&approve=' + $scope.user_isApprove + '&manager=' + $scope.user_isManager;
         }
         if ($scope.selection.length > 0) {
             deletedIds = '&deleted=';
