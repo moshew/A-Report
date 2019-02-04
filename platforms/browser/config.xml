@@ -4,7 +4,7 @@
     <description>A-Report by click</description>
     <author email="support@a-report.co.il" href="http://a-report.co.il">A-Report Team</author>
     <content src="index.html" />
-    <gap:plugin name="onesignal-cordova-plugin" source="npm" spec="^2.0.10" />
+    <gap:plugin name="onesignal-cordova-plugin" source="npm" spec="^2.4.1" />
     <icon src="res/icon.png" />
     <splash src="res/splash.png" />
     <access origin="*" />
@@ -29,8 +29,8 @@
     <preference name="FadeSplashScreenDuration" value="500" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="DisableCursor" value="false" />
-    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-minSdkVersion" value="16" />
     <preference name="android-installLocation" value="auto" />
-    <preference name="phonegap-version" value="cli-6.4.0" />
+    <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="android-build-tool" value="gradle" />
 </widget>
