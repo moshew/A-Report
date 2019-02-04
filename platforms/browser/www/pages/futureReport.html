@@ -1,0 +1,22 @@
+﻿<div ng-cloak class="statusList-header">דיווח עתידי
+    <div class="statusList-leftOpt" ng-click="report()">שמור</div>
+    <div class="statusList-rightOpt"ng-click="cancelReport()">בטל</div>
+</div><br />
+
+<div class="reprt2-date">
+    <div class="report2-calander" ng-click="showCalander=true"><img style="padding-bottom: 10px;" width="30" src="assets/calendar.png" /></div>
+    <div class="report2-date_display">{{dateDisplay}}</div>
+    <div class="report2-label"><img src="assets/dates-range.png" /></div><div class="clearfix"></div>
+</div><br/>
+<div ng-cloak>
+<div class="report2-btn" ng-style="report2BtnStyle[2]" ng-click="changeFutureStatus(2)"><img src="assets/report/t2.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[1]" ng-click="changeFutureStatus(1)"><img src="assets/report/t1.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[0]" ng-click="changeFutureStatus(0)"><img src="assets/report/t0.png" /></div><br />
+<div class="report2-btn" ng-style="report2BtnStyle[5]" ng-click="changeFutureStatus(5)"><img src="assets/report/t5.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[4]" ng-click="changeFutureStatus(4)"><img src="assets/report/t4.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[3]" ng-click="changeFutureStatus(3)"><img src="assets/report/t3.png" /></div><br />
+<div class="report2-btn" ng-style="report2BtnStyle[8]" ng-click="changeFutureStatus(8)"><img src="assets/report/t8.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[7]" ng-click="changeFutureStatus(7)"><img src="assets/report/t7.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[6]" ng-click="changeFutureStatus(6)"><img src="assets/report/t6.png" /></div><br />
+<div class="report2-btn" ng-style="report2BtnStyle[11]" ng-click="reportOthers(true)"><img src="assets/report/t11.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[10]" ng-click="changeFutureStatus(10)"><img src="assets/report/t10.png" /></div><div class="report2-btn" ng-style="report2BtnStyle[9]"ng-click="changeFutureStatus(9)"><img src="assets/report/t9.png" /></div>
+</div>
+<div ng-if="showCalander" ng-include="'pages/calendar.html'"></div>
+<div ng-include="'pages/reportOthers.html'"></div>
+<div ng-include="'pages/reportInfo.html'"></div>
+<div ng-include="'pages/errorMsg.html'"></div>
+<div ng-include="'pages/footer1.html'"></div>
+<div ng-include="'pages/loader.html'"></div>

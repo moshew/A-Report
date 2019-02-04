@@ -7,10 +7,10 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-splashscreen": {
+        "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "il.co.a-report"
         },
-        "cordova-plugin-inappbrowser": {
+        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "il.co.a-report"
         },
         "cordova-plugin-whitelist": {

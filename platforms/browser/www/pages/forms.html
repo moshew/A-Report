@@ -1,0 +1,8 @@
+<div class="statusList-header">טפסים חסרים
+    <div class="statusList-leftOpt" ng-click="deleteFormsRequests()">עדכן</div>
+    <div class="statusList-rightOpt"></div>
+
+</div><br />
+<div class="users-candidates"><div class="users-candidate" dir="rtl" ng-repeat="candidate in dataShare.get().form_requests" ng-click="toggleSelection(candidate.phone)"><input type="checkbox" value="{{candidate.phone}}" ng-checked="selection.indexOf(candidate.phone) > -1"><span class="users_delLabel">{{candidate.name}}</span></div></div>
+<div ng-include="'pages/footer2.html'"></div>
+<div ng-include="'pages/loader.html'"></div>
